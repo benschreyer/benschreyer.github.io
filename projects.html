@@ -1,1 +1,52 @@
+<!DOC TYPE html>
 
+<style>
+	body{}
+	#header{color:white;font-size:30;font-family:Verdana;position:absolute;z-index:1;top:0%;}
+	#headerdiv{width:100%;background-color:#2b7cff;height:10%;position:absolute;left:0;top:0;z-index:0;}
+	#home{color:white;font-size:30;font-family:Verdana;position:absolute;z-index:1;top:0%;left:27%;}
+	#projects{color:white;font-size:30;font-family:Verdana;position:absolute;z-index:1;top:0%;left:43%;}
+	#updates{color:white;font-size:30;font-family:Verdana;position:absolute;z-index:1;top:0;left:62%;}
+	#contheader{color:black;font-size:30;font-family:Verdana;position:absolute;z-index:1;top:10%;left:3%;}
+	.contentp{color:black;font-size:20;font-family:Verdana;position:relative;z-index:1;top:25%;left:7%;}
+	#contimg{left:5%;position:absolute;top:20%;width:100%;height:100%;}
+</style>
+
+<html id=html>
+
+	<head>
+		<title>smapapurf.com-Home</title>
+	</head>
+	
+	<body>
+		<p id=header>SMAPAPURF</p>
+		<div id=headerdiv></div>
+		<p id=home>HOME</p>
+		<p id=projects>PROJECTS</p>
+		<p id=updates>UPDATES</p>
+		<h1 id=contheader>Welcome</h1>
+		<p class=contentp>smapapurf.com is a website hosted by Ben  and is for testing and building websites.</br>See the projects in the projects tab for various html apps,see the GitHub page <a href="https://github.com/smapapurf/smapapurf.com">here</a></p>
+		<img src=porf.JPG id=contimg></img>
+	
+	</body>
+	
+</html>
+<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+<script>
+	$("#home").click(
+	function(){window.location.replace("/index");
+	}
+	);
+	$("#projects").click(
+	function(){window.location.replace("/projects");
+	}
+	);
+	$("#updates").click(
+	function(){window.location.replace("/updates");
+	}
+	);
+
+
+
+
+</script>
