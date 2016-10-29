@@ -1,0 +1,114 @@
+<!DOC TYPE html>
+
+<style>
+	html{background-color:Black}
+	#min{width:9%;height:9%;font-size:300%;position:absolute;top:65%;left:39%;border-radius:20%;}
+	#sec{width:9%;height:9%;font-size:300%;position:absolute;top:65%;left:52%;border-radius:20%;}
+	#colon1{background-color:white;position:absolute;top:66.5%;left:49.5%;width:1%;height:2%;}
+	#colon2{background-color:white;position:absolute;top:70.5%;left:49.5%;width:1%;height:2%;}
+	#button{color:Green;font-family:verdana;background-color:green;width:18%;height:9%;position:absolute;top:80%;left:41%;border-radius:8%;}
+	#butText{font-size:425%;position:absolute;top:-80%;left:20%}
+	#button:hover{cursor:pointer;}
+	#min:hover{background-color:#a8a8a8;}
+	#sec:hover{background-color:#a8a8a8;}
+	#title{color:Red;}
+	
+</style>
+
+<html id=html>
+
+	<head>
+		<title id=title>Web Timer</title>
+	</head>
+	
+	<body class=black>
+		<input type=number class=white id=min></input>
+		<div id=colon1 class=white></div>
+		<div id=colon2 class=white></div>
+		<input type=number class=white id=sec></input>
+		<div id=button onclick=setTime()><div>
+	</body>
+	
+</html>
+
+<script>
+var min;
+var sec;
+var secDown;
+var tOn;
+var inverted=false;
+	function setTime()
+		{
+		if(tOn!=true){
+			setTimeout(function(){tOn=true},200);
+			document.getElementById("button").style.backgroundColor="Red";
+			console.log("tOn is false turning true");
+			min=document.getElementById("min").value;
+			sec=document.getElementById("sec").value;
+			if(sec==0)
+			{
+			min=min-1;
+			sec=60;	
+			}
+			console.log("setTime");
+			secDown=setInterval(function secPass() {sec=sec-1;
+			document.getElementById("min").value=min;
+			document.getElementById("sec").value=sec;
+			if(sec==0)
+			{
+			min=min-1;
+			sec=60;	
+			}
+		
+				document.getElementById("min").value=min;
+				document.getElementById("sec").value=sec;
+			if(min*60+sec<=0)
+			{clearInterval(secDown);
+			document.getElementById("min").value=0;
+			document.getElementById("sec").value=0;
+			document.getElementById("button").style.backgroundColor="Green";
+			var flash=setInterval(
+			function(){
+			if(inverted==true)
+				{
+				inverted=false;
+				document.getElementById("colon1").style.backgroundColor="white";
+			document.getElementById("colon2").style.backgroundColor="white";
+			document.getElementById("html").style.backgroundColor="black";
+				}
+			if(inverted==false)
+				{
+				inverted=true;
+				document.getElementById("colon1").style.backgroundColor="black";
+			document.getElementById("colon2").style.backgroundColor="black";
+			document.getElementById("html").style.backgroundColor="white";
+			document.getElementById("html").style.color="white";
+				
+				}
+			
+			
+			}
+			
+			
+			
+			
+			,500);
+			setTimeout(function(){
+			clearInterval(flash);
+			document.getElementById("colon1").style.backgroundColor="white";
+			document.getElementById("colon2").style.backgroundColor="white";
+			document.getElementById("html").style.backgroundColor="black";
+			console.log("b")
+			},5000);
+			}
+			},1000);
+			}
+			if(tOn==true)
+			{document.getElementById("button").style.backgroundColor="green";
+			
+			tOn=false;
+			clearInterval(secDown);
+			}
+		};
+	
+</script>
