@@ -1,0 +1,138 @@
+<!DOC TYPE html>
+
+<head>
+	<title>SnakeJS</title>
+	<style>
+		#snake{}
+		#body{background-color:white}
+	
+	
+	</style>
+
+</head >
+<body id=body >
+	<canvas id=snake width =500 height=500></canvas>
+
+
+</body>
+
+<script>
+var setupd=false;
+var c = document.getElementById("snake");
+var ctx = c.getContext("2d");
+function snack()
+	{
+	this.x;
+	this.y;
+	
+	this.draw=function()
+		{
+		ctx.beginPath();
+		ctx.rect(this.x,this.y,10,10);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		};
+	
+	
+	
+	
+	
+	}
+function player()
+	{
+	this.directionx;
+	this.directiony;
+	this.x;
+	this.y;
+	this.draw=function() {
+		ctx.fillStyle="yellow";
+		ctx.rect(this.x,this.y,10,10);
+		ctx.fill();
+	
+		
+		
+		}
+	this.updatepos=function(x,y) {
+		ctx.fillStyle="purple";
+		ctx.beginPath();
+		ctx.rect(this.x,this.y,10,10);
+		ctx.fill();
+		this.x=this.x+x*10;
+		this.y=this.y+y*10;
+		ctx.beginPath();
+		ctx.fillStyle="yellow";
+		ctx.rect(this.x,this.y,10,10);
+		ctx.fill();
+	
+	}
+	
+	
+	
+	
+	
+	}
+var s=new player();
+var f=new snack();
+function loop()
+	{	
+		if(!setupd){
+		document.addEventListener("keydown",function(){
+		if(event.keyCode==83)
+			{s.directionx=0;
+			s.directiony=1;}
+		if(event.keyCode==65)
+			{s.directionx=-1;
+			s.directiony=0;}
+		if(event.keyCode==68)
+			{s.directionx=1;
+			s.directiony=0;}
+		if(event.keyCode==87)
+			{s.directionx=0;
+			s.directiony=-1;}
+		
+		});
+		s.x=0;
+		s.y=0;
+		s.directionx=1;
+		s.directiony=0;
+		s.draw();
+		console.log("SETUP");
+		ctx.beginPath();
+		ctx.fillStyle="purple";
+		ctx.rect(0,0,500,500);
+		ctx.fill();
+		f.x=50;s
+		f.y=50;
+		f.draw();
+		setupd=true;
+		}
+		console.log("LOOP");
+		s.updatepos(s.directionx,s.directiony);
+		if(s.y>490)
+			{s.y=480;}
+		if(s.y<0)
+			{s.y=10;}
+		if(s.x<0)
+			{s.x=10;}
+		if(s.x>490)
+			{s.x=480;}
+		
+		
+	}
+	
+	
+
+
+setInterval(function(){loop();},125);
+
+
+
+
+
+
+
+
+
+
+
+</script>
