@@ -60,8 +60,8 @@
 
 				}
 			c.addEventListener("mousemove",mouseMove);
-			document.addEventListener("mousedown",mouseDown);
-			docment.addEventListener("mouseup",mouseUp);
+			c.addEventListener("mousedown",mouseDown);
+			c.addEventListener("mouseup",mouseUp);
 			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
 			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
 			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
