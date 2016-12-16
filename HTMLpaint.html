@@ -35,17 +35,16 @@
 			
 			function mouseMove(e)
 				{	if(mouseHeld ){
-					ctx.lineTo(e.offsetX,e.offsetY);
-					ctx.stroke();
-					console.log(e.offsetX.toString(),e.offsetY.toString());
+					ctx.rect(e.offsetX,e.offsetY,10,10);
+					ctx.fill();
 					}
 				 	
 
 				}
 			function mouseDown(e)
 				{	mouseHeld=true;
-					ctx.beginPath();
-					ctx.moveTo(e.offsetX,e.offsetY);
+					ctx.rect(e.offsetX,e.offsetY,10,10);
+					ctx.fill();
 				 	
 						
 					
@@ -53,7 +52,7 @@
 				}
 			function mouseUp()
 				{	mouseHeld=false;
-					ctx.stroke();
+					ctx.fill
 
 				}
 			c.addEventListener("mousemove",mouseMove);
@@ -61,7 +60,7 @@
 			c.addEventListener("mouseup",mouseUp);
 			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
 			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
-			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
+			setInterval(function(){ctx.fillStyle=document.getElementById("slider").value;},200);
 			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value/2;},200);
 
 		</script>
