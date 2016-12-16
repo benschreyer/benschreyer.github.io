@@ -24,6 +24,7 @@
 
 		</body>
 		<script>
+			var draw;
 			var fillTarget;
 			var fill=false;
 			var fillNodeX;
@@ -34,25 +35,20 @@
 			var ctx = c.getContext("2d");
 			
 			function mouseMove(e)
-				{	if(mouseHeld ){
-					ctx.rect(e.offsetX,e.offsetY,10,10);
-					ctx.fill();
+				{	
 					}
 				 	
 
 				}
 			function mouseDown(e)
-				{	mouseHeld=true;
-					ctx.rect(e.offsetX,e.offsetY,10,10);
-					ctx.fill();
+				{	
 				 	
-						
+					setInterval(draw=function(){ctx.rect(e.offsetX,e.offsetY,10,10);},50);	
 					
 
 				}
 			function mouseUp()
-				{	mouseHeld=false;
-					ctx.fill
+				{	clearInterval();
 
 				}
 			c.addEventListener("mousemove",mouseMove);
