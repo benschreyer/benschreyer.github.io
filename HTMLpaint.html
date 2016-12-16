@@ -34,7 +34,7 @@
 			var ctx = c.getContext("2d");
 			
 			function mouseMove(e)
-				{	if(mouseHeld && fill=false){
+				{	if(mouseHeld ){
 					ctx.lineTo(e.offsetX,e.offsetY);
 					ctx.stroke();
 					console.log(e.offsetX.toString(),e.offsetY.toString());
