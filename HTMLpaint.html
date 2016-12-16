@@ -25,13 +25,14 @@
 		</body>
 		<script>
 			var fillTarget;
-			var fill=true;
+			var fill=false;
 			var fillNodeX;
 			var fillNodeY;
 			var lastPos;
 			var mouseHeld=false;
 			var c = document.getElementById("myCanvas");
 			var ctx = c.getContext("2d");
+			alert(ctx.getImageData(0,0,1,1));
 			function mouseMove(e)
 				{	if(mouseHeld && fill=false){
 					ctx.lineTo(e.offsetX,e.offsetY);
@@ -48,10 +49,9 @@
 				{	mouseHeld=true;
 					ctx.beginPath();
 					ctx.moveTo(e.offsetX,e.offsetY);
-				 	if(fill)
-					{
+				 	
 						alert(ctx.getImageData(0,0,1,1));
-					}
+					
 
 				}
 			function mouseUp()
