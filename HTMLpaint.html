@@ -32,17 +32,14 @@
 			var mouseHeld=false;
 			var c = document.getElementById("myCanvas");
 			var ctx = c.getContext("2d");
-			alert(ctx.getImageData(0,0,1,1));
+			
 			function mouseMove(e)
 				{	if(mouseHeld && fill=false){
 					ctx.lineTo(e.offsetX,e.offsetY);
 					ctx.stroke();
 					console.log(e.offsetX.toString(),e.offsetY.toString());
 					}
-				 	if(fill)
-					{
-						
-					}
+				 	
 
 				}
 			function mouseDown(e)
@@ -50,7 +47,7 @@
 					ctx.beginPath();
 					ctx.moveTo(e.offsetX,e.offsetY);
 				 	
-						alert(ctx.getImageData(0,0,1,1));
+						
 					
 
 				}
