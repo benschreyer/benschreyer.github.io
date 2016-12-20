@@ -1,96 +1,74 @@
-<!DOC TYPE html>
-	<html>
 
-		<head>
-			<title>Canvas Paint</title>
-			<style>
+ <!DOC TYPE html>
+ 	<html>
+ 
+ 		<head>
+ 			<title>Canvas Paint</title>
+ 			<style>
+ 
+ 				canvas{border-color:black;border-style:solid;position:absolute;left:20%;background-color:white;}
+ 				#slider2{position:absolute;left:0;top:10%}
+ 
+ 			</style>
+ 
+ 
+ 		</head>
+ 
+ 		<body>	
+ 			<button id=but1>Brush</button>
+ 			<button id=but2>Fill</button>
+			 <input type=color id=slider></range>
+ 			<input type=range id=slider2></range>
+ 			<canvas width=500 height=500 id="myCanvas"></canvas>
+ 
+ 
+ 		</body>
+ 		<script>
+ 			var fill=false;
+ 			var fillNodeX;
+ 			var fillNodeY;
+ 			var lastPos;
+ 			var mouseHeld=false;
+ 			var c = document.getElementById("myCanvas");
+ 			var ctx = c.getContext("2d");
+ 			function mouseMove(e)
+ 				{	if(mouseHeld){
+ 					ctx.lineTo(e.offsetX,e.offsetY);
+ 					ctx.stroke();
+ 					console.log(e.offsetX.toString(),e.offsetY.toString());
+ 					}
+ 
+ 				}
+ 			function mouseDown(e)
+ 				{	mouseHeld=true;
+ 					ctx.beginPath();
+ 					ctx.moveTo(e.offsetX,e.offsetY);
+ 
+ 				}
+ 			function mouseUp()
+ 				{	mouseHeld=false;
+ 					ctx.stroke();
+ 				}
+ 			c.addEventListener("mousemove",mouseMove);
+ 			c.addEventListener("mousedown",mouseDown);
+ 			c.addEventListener("mouseup",mouseUp);
+ 			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
+ 			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
+ 			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
+ 			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value/6;},200);
+ 
+ 		</script>
+ 	</html>
 
-				canvas{border-color:black;border-style:solid;position:absolute;left:20%;background-color:white;}
-				#slider2{position:absolute;left:0;top:10%}
+  
+            
+ 
+Write  Preview
 
-
-			</style>
-
-
-		</head>
-
-		<body>	
-			<button id=but1>Brush</button>
-			<button id=but2>Fill</button>
-			<input type=color id=slider></range>
-			<input type=range id=slider2></range>
-			<canvas width=500 height=500 id="myCanvas"></canvas>
-
-
-		</body>
-		<script>
-			var draw;
-			var fillTarget;
-			var fill=false;
-			var fillNodeX;
-			var fillNodeY;
-			var lastPos;
-			var mouseHeld=false;
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
-			
-			function mouseMove(e)
-				{	
-					if(mouseHeld)
-					{
-					ctx.beginPath();
-					ctx.lineTo(e.offSetX,e.offsetY);
-					crx.stroke();
-					
-					}
-				 	
-
-				}
-			function mouseDown(e)
-				{	
-				 	ctx.moveTo(e.offSetX,e.offsetY);
-				 	crx.stroke();
-					ctx.beginPath();
-					
-					mouseHeld=true;
-				}
-			function mouseUp()
-				{	crx.stroke();
-					
-					mouseHeld=false;
-				}
-			c.addEventListener("mousemove",mouseMove);
-			c.addEventListener("mousedown",mouseDown);
-			c.addEventListener("mouseup",mouseUp);
-			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
-			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
-			setInterval(function(){ctx.fillStyle=document.getElementById("slider").value;},200);
-			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value/2;},200);
-
-		</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	</html>
+Leave a comment
+Attach files by dragging & dropping,  Choose Files selecting them, or pasting from the clipboard.
+ Styling with Markdown is supported
+Comment on this commit
+   Unsubscribe  You’re receiving notifications because you’re subscribed to this repository.
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
