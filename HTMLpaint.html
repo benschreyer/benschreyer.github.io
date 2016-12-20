@@ -36,6 +36,11 @@
 			
 			function mouseMove(e)
 				{	
+					if(mouseHeld)
+					{
+					ctx.closePath();
+					ctx.beginPath();
+					ctx.stroke();
 					}
 				 	
 
@@ -43,13 +48,14 @@
 			function mouseDown(e)
 				{	
 				 	
-					setInterval(draw=function(){ctx.rect(e.offsetX,e.offsetY,10,10);},50);	
 					
-
+					
+					mouseHeld=true;
 				}
 			function mouseUp()
-				{	clearInterval();
-
+				{	
+					
+					mouseHeld=false;
 				}
 			c.addEventListener("mousemove",mouseMove);
 			c.addEventListener("mousedown",mouseDown);
