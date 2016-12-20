@@ -40,7 +40,7 @@
 					{
 					
 					ctx.moveTo(e.offSetX,e.offsetY);
-					ctx.stroke();
+					
 					}
 				 	
 
@@ -48,12 +48,13 @@
 			function mouseDown(e)
 				{	
 				 	
+				 	
 					ctx.beginPath();
 					
 					mouseHeld=true;
 				}
 			function mouseUp()
-				{	
+				{	crx.stroke();
 					ctx.closePath();
 					mouseHeld=false;
 				}
