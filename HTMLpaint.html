@@ -38,7 +38,7 @@
 				{	
 					if(mouseHeld)
 					{
-					
+					crx.stroke();
 					ctx.moveTo(e.offSetX,e.offsetY);
 					
 					}
@@ -48,14 +48,14 @@
 			function mouseDown(e)
 				{	
 				 	
-				 	
+				 	crx.stroke();
 					ctx.beginPath();
 					
 					mouseHeld=true;
 				}
 			function mouseUp()
 				{	crx.stroke();
-					ctx.closePath();
+					
 					mouseHeld=false;
 				}
 			c.addEventListener("mousemove",mouseMove);
