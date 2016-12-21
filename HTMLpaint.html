@@ -33,6 +33,9 @@
  			var ctx = c.getContext("2d");
 			ctx.lineJoin="round";
 			ctx.lineCap="round";
+			var myImage = new Image(100, 100);
+			myImage.src = 'http://images.wisegeek.com/beans.jpg';
+			ctx.drawImage(myImage(10,10));
  			function mouseMove(e)
  				{	if(mouseHeld){
  					ctx.lineTo(e.offsetX,e.offsetY);
