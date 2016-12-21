@@ -54,6 +54,26 @@
  				{	mouseHeld=false;
  					ctx.stroke();
  				}
+			function invert(){
+			for(x=0,x<501,x++){
+				for(y=0,y<501,y++)
+				{
+				alert(ctx.getImageData(x,y,1,1));
+				
+				
+				}
+			
+			
+			
+			}
+			
+			
+			
+			
+			}
+			
+			
+			invert();
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
