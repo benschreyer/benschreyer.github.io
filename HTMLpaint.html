@@ -53,44 +53,22 @@
  					ctx.stroke();
  				}
 			function invert()
-			{	var data=ctx.getImageData(0,0,500,500).data;
+			{var imgdata=ctx.getImageData(0,0,500,500);
+			var data=ctx.getImageData(0,0,500,500).data;
 			 	for(var i = 0; i < data.length; i += 4) {
           // red
-          data[i] = 255 - data[i];
+          imgdata.data[i] = 255 - data[i];
           // green
-          data[i + 1] = 255 - data[i + 1];
+          imgdata.data[i + 1] = 255 - data[i + 1];
           // blue
-          data[i + 2] = 255 - data[i + 2];
+          imgdata.data[i + 2] = 255 - data[i + 2];
         }
 
         // overwrite original image
-        ctx.putImageData(data, 0, 0);
+        ctx.putImageData(imagedata, 0, 0);
 				
 				
 				
 				
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
- 			c.addEventListener("mousemove",mouseMove);
- 			c.addEventListener("mousedown",mouseDown);
- 			c.addEventListener("mouseup",mouseUp);
- 			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
- 			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
- 			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
- 			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value;},200);
- 
- 		</script>
- 	</html>
-
-  
-            
