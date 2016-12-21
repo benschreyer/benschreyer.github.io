@@ -54,27 +54,35 @@
  				{	mouseHeld=false;
  					ctx.stroke();
  				}
-			function invert(){
-			for(var x=0;x<501;x++){
-				for( var y=0;y<501;y++)
-				{
-				ctx.fillStyle=ctx.getImageData(x,y,1,1);
-				rect(x,y,1,1) ;
+			function invert()
+			{	var data=ctx.getImageData(0,0,500,500).data;
+			 	for(var i = 0; i < data.length; i += 4) {
+          // red
+          data[i] = 255 - data[i];
+          // green
+          data[i + 1] = 255 - data[i + 1];
+          // blue
+          data[i + 2] = 255 - data[i + 2];
+        }
+
+        // overwrite original image
+        context.putImageData(imageData, x, y);
 				
 				
-				}
-			
-			
-			
+				
+				
 			}
 			
 			
 			
 			
-			}
 			
 			
-			invert();
+			
+			
+			
+			
+			
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
