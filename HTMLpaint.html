@@ -40,18 +40,18 @@
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
  					}
- 					
+ 					if(fill){
+					
+					alert("boi");
+					
+					}
  				}
  			function mouseDown(e)
  				{	
 					mouseHeld=true;
  					ctx.beginPath();
  					ctx.moveTo(e.offsetX,e.offsetY);
-				 	if(fill){
-					
-					alert("boi");
-					
-					}
+				 	
  
  				}
  			function mouseUp()
