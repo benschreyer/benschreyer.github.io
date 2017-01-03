@@ -16,7 +16,7 @@
  
  		<body>	
  			<button id=but1>Brush</button>
- 			<button id=but2>Fill</button>
+ 			<button id=but2>Invert Colors</button>
 			 <input type=color id=slider></range>
  			<input type=range id=slider2></range>
  			<canvas width=500 height=500 id="myCanvas"></canvas>
@@ -34,7 +34,7 @@
 			ctx.lineCap="round";
 			
  			function mouseMove(e)
- 				{	if(mouseHeld){
+ 				{	if(mouseHeld==true){
  					ctx.lineTo(e.offsetX,e.offsetY);
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
@@ -55,7 +55,7 @@
  					ctx.stroke();
  				}
 			
-			function invert(){alert("sadffdgdjld");
+			function invert(){
 						for(x=0;x<501;x++)
 						{
 						for(y=0;y<501;y++)
