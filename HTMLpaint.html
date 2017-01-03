@@ -56,8 +56,7 @@
 						for(y=0;y<501;y++)
 							{pData=ctx.getImageData(x,y,1,1);
 							 pData.data[0]=255-pData.data[0];
-							 pData.data[1]=255-pData.data[1];
-							 pData.data[2]=255-pData.data[2];
+							 
 							ctx.putImageData(pData,x,y);	
 								
 							}
