@@ -16,7 +16,7 @@
  
  		<body>	
  			<button id=but1>Brush</button>
- 			<button id=but2 onclick="invert()">Fill</button>
+ 			<button id=but2>Fill</button>
 			 <input type=color id=slider></range>
  			<input type=range id=slider2></range>
  			<canvas width=500 height=500 id="myCanvas"></canvas>
@@ -40,17 +40,28 @@
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
  					}
- 					if(fill){
-					
-					alert("boi");
-					
-					}
+ 					
  				}
  			function mouseDown(e)
  				{	
 					mouseHeld=true;
  					ctx.beginPath();
  					ctx.moveTo(e.offsetX,e.offsetY);
+					if(fill)
+					{
+						for(x=0;x<501;x++)
+						{
+						for(y=0;y<501;y++)
+							{pData=ctx.getImageData(x,y,1,1);
+							 pData[0]=255-pData[0];
+							 pData[1]=255-pData[1];
+							 pData[2]=255-pData[2];
+							ctx.putImageData(pData,x,y);	
+								
+							}
+						
+						}
+					}
 				 	
  
  				}
