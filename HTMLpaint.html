@@ -24,7 +24,6 @@
  
  		</body>
  		<script>
- 			var fill=false;
  			var fillNodeX;
  			var fillNodeY;
  			var lastPos;
@@ -35,7 +34,7 @@
 			ctx.lineCap="round";
 			
  			function mouseMove(e)
- 				{	if(mouseHeld&&!fill){
+ 				{	if(mouseHeld){
  					ctx.lineTo(e.offsetX,e.offsetY);
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
