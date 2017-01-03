@@ -17,6 +17,7 @@
  		<body>	
  			<button id=but1>Brush</button>
  			<button id=but2>Invert Colors</button>
+			<button id=but3>Fill</button>
 			 <input type=color id=slider></range>
  			<input type=range id=slider2></range>
  			<canvas width=500 height=500 id="myCanvas"></canvas>
@@ -24,6 +25,7 @@
  
  		</body>
  		<script>
+			var fillTarg;
 			var invert=false;
  			var fillNodeX;
  			var fillNodeY;
@@ -35,7 +37,7 @@
 			ctx.lineCap="round";
 			
  			function mouseMove(e)
- 				{	if(mouseHeld==true&&invert==false){
+ 				{	if(mouseHeld==true&&invert==false&&fill==false){
  					ctx.lineTo(e.offsetX,e.offsetY);
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
@@ -61,6 +63,20 @@
 							}
 						
 						}}
+					if(fill)
+					{
+					fillTarg=ctx.getImageData(e.offsetX,e.offsetY,1,1).data;
+					fillNodeX=e.offsetX;
+					fillNodeY=e.offsetY;
+					while(ctx.getImageData(fillNodeX,FillNodeY,1,1).data==document.getElementById("slider2").value||ctx.getImageData(fillNodeX,FillNodeY,1,1).data==fillTarg)
+					{ctx.fillRect(fillNodeX,fillNodeY,1,1);
+					fillNodeX=fillNodeX+1;
+					
+					
+					}
+						
+						
+					}
 					
 				 	
  
@@ -84,8 +100,9 @@
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
- 			document.getElementById("but1").addEventListener("click",function(){});
+ 			document.getElementById("but1").addEventListener("click",function(){invert=false;fill=true;});
  			document.getElementById("but2").addEventListener("click",function(){invert=!invert;});
+			document.getElementById("but3").addEventListener("click",function(){fill=!fill;});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
  			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value;},200);
  
