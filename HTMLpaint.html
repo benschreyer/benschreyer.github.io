@@ -47,8 +47,16 @@
 					mouseHeld=true;
  					ctx.beginPath();
  					ctx.moveTo(e.offsetX,e.offsetY);
-					if(fill)
-					{	alert("sadffdgdjld");
+					
+				 	
+ 
+ 				}
+ 			function mouseUp()
+ 				{	mouseHeld=false;
+ 					ctx.stroke();
+ 				}
+			
+			function invert(){alert("sadffdgdjld");
 						for(x=0;x<501;x++)
 						{
 						for(y=0;y<501;y++)
@@ -60,17 +68,7 @@
 								
 							}
 						
-						}
-					}
-				 	
- 
- 				}
- 			function mouseUp()
- 				{	mouseHeld=false;
- 					ctx.stroke();
- 				}
-			
-			
+						}}
 			
 			
 			
@@ -84,8 +82,8 @@
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
- 			document.getElementById("but1").addEventListener("click",function(){fill=!fill;})
- 			document.getElementById("but2").addEventListener("click",function(){fill=!fill;})
+ 			document.getElementById("but1").addEventListener("click",function(){});
+ 			document.getElementById("but2").addEventListener("click",invert()});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
  			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value;},200);
  
