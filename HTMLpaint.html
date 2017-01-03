@@ -35,7 +35,7 @@
 			ctx.lineCap="round";
 			
  			function mouseMove(e)
- 				{	if(mouseHeld==true){
+ 				{	if(mouseHeld==true&&invert==false){
  					ctx.lineTo(e.offsetX,e.offsetY);
  					ctx.stroke();
  					console.log(e.offsetX.toString(),e.offsetY.toString());
