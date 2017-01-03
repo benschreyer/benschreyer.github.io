@@ -74,16 +74,16 @@
 						bittenY[0]=e.offsetY;
 						for(i=0;i<bittenY.length;i++)
 						{	ctx.fillRect(bittenX[i],bittenY[i],1,1)
-							if(getImageData(bittenX[i],bittenY[i]-1,1,1)==fillTarg)
+							if(ctx.getImageData(bittenX[i],bittenY[i]-1,1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
 							   bittenY[bittenY.length]=bittenY[i]-1;}
-							if(getImageData(bittenX[i],bittenY[i]+1,1,1)==fillTarg)
+							if(ctx.getImageData(bittenX[i],bittenY[i]+1,1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
 							   bittenY[bittenY.length]=bittenY[i]+1;}
-							if(getImageData(bittenX[i]-1,bittenY[i],1,1)==fillTarg)
+							if(ctx.getImageData(bittenX[i]-1,bittenY[i],1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]-1;
 							   bittenY[bittenY.length]=bittenY[i];}
-							if(getImageData(bittenX[i]+1,bittenY[i],1,1)==fillTarg)
+							if(ctx.getImageData(bittenX[i]+1,bittenY[i],1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]+1;
 							   bittenY[bittenY.length]=bittenY[i];}
 						}
