@@ -68,7 +68,7 @@
 					fillTarg=ctx.getImageData(e.offsetX,e.offsetY,1,1).data;
 					fillNodeX=e.offsetX;
 					fillNodeY=e.offsetY;
-					while(ctx.getImageData(fillNodeX,fillNodeY,1,1).data==document.getElementById("slider2").value||ctx.getImageData(fillNodeX,FillNodeY,1,1).data==fillTarg)
+					while(ctx.getImageData(fillNodeX,fillNodeY,1,1).data==document.getElementById("slider2").value||ctx.getImageData(fillNodeX,fillNodeY,1,1).data==fillTarg)
 					{ctx.fillRect(fillNodeX,fillNodeY,1,1);
 					fillNodeX=fillNodeX+1;
 					
