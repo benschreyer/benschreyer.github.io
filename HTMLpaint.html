@@ -73,19 +73,23 @@
 						bittenX[0]=e.offsetX;
 						bittenY[0]=e.offsetY;
 						for(i=0;i<bittenY.length;i++)
-						{	ctx.fillRect(bittenX[i],bittenY[i],1,1)
+						{	
 							if(ctx.getImageData(bittenX[i],bittenY[i]-1,1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
-							   bittenY[bittenY.length]=bittenY[i]-1;}
+							   bittenY[bittenY.length]=bittenY[i]-1;
+							   ctx.fillRect(bittenX[i],bittenY[i]-1,1,1)}
 							if(ctx.getImageData(bittenX[i],bittenY[i]+1,1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
-							   bittenY[bittenY.length]=bittenY[i]+1;}
+							   bittenY[bittenY.length]=bittenY[i]+1;
+							   ctx.fillRect(bittenX[i],bittenY[i]+1,1,1)}
 							if(ctx.getImageData(bittenX[i]-1,bittenY[i],1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]-1;
-							   bittenY[bittenY.length]=bittenY[i];}
+							   bittenY[bittenY.length]=bittenY[i];
+							   ctx.fillRect(bittenX[i]-1,bittenY[i],1,1)}
 							if(ctx.getImageData(bittenX[i]+1,bittenY[i],1,1)==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]+1;
-							   bittenY[bittenY.length]=bittenY[i];}
+							   bittenY[bittenY.length]=bittenY[i];
+							   ctx.fillRect(bittenX[i]+1,bittenY[i],1,1)}
 						}
 						
 						
