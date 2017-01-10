@@ -69,6 +69,43 @@
 					if(fill)
 					{
 						
+						var nodesX=[e.offsetX];
+						var nodesY=[e.offsetY];
+						for(i=0;i<=nodesX.length;i++)
+						{
+							//for left and right
+							for(j=-1;j<=1;j++)
+							{
+							if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i+j],nodesY[i],1,1))
+							{
+								nodesX[nodesX.length]=nodesX[i+j];
+							}	
+							}
+							//for up and down
+							for(k=-1;k<=1;k++)
+							{
+								if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i+j],nodesY[i],1,1))
+								{
+								nodesY[nodesY.length]=[i+k];
+								
+								
+								}
+							
+							
+							}
+							
+							
+							
+							
+							
+							
+							
+							
+						}
+						
+						
+						
+						
 					}
 					
 				 	
