@@ -76,17 +76,17 @@
 							//for left and right
 							for(j=-1;j<=1;j++)
 							{
-							if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i+j],nodesY[i],1,1))
+							if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i]+j,nodesY[i],1,1))
 							{
-								nodesX[nodesX.length]=nodesX[i+j];
+								nodesX[nodesX.length]=nodesX[i]+j;
 							}	
 							}
 							//for up and down
 							for(k=-1;k<=1;k++)
 							{
-								if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i+j],nodesY[i],1,1))
+								if(ctx.getImageData(nodesX[i],nodesY[i],1,1)==ctx.getImageData(nodesX[i]+k,nodesY[i],1,1))
 								{
-								nodesY[nodesY.length]=[i+k];
+								nodesY[nodesY.length]=nodesY[i]+k;
 								
 								
 								}
