@@ -77,19 +77,23 @@
 							if(ctx.getImageData(bittenX[i],bittenY[i]-1,1,1).data==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
 							   bittenY[bittenY.length]=bittenY[i]-1;
-							   ctx.fillRect(bittenX[i],bittenY[i]-1,1,1)}
+							   ctx.fillRect(bittenX[i],bittenY[i]-1,1,1)
+							   console.log("123");}
 							if(ctx.getImageData(bittenX[i],bittenY[i]+1,1,1).data==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i];
 							   bittenY[bittenY.length]=bittenY[i]+1;
-							   ctx.fillRect(bittenX[i],bittenY[i]+1,1,1)}
+							   ctx.fillRect(bittenX[i],bittenY[i]+1,1,1)
+							   console.log("123");}
 							if(ctx.getImageData(bittenX[i]-1,bittenY[i],1,1).data==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]-1;
 							   bittenY[bittenY.length]=bittenY[i];
-							   ctx.fillRect(bittenX[i]-1,bittenY[i],1,1)}
+							   ctx.fillRect(bittenX[i]-1,bittenY[i],1,1)
+							   console.log("123");}
 							if(ctx.getImageData(bittenX[i]+1,bittenY[i],1,1).data==fillTarg)
 							   {bittenX[bittenX.length]=bittenX[i]+1;
 							   bittenY[bittenY.length]=bittenY[i];
-							   ctx.fillRect(bittenX[i]+1,bittenY[i],1,1)}
+							   ctx.fillRect(bittenX[i]+1,bittenY[i],1,1)
+							   console.log("123");}
 						}
 						
 						
@@ -117,7 +121,7 @@
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
- 			document.getElementById("but1").addEventListener("click",function(){invert=false;fill=true;});
+ 			document.getElementById("but1").addEventListener("click",function(){invert=false;fill=false;});
  			document.getElementById("but2").addEventListener("click",function(){invert=!invert;});
 			document.getElementById("but3").addEventListener("click",function(){fill=!fill;});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
