@@ -74,27 +74,22 @@
 						var targColor=ctx.getImageData(nodesX[0],nodesY[0],1,1)
 						for(i=0;i<=nodesX.length;i++)
 						{
-							//for left and right
-							for(j=-1;j<=1;j++)
+							if(targColor==ctx.getImageData(nodesX[i]+1,nodesY[i],1,1))
 							{
-							if(targColor==ctx.getImageData(nodesX[i]+j,nodesY[i],1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]+j;
+								nodesX[nodesX.length]=nodesX[i]+1;
 							}	
-							}
-							//for up and down
-							for(k=-1;k<=1;k++)
+							if(targColor==ctx.getImageData(nodesX[i]-1,nodesY[i],1,1))
 							{
-								if(targColor==ctx.getImageData(nodesX[i],nodesY[i]+k,1,1))
-								{
-								nodesY[nodesY.length]=nodesY[i]+k;
-								
-								
-								}
-							
-							
-							}
-							
+								nodesX[nodesX.length]=nodesX[i]-1;
+							}	
+							if(targColor==ctx.getImageData(nodesX[i],nodesY[i]+1,1,1))
+							{
+								nodesX[nodesX.length]=nodesY[i]+1;
+							}	
+							if(targColor==ctx.getImageData(nodesX[i],nodesY[i]-1,1,1))
+							{
+								nodesX[nodesX.length]=nodesX[i]-1;
+							}	
 						
 							
 							
