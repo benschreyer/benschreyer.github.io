@@ -58,8 +58,8 @@ function player()
 		ctx.beginPath();
 		ctx.rect(this.x,this.y,10,10);
 		ctx.fill();
-		this.x=this.x+x*50;
-		this.y=this.y+y*50;
+		this.x=this.x+x*10;
+		this.y=this.y+y*10;
 		ctx.beginPath();
 		ctx.fillStyle="yellow";
 		ctx.rect(this.x,this.y,10,10);
@@ -137,7 +137,7 @@ function loop()
 	
 
 
-setInterval(function(){loop();},125);
+setInterval(function(){loop();},42);
 
 
 
