@@ -20,6 +20,7 @@
 var setupd=false;
 var c = document.getElementById("snake");
 var ctx = c.getContext("2d");
+var pxfroms=0;
 function snack()
 	{
 	this.x;
@@ -103,19 +104,20 @@ function loop()
 		ctx.fill();
 		f.x=50;s
 		f.y=50;
-		f.draw();
+		//f.draw();
 		setupd=true;
 		}
 		console.log("LOOP");
 		s.updatepos(s.directionx,s.directiony);
-		if(s.y>490)
-			{s.y=480;}
-		if(s.y<0)
-			{s.y=10;}
-		if(s.x<0)
-			{s.x=10;}
-		if(s.x>490)
-			{s.x=480;}
+		if(s.y>500-pxfroms)
+			{pxfroms=0;alert("youlose");}
+		if(s.y<0+pxfroms)
+			{pxfroms=0;alert("youlose");}
+		if(s.x<0+pxfroms)
+			{pxfroms=0;alert("youlose");}
+		if(s.x>500-pxfroms)
+			{pxfroms=0;
+			alert("youlose");}
 		
 		
 	}
