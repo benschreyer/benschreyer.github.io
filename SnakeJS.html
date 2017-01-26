@@ -92,8 +92,8 @@ function loop()
 			s.directiony=-1;}
 		
 		});
-		s.x=0;
-		s.y=0;
+		s.x=50;
+		s.y=100;
 		s.directionx=1;
 		s.directiony=0;
 		s.draw();
@@ -110,14 +110,26 @@ function loop()
 		console.log("LOOP");
 		s.updatepos(s.directionx,s.directiony);
 		if(s.y>500-pxfroms)
-			{pxfroms=0;alert("youlose");}
+			{pxfroms=0;alert("youlose");s.x=50;
+		s.y=100;
+		s.directionx=1;
+		s.directiony=0;}
 		if(s.y<0+pxfroms)
-			{pxfroms=0;alert("youlose");}
+			{pxfroms=0;alert("youlose");s.x=50;
+		s.y=100;
+		s.directionx=1;
+		s.directiony=0;}
 		if(s.x<0+pxfroms)
-			{pxfroms=0;alert("youlose");}
+			{pxfroms=0;alert("youlose");s.x=50;
+		s.y=100;
+		s.directionx=1;
+		s.directiony=0;}
 		if(s.x>500-pxfroms)
 			{pxfroms=0;
-			alert("youlose");}
+			alert("youlose");s.x=50;
+		s.y=100;
+		s.directionx=1;
+		s.directiony=0;}
 		
 		
 	}
