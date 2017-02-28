@@ -22,7 +22,7 @@
 			 <input type=color id=slider></range>
  			<input type=range id=slider2></range>
  			<canvas width=400 height=400 id="myCanvas"></canvas>
-			<img id=scream src=gursky.jpg height=400 width=400/>
+			
  
  
  		</body>
@@ -36,9 +36,14 @@
  			var ctx = c.getContext("2d");
 			ctx.lineJoin="round";
 			ctx.lineCap="round";
-			var ie=document.getElementById("scream");
+			var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
 
-   			 ctx.drawImage(ie,10,10);
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+      };
+      imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
 			function grayScale()
 			{alert("sadsdgdfhg");
 						for(x=0;x<501;x++)
