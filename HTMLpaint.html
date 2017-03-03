@@ -51,10 +51,10 @@
 						{
 						for(y=0;y<501;y++)
 							{pData=ctx.getImageData(x,y,1,1);
-							 
-							 pData.data[0]=(pData.data[0]+pData.data[1]+pData.data[2])/3;
-							 pData.data[1]=(pData.data[0]+pData.data[1]+pData.data[2])/3;
-							 pData.data[2]=(pData.data[0]+pData.data[1]+pData.data[2])/3;
+							 var dol=(pData.data[0]+pData.data[1]+pData.data[2])/3;
+							 pData.data[0]=dol;
+							 pData.data[1]=dol;
+							 pData.data[2]=dol;
 							 
 							ctx.putImageData(pData,x,y);	
 								
