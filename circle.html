@@ -1,0 +1,30 @@
+<!DOC Type html>
+<html>
+<style>
+
+
+</stlye>
+<body>
+  <canvas width=801 height=801 id=myCanvas></canvas>
+
+
+
+
+</body>
+
+<script>
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.beginPath();
+ctx.arc(100,75,50,0,2*Math.PI);
+ctx.stroke();
+c.addEventListener("mousemove",draw(event,y))
+
+
+
+
+
+
+</script>
+</html>
