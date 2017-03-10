@@ -16,15 +16,11 @@
 
 var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
-function draw(){
+
 ctx.beginPath();
-ctx.arc(400,400,Math.sqrt(((e.offSetX-400)*(e.offSetX-400))+((e.offSetY-400)*(e.offSetY-400))),0,2*Math.PI);
+ctx.arc(400,400,50,0,2*Math.PI);
 ctx.stroke();
-
-
-}
-c.addEventListener("mousemove",draw(e))
-
+  
 
 
 
