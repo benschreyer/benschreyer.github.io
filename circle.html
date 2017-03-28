@@ -2,7 +2,7 @@
 <html>
 <body>
  <p id=para>ooo</p>
-<canvas id="myCanvas" width="801" height="801" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="401" height="401" style="border:3px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
@@ -14,9 +14,9 @@ var ctx = c.getContext("2d");
 
  ctx.fillStyle=getRandomColor();
 ctx.beginPath();
-ctx.arc(400, 400,30, Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY)), 2 * Math.PI);
+ctx.arc(400, 400,30, Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY)), 2 * Math.PI);
 ctx.stroke();
- document.getElementById("para").innerHTML=(Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY))).toString();
+ document.getElementById("para").innerHTML=(Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))).toString();
  }
 c.addEventListener("mousemove",redraw);//
 </script> 
