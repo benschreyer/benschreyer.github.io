@@ -14,7 +14,7 @@ var ctx = c.getContext("2d");
 
  ctx.fillStyle=getRandomColor();
 ctx.beginPath();
-ctx.arc(400, 400,30, Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY)), 2 * Math.PI);
+ctx.arc(200, 200,30, Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY)), 2 * Math.PI);
 ctx.stroke();
  document.getElementById("para").innerHTML=(Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))).toString();
  }
