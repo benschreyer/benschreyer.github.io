@@ -12,14 +12,15 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
  function redraw(e){
-
+console.log(e.offsetX);
+ console.log(e.offsetY);
  ctx.fillStyle="cyan";
 ctx.beginPath();
-ctx.arc(200, 200,30,parseInt(document.getElementById("inp")) , 2 * Math.PI);
+ctx.arc(200, 200,30,Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY)), 2 * Math.PI);
 ctx.stroke();
-// document.getElementById("para").innerHTML=(Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))).toString();
+
  }
-//c.addEventListener("mousemove",redraw);//Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
+c.addEventListener("mousemove",redraw);//Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
 setInterval(redraw,300)
  </script> 
 
