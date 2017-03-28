@@ -17,10 +17,11 @@ var ctx = c.getContext("2d");
 ctx.beginPath();
 ctx.arc(200, 200,30,parseInt(document.getElementById("inp")) , 2 * Math.PI);
 ctx.stroke();
- document.getElementById("para").innerHTML=(Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))).toString();
+// document.getElementById("para").innerHTML=(Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))).toString();
  }
-c.addEventListener("mousemove",redraw);//Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
-</script> 
+//c.addEventListener("mousemove",redraw);//Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
+setInterval(redraw,300)
+ </script> 
 
 </body>
 </html>
