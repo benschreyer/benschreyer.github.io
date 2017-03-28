@@ -12,7 +12,7 @@ var ctx = c.getContext("2d");
  function redraw(e){
  alert("dadwdefrrrfedjmk");
 ctx.beginPath();
-ctx.arc(400, 400,Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY)), 0, 2 * Math.PI);
+ctx.arc(400, 400,30, 0, 2 * Math.PI);
 ctx.stroke();
  }
 c.addEventListener("mousemove",redraw());// Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY))
