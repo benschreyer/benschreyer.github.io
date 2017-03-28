@@ -12,11 +12,11 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
  function redraw(e){
-console.log(e.offsetX);
- console.log(e.offsetY);
+console.log(e.offsetX.toString()+e.offsetY.toString());
+ 
  ctx.fillStyle="cyan";
 ctx.beginPath();
-ctx.arc(200, 200,30,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)), 2 * Math.PI);
+ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)), 2 * Math.PI);
 ctx.stroke();
 
  }
