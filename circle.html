@@ -16,7 +16,7 @@ console.log(e.offsetX.toString()+e.offsetY.toString());
  
  ctx.fillStyle="cyan";
 ctx.beginPath();
-ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)), 2 * Math.PI);
+ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
 ctx.stroke();
 
  }
