@@ -16,7 +16,7 @@ console.log(e.offsetX);
  console.log(e.offsetY);
  ctx.fillStyle="cyan";
 ctx.beginPath();
-ctx.arc(200, 200,30,Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY)), 2 * Math.PI);
+ctx.arc(200, 200,30,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)), 2 * Math.PI);
 ctx.stroke();
 
  }
