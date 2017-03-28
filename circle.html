@@ -9,22 +9,15 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+
  function redraw(e){
 
  ctx.fillStyle=getRandomColor();
 ctx.beginPath();
-ctx.arc(400, 400,30, 0, 2 * Math.PI);
+ctx.arc(400, 400,30, Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY)), 2 * Math.PI);
 ctx.stroke();
  }
-c.addEventListener("mousemove",redraw());// Math.sqrt((400-e.ClientX)*(400-e.ClientX)+(400-e.ClientY)*(400-e.ClientY))
+c.addEventListener("mousemove",redraw(e));//
 </script> 
 
 </body>
