@@ -29,7 +29,7 @@ ctx.stroke();
 c.addEventListener("mousemove",redraw);
  //Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
 setInterval(redraw,300)
- setInterval(function(){ctx.strokeStyle=shadeColor2(document.getElementById("slider").value,400-e.offsetY);},100);
+ setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;
  </script> 
 
 </body>
