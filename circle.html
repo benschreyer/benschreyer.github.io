@@ -25,7 +25,7 @@ console.log(e.offsetX.toString()+e.offsetY.toString());
 ctx.beginPath();
 ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
 ctx.stroke();
- ctx.strokeStyle=shadeColor2(document.getElementById("slider").value,(400-e.offsetY)/4);
+ ctx.strokeStyle=shadeColor2(document.getElementById("slider").value,(e.offsetY-400)/4);
 
  }
 c.addEventListener("mousemove",redraw);
