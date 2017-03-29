@@ -20,7 +20,7 @@ console.log(e.offsetX.toString()+e.offsetY.toString());
    ctx.fillStyle="White";
  ctx.fillRect(0,0,401,401);
  ctx.fillStyle="Aqua";
-  ctx.strokeStyle=rgb(0,e.offsetX/1.58,e.offsetY/1.58);
+  ctx.strokeStyle=rgb(0,400/1.58,400/1.58);
 ctx.beginPath();
 ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
 ctx.stroke();
