@@ -23,13 +23,13 @@ console.log(e.offsetX.toString()+e.offsetY.toString());
 ctx.beginPath();
 ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
 ctx.stroke();
- ctx.strokeStyle=document.getElementById("slider").value;
+
 
  }
 c.addEventListener("mousemove",redraw);
  //Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
 setInterval(redraw,300)
- //setInterval(function(){ctx.strokeStyle=shadeColor2(document.getElementById("slider").value,400-e.offsetY);},100);
+ setInterval(function(){ctx.strokeStyle=shadeColor2(document.getElementById("slider").value,400-e.offsetY);},100);
  </script> 
 
 </body>
