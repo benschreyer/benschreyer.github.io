@@ -7,7 +7,7 @@
  
 <canvas id="myCanvas" width="401" height="401" style="border:3px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
-
+<input type=color id=slider/>
 <script>
 
 var c = document.getElementById("myCanvas");
@@ -25,6 +25,7 @@ ctx.stroke();
  }
 c.addEventListener("mousemove",redraw);//Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
 setInterval(redraw,300)
+ setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
  </script> 
 
 </body>
