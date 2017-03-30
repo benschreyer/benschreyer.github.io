@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+ <style>
+  canvas { cursor: crosshair; }
+ </style>
+ 
+<canvas id="myCanvas" width="401" height="401" style="border:3px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+ <input type=color id=slider>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.lineWidth = 10;
+ function redraw(e){
+console.log(e.offsetX.toString()+e.offsetY.toString());
+   ctx.fillStyle="White";
+ ctx.fillRect(0,0,401,401);
+ ctx.fillStyle="Aqua";
+  ctx.strokeStyle="Aqua"
+ctx.beginPath();
+ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
+ctx.stroke();
+  
+ }
+c.addEventListener("mousemove",redraw);
+ //Math.sqrt((200-e.ClientX)*(200-e.ClientX)+(200-e.ClientY)*(200-e.ClientY))
+ //e.offsetX,e.offsetY
+setInterval(redraw,200);
+ 
+ </script> 
+
+</body>
+</html>
