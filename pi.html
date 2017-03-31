@@ -18,7 +18,9 @@ function draw() {
  ctx.moveTo(401,200);
 var sides=document.getElementById("sides").value;
 var ang=360/sides;
-for(i=0;i<=sides;i++)
+};
+setInterval(draw,400);
+/*for(i=0;i<=sides;i++)
 {
  if(ang*i<90)
  {ctx.lineTo(200+200*Math.cos(ang*0.01745329252),200-200*Math.sin((ang)*0.01745329252));
@@ -36,9 +38,8 @@ for(i=0;i<=sides;i++)
  ctx.stroke();}
 
 }
-};
-setInterval(draw,400);
- 
+
+ */
  </script> 
 
 </body>
