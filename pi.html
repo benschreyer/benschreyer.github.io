@@ -17,9 +17,18 @@ ctx.stroke();
 function draw() {
 var sides=document.getElementById("sides").value;
 var ang=360/sides;
+
 for(i=0;i<=sides;i++)
 {
- ctx.moveTo(200,0);
+ if(ang*i<90)
+ {}
+ if(ang*i<180&&ang*i>90)
+ {}
+ if(ang*i<270&&ang*i>180)
+ {}
+ if(ang*i<360&&ang*i>270)
+ {}
+ 
 }
 };
 setInterval(draw,400);
