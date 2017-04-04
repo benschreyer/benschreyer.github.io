@@ -18,11 +18,12 @@ function draw() {
  ctx.moveTo(401,200);
 var sides=document.getElementById("sides").value;
 var ang=360/sides;
+  document.getElementById("inf").innerHTML="Diameter / Perimeter"+sides*Math.sin(180/sides).toString();
 for(i=0;i<=sides;i++)
 {
  ctx.lineTo(,);
  ctx.stroke();
- 
+
  
  
 }
