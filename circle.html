@@ -28,6 +28,10 @@ console.log(e.offsetX.toString()+e.offsetY.toString());
 ctx.beginPath();
 ctx.arc(200, 200,Math.sqrt((200-e.offsetX)*(200-e.offsetX)+(200-e.offsetY)*(200-e.offsetY)),0, 2 * Math.PI);
 ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX,e.offsetY);
+  ctx.strokeStyle="LawnGreen ";
+  ctx.strokeTo(e.offsetX,e.offsetY);
   
 
 
