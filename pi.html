@@ -21,34 +21,17 @@ var ang=360/sides;
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+sides*Math.sin((180/sides)*0.0174533).toString();
 for(i=0;i<=sides;i++)
 {
-// ctx.lineTo(,);
-// ctx.stroke();
+ctx.lineTo(Math.cos((2*Math.PI)/sides*i)*200,Math.sin((2*Math.PI)/sides*i)*200);
+ctx.stroke();
 
  
  
 }
 };
 setInterval(draw,400);
-/*for(i=0;i<=sides;i++)
-{
- if(ang*i<90)
- {ctx.lineTo(200+200*Math.cos(ang*0.01745329252),200-200*Math.sin((ang)*0.01745329252));
-  
- ctx.stroke();}
- if(ang*i<180&&ang*i>90)
- {ctx.lineTo(200-200*Math.cos((180-ang)*0.01745329252),200-200*Math.sin((180-ang)*0.01745329252));
- ctx.stroke();}
- if(ang*i<270&&ang*i>180)
- {ctx.lineTo(200-200*Math.cos((270-ang)*0.01745329252),200+200*Math.sin((270-ang)*0.01745329252));
+
+
  
- ctx.stroke();}
- if(ang*i<360&&ang*i>270)
- {ctx.lineTo(200+200*Math.cos((360-ang)*0.01745329252),200+200*Math.sin((360-ang)*0.01745329252));
- ctx.stroke();}
-
-}
-
- */
  </script> 
 
 </body>
