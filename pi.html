@@ -17,13 +17,20 @@ ctx.stroke();
  ctx.moveTo(200,200);
 function draw() {
  
-var sides=document.getElementById("sides").value;
-var ang=360/sides;
-  document.getElementById("inf").innerHTML="Diameter / Perimeter="+sides*Math.sin((180/sides)*0.0174533).toString();
-for(i=1;i<=sides;i++)
-{
-ctx.lineTo(Math.cos((2*Math.PI)/(sides)*1)*200+200,Math.sin((2*Math.PI)/(sides)*i)*200+200);
-ctx.stroke();
+
+var centre = [200,200];
+var radius =200;
+var numPoints = 4;
+var theta = 360.00 / numPoints;
+
+  document.getElementById("inf").innerHTML="Diameter / Perimeter="+sides*Math.sin((180/numPoints)*0.0174533).toString();
+
+
+for (var i = 1; i <= numPoints; i++) {
+
+    // calc x/y
+     ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
+     ctx.stroke();
 
  
  
