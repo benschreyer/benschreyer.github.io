@@ -22,7 +22,7 @@ var ang=360/sides;
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+sides*Math.sin((180/sides)*0.0174533).toString();
 for(i=1;i<=sides;i++)
 {
-ctx.lineTo(Math.cos((2*Math.PI)/(sides*i))*200+200,Math.sin((2*Math.PI)/(sides*i))*200+200);
+ctx.lineTo(Math.cos((2*Math.PI)/(sides)*1)*200+200,Math.sin((2*Math.PI)/(sides)*i)*200+200);
 ctx.stroke();
 
  
