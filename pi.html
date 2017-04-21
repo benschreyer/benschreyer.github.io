@@ -44,9 +44,11 @@ for (var i = 2; i <= numPoints+1; i++) {
      ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
  ctx.strokeStyle="Black";   
  ctx.stroke();
-ctx.closePath();
+if(i==numPoints)
+{
+ctx.closePath();	
 
- 
+}
  
 }}
 };
