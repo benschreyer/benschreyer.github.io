@@ -40,7 +40,8 @@ var theta = 360.00 / numPoints;
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 
 if(numPoints<100){
-for (var i = 1; i <= numPoints+1; i++) {
+ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
+for (var i = 2; i <= numPoints+1; i++) {
 
     // calc x/y
      ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
