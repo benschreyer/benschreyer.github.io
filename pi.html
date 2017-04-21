@@ -14,17 +14,19 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 </body>
 <script>
+	
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(200,200,150,0,2*Math.PI);
+ctx.stroke();
 function clear()
 	{ctx.fillStyle="white";
 		ctx.rect(0,0,500,500);
 		ctx.fill();
   console.log("yestdgfsdfggf");
   ctx.strokeStyle="gray";
-  ctx.beginPath();
-ctx.arc(200,200,150,0,2*Math.PI);
-ctx.stroke();
+  
  };
 function draw() {
 
