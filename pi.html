@@ -33,7 +33,7 @@ var theta = 360.00 / numPoints;
 
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 
-
+if(numPoints<100){
 for (var i = 1; i <= numPoints+1; i++) {
 
     // calc x/y
@@ -43,7 +43,7 @@ for (var i = 1; i <= numPoints+1; i++) {
 
  
  
-}
+}}
 };
 
 
