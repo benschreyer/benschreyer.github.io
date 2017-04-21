@@ -25,7 +25,7 @@ var radius =200;
 var numPoints = document.getElementById("sides").value;
 var theta = 360.00 / numPoints;
 
-  document.getElementById("inf").innerHTML="Diameter / Perimeter="+sides*Math.sin((Math.PI/numPoints)).toString();
+  document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 
 
 for (var i = 1; i <= numPoints+1; i++) {
