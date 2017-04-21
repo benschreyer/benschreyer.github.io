@@ -17,23 +17,21 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 	
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+ctx.strokeStyle="gray";
 ctx.beginPath();
 ctx.arc(200,200,150,0,2*Math.PI);
 ctx.stroke();
 function clear()
-	{ctx.fillStyle="white";
-		ctx.rect(0,0,500,500);
-		ctx.fill();
-  console.log("yestdgfsdfggf");
-  ctx.strokeStyle="gray";
-  
- };
+	{
+
 function draw() {
 
  ctx.lineWidth = 1;
 
  ctx.moveTo(200,200);
-
+ctx.fillStyle="white";
+ctx.rect(0,0,500,500);
+ctx.fill();
 
 var centre = [200,200];
 var radius =150;
