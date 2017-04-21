@@ -14,8 +14,7 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
 function draw() {
-  ctx.fillStyle="White";
-ctx.fillRect(0,0,400,400);
+  ctx.clearRect(0, 0, 400, 400);
  ctx.lineWidth = 3;
 
  ctx.moveTo(200,200);
@@ -33,7 +32,7 @@ for (var i = 1; i <= numPoints+1; i++) {
 
     // calc x/y
      ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
- ctx.strokeStyle="Blue";   
+ ctx.strokeStyle="Black";   
  ctx.stroke();
 
  
