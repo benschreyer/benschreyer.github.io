@@ -16,17 +16,17 @@
 	
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-ctx.strokeStyle="gray";
-ctx.beginPath();
-ctx.arc(200,200,150,0,2*Math.PI);
-ctx.stroke();
-ctx.closePath();
+
 
 function draw() {
 ctx.clearRect(0,0,401,401);
  ctx.lineWidth = 1;
 
-
+ctx.strokeStyle="gray";
+ctx.beginPath();
+ctx.arc(200,200,150,0,2*Math.PI);
+ctx.stroke();
+ctx.closePath();
 ctx.moveTo(200,200);
 var centre = [200,200];
 var radius =150;
@@ -48,9 +48,9 @@ for (var i = 2; i <= numPoints+1; i++) {
 if(i==numPoints)
 {
 	
-
+ctx.closePath();
 }
- ctx.closePath();
+ 
 }}
 };
 
