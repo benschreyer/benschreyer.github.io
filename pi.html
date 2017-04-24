@@ -34,7 +34,7 @@ var radius =150;
 var numPoints = document.getElementById("sides").value;
 var theta = 360.00 / numPoints;
   document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
-document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.cos((Math.PI/numPoints)).toString();
+document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
 if(numPoints<100){
 ctx.beginPath();
 ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
