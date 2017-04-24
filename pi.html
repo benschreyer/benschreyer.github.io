@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -16,12 +17,9 @@
 	
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-
-
 function draw() {
-ctx.clearRect(0,0,800,800);
+ctx.clearRect(0,0,401,401);
  ctx.lineWidth = 1;
-
 ctx.strokeStyle="gray";
 ctx.beginPath();
 ctx.arc(400,400,300,0,2*Math.PI);
@@ -32,19 +30,15 @@ var centre = [400,400];
 var radius =300;
 var numPoints = document.getElementById("sides").value;
 var theta = 360.00 / numPoints;
-
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
-
 if(numPoints<100){
 ctx.beginPath();
 ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
 for (var i = 2; i <= numPoints+1; i++) {
-
     // calc x/y
      ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
  ctx.strokeStyle="Black";   
  ctx.stroke();
-
 if(i==numPoints)
 {
 	
@@ -53,9 +47,6 @@ ctx.closePath();
  
 }}
 };
-
-
-
  
  </script> 
 </html>
