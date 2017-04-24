@@ -32,7 +32,7 @@ var centre = [200,200];
 var radius =150;
 var numPoints = document.getElementById("sides").value;
 var theta = 360.00 / numPoints;
-  document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
+  document.getElementById("inf").innerHTML="Perimeter / Diameter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 if(numPoints<100){
 ctx.beginPath();
 ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
