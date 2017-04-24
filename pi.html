@@ -8,6 +8,7 @@
  <p id=inf>nkm</p>
 <canvas id="myCanvas" width="400" height="400"></canvas>
  <p>Sides:</p> <input type="range" id="sides"  value="3">
+<p id=sideDisp></p>
  <button type="button" onclick=draw()>Generate</button>
 
 
@@ -17,6 +18,11 @@
 	
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+function refreshSlider(){
+document.getElementById("slideDisp").innerHTML=document.getElementById("sides").value/2.toString();
+
+
+}
 function draw() {
 ctx.clearRect(0,0,401,401);
  ctx.lineWidth = 1;
@@ -28,7 +34,7 @@ ctx.closePath();
 ctx.moveTo(200,200);
 var centre = [200,200];
 var radius =150;
-var numPoints = document.getElementById("sides").value;
+var numPoints = document.getElementById("sides").value/2;
 var theta = 360.00 / numPoints;
   document.getElementById("inf").innerHTML="Diameter / Perimeter="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 if(numPoints<100){
@@ -47,6 +53,6 @@ ctx.closePath();
  
 }}
 };
- 
+ setInterval(refreshSlider,100)
  </script> 
 </html>
