@@ -5,7 +5,7 @@
   canvas { cursor: crosshair; }
  </style>
  <p id=inf>nkm</p>
-<canvas id="myCanvas" width="401" height="401"></canvas>
+<canvas id="myCanvas" width="800" height="800"></canvas>
  <p>Sides:</p> <input type="number" id="sides" min="3" max="200000" value="3">
  <button type="button" onclick=draw()>Generate</button>
 
@@ -24,12 +24,12 @@ ctx.clearRect(0,0,401,401);
 
 ctx.strokeStyle="gray";
 ctx.beginPath();
-ctx.arc(200,200,150,0,2*Math.PI);
+ctx.arc(400,400,300,0,2*Math.PI);
 ctx.stroke();
 ctx.closePath();
-ctx.moveTo(200,200);
-var centre = [200,200];
-var radius =150;
+ctx.moveTo(400,400);
+var centre = [400,400];
+var radius =300;
 var numPoints = document.getElementById("sides").value;
 var theta = 360.00 / numPoints;
 
