@@ -31,9 +31,9 @@
 			document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
 			if(numPoints<100){
 				ctx.beginPath();
-				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
+				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints) + centre[1]);
 				for (var i = 2; i <= numPoints+1; i++) {
-     					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
+     					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints ) + centre[1]);
  					ctx.strokeStyle="Black";   
  					ctx.stroke();
 					if(i==numPoints)
