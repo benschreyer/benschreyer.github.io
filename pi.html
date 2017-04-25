@@ -1,57 +1,48 @@
 
 <!DOCTYPE html>
 <html>
-<body>
- <style>
-	 html{font-family:Verdana;}
-  canvas { cursor: crosshair; border-width: 3px;border-color:black;border-style:solid;}
- </style>
- <p id=inf>nkm</p>
-<p id=inf2>nkm</p>
-<canvas id="myCanvas" width="400" height="400"></canvas>
- <p>Sides:</p> <input type="number" id="sides" max="1000000" min="3"  value="3">
-
-
-
-
-
-</body>
-<script>
-	
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-
-function draw() {
-ctx.clearRect(0,0,401,401);
- ctx.lineWidth = 1;
-ctx.strokeStyle="green";
-ctx.beginPath();
-ctx.arc(200,200,150,0,2*Math.PI);
-ctx.stroke();
-ctx.closePath();
-ctx.moveTo(200,200);
-var centre = [200,200];
-var radius =150;
-var numPoints = document.getElementById("sides").value;
-var theta =0; //360.00 / numPoints;
-  document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
-document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
-if(numPoints<100){
-ctx.beginPath();
-ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
-for (var i = 2; i <= numPoints+1; i++) {
-    // calc x/y
-     ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
- ctx.strokeStyle="Black";   
- ctx.stroke();
-if(i==numPoints)
-{
-	
-ctx.closePath();
-}
+	<body>
+ 		<style>
+	 		html{font-family:Verdana;}
+  			canvas { cursor: crosshair; border-width: 3px;border-color:black;border-style:solid;}
+ 		</style>
+ 		<p id=inf>nkm</p>
+		<p id=inf2>nkm</p>
+		<canvas id="myCanvas" width="400" height="400"></canvas>
+ 		<p>Sides:</p> 
+		<input type="number" id="sides" max="1000000" min="3"  value="3">
+	</body>
+	<script>			
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		function draw() {
+			ctx.clearRect(0,0,401,401);
+ 			ctx.lineWidth = 1;
+			ctx.strokeStyle="green";
+			ctx.beginPath();
+			ctx.arc(200,200,150,0,2*Math.PI);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.moveTo(200,200);
+			var centre = [200,200];
+			var radius =150;
+			var numPoints = document.getElementById("sides").value;
+		  	document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
+			document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
+			if(numPoints<100){
+				ctx.beginPath();
+				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints + theta) + centre[1]);
+				for (var i = 2; i <= numPoints+1; i++) {
+     					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints + theta) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints + theta) + centre[1]);
+ 					ctx.strokeStyle="Black";   
+ 					ctx.stroke();
+					if(i==numPoints)
+						{	
+						ctx.closePath();
+						}
  
-}}
-};
- setInterval(draw,200);
+					}}
+				};
+ 		setInterval(draw,200);
  </script> 
 </html>
