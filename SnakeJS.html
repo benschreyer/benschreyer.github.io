@@ -46,13 +46,13 @@ function snack()
 	}
 function player()
 	{
-	this.bodyX=[];
-	this.bodyY=[];
+	
 	this.score=1;
 	this.directionx;
 	this.directiony;
 	this.x;
 	this.y;
+	
 	this.draw=function() {
 		ctx.fillStyle="yellow";
 		ctx.rect(this.x,this.y,10,10);
@@ -64,19 +64,10 @@ function player()
 	this.updatepos=function(x,y) {
 		
 	
-		for(i=0;i<=this.bodyX.length;i++)
-		{if(i+1<=this.bodyX.length){
-			this.bodyX[i+1]=this.bodyX[i];
-			this.bodyY[i+1]=this.bodyY[i];
-		    }
-		 else{this.bodyX[0]=this.x;this.bodyY[0]=this.y}
 		
-		
-		
-		}
 		ctx.fillStyle="purple";
 		ctx.beginPath();
-		ctx.rect(this.bodyX[this.score],this.bodyY[this.score],10,10);
+		ctx.rect(this.x,this.y,10,10);
 		ctx.fill();
 		this.x=this.x+x*10;
 		this.y=this.y+y*10;
