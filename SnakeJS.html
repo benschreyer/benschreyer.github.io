@@ -46,6 +46,8 @@ function snack()
 	}
 function player()
 	{
+	this.bodyX=[];
+	this.bodyY=[];
 	this.score=1;
 	this.directionx;
 	this.directiony;
@@ -62,7 +64,7 @@ function player()
 	this.updatepos=function(x,y) {
 		ctx.fillStyle="purple";
 		ctx.beginPath();
-		ctx.rect(this.x,this.y,10,10);
+		ctx.rect(this.bodyX[this.score],this.bodyY[this.score],10,10);
 		ctx.fill();
 		this.x=this.x+x*10;
 		this.y=this.y+y*10;
@@ -154,7 +156,7 @@ function loop()
 	
 
 
-setInterval(function(){loop();},50)
+setInterval(function(){loop();},30)
 
 
 
