@@ -25,7 +25,12 @@ function snack()
 	{
 	this.x;
 	this.y;
-	
+	this.clear=function()
+		{
+		ctx.fillStyle="purple";
+		ctx.fillRect(this.x,this.y,10,10);
+		
+		}
 	this.draw=function()
 		{
 		ctx.beginPath();
@@ -41,6 +46,7 @@ function snack()
 	}
 function player()
 	{
+	this.score=1;
 	this.directionx;
 	this.directiony;
 	this.x;
@@ -106,12 +112,17 @@ function loop()
 		f.y=50;
 		f.x=Math.floor(Math.random()*200);
 		f.y=Math.floor(Math.random()*200);
-		//f.draw();
+		f.draw();
 		setupd=true;
 		}
 		console.log("LOOP");
 		
+		if(f.x==s.x&&s.y==f.y)
+		{
+		f.x=Math.floor(Math.random()*200);
+		f.y=Math.floor(Math.random()*200);
 		f.draw();
+		}
 		s.updatepos(s.directionx,s.directiony);
 		if(s.y>500-pxfroms)
 			{pxfroms=0;alert("Game Over");s.x=50;
