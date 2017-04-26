@@ -119,8 +119,9 @@ function loop()
 		
 		if(f.x==s.x&&s.y==f.y)
 		{
-		f.x=Math.floor(Math.random()*200);
-		f.y=Math.floor(Math.random()*200);
+		f.clear();
+		f.x=Math.floor(Math.random()*20)*10+50;
+		f.y=Math.floor(Math.random()*20)*10+50;
 		f.draw();
 		}
 		s.updatepos(s.directionx,s.directiony);
@@ -152,7 +153,7 @@ function loop()
 	
 
 
-setInterval(function(){loop();},42);
+setInterval(function(){loop();},100)
 
 
 
