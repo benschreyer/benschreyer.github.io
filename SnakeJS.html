@@ -62,16 +62,15 @@ function player()
 		
 		}
 	this.updatepos=function(x,y) {
-		this.bodyX[0]=this.x;
-		this.bodyY[0]=this.y;
+		
 	
-		for(i=0;i<=this.score;i++)
-		{
+		for(i=0;i<=this.bodyX.length;i++)
+		{if(i+1<=this.bodyX.length){
+			this.bodyX[i+1]=this.bodyX[i];
+			this.bodyY[i+1]=this.bodyY[i];
+		    }
+		 else{this.bodyX[0]=this.x;this.bodyY[0]=this.y}
 		
-		
-		
-		this.bodyX[i+1]=this.bodyX[i];
-		this.bodyY[i+1]=this.bodyY[i];
 		
 		
 		}
