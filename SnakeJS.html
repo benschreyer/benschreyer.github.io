@@ -11,7 +11,7 @@
 
 </head >
 <body id=body >
-	<canvas id=snake width =500 height=500></canvas>
+	<canvas id=snake width =500 height=500><p id=score>Score:1</p></canvas>
 
 
 </body>
@@ -116,7 +116,7 @@ function loop()
 		setupd=true;
 		}
 		console.log("LOOP");
-		
+		document.getElementById("score").innerHTML="Score:"+s.score.toString();
 		if(f.x==s.x&&s.y==f.y)
 		{
 		f.clear();
