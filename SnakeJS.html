@@ -104,29 +104,33 @@ function loop()
 		ctx.fill();
 		f.x=50;s
 		f.y=50;
+		f.x=Math.random()*200;
+		f.y=Math.random()*200;
 		//f.draw();
 		setupd=true;
 		}
 		console.log("LOOP");
+		
+		f.draw();
 		s.updatepos(s.directionx,s.directiony);
 		if(s.y>500-pxfroms)
-			{pxfroms=0;alert("youlose");s.x=50;
+			{pxfroms=0;alert("Game Over");s.x=50;
 		s.y=100;
 		s.directionx=1;
 		s.directiony=0;}
 		if(s.y<0+pxfroms)
-			{pxfroms=0;alert("youlose");s.x=50;
+			{pxfroms=0;alert("Game Over");s.x=50;
 		s.y=100;
 		s.directionx=1;
 		s.directiony=0;}
 		if(s.x<0+pxfroms)
-			{pxfroms=0;alert("youlose");s.x=50;
+			{pxfroms=0;alert("Game Over");s.x=50;
 		s.y=100;
 		s.directionx=1;
 		s.directiony=0;}
 		if(s.x>500-pxfroms)
 			{pxfroms=0;
-			alert("youlose");s.x=50;
+			alert("Game Over");s.x=50;
 		s.y=100;
 		s.directionx=1;
 		s.directiony=0;}
