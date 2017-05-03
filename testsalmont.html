@@ -27,10 +27,9 @@
 	<script>
 	window.onload=function(){
 	var links=["http://smapapurf.com/circle","http://smapapurf.com/HTMLpaint","http://smapapurf.com/pi"];
-	function button(z){window.location.replace(links[z]);};
 	var buts=document.getElementsByClassName("but");
 	for(i=0;i<=buts.length;i++)
-	{buts[i].addEventListener("mousedown",button(i));}
+	{buts[i].addEventListener("click",window.location.replace(links[i]);}
 	};
 		
 	</script>
