@@ -25,8 +25,8 @@
 		<a class=but >Abcdef</a><a  class=but>Ghijkl</a><a class=but>Mnopq</a>
 	</body>
 	<script>
-	var links=["http://smapapurf.com/circle","http://smapapurf.com/HTMLpaint","http://smapapurf.com/pi"]
-	function button(z){setTimeout(window.location.replace(links[z]),500);}
+	var links=["http://smapapurf.com/circle","http://smapapurf.com/HTMLpaint","http://smapapurf.com/pi"];
+	function button(z){setTimeout(window.location.replace(links[z]),500);};
 	var buts=document.getElementsByClassName("but");
 	for(i=0;i<=buts.length;i++)
 	{buts[i].addEventListener("click",button(i));}
