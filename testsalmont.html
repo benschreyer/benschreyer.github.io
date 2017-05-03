@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<style>
-			
+			a:hover{}
 			a:active{border-style:inset;border-width:10px;background-color:#B8B8B8;}
 			a{
 				border-color:#B8B8B8;border-style:outset;border-width:10px;font-family:Verdana;
@@ -22,8 +22,16 @@
 	</head>
 
 	<body>
-		<a class=ffl href="circle" >Abcdef</a><a href="pi" >Ghijkl</a><a href="HTMLpaint">Mnopq</a>
+		<a class=but >Abcdef</a><a  class=but>Ghijkl</a><a class=but>Mnopq</a>
 	</body>
-	
+	<script>
+	var links=["http://smapapurf.com/circle","http://smapapurf.com/HTMLpaint","http://smapapurf.com/pi"]
+	function button(z){setTimeout(window.location.replace(links[z]),500);}
+	var buts=document.getElementsByClassName("but");
+	for(i=0;i<=buts.length;i++)
+	{buts[i].addEventListener("click",button(i));}
+		
+		
+	</script>
 	
 </html>      
