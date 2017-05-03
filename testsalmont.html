@@ -1,9 +1,10 @@
+
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<style>
 			p:hover{}
-			p:active{border-style:inset;border-width:10px;background-color:#B8B8B8;}
+			p:active{border-style:inset;border-width:10px;background-color:#B8B8B8;font-size:50px;}
 			p{
 				border-color:#B8B8B8;border-style:outset;border-width:10px;font-family:Verdana;
     float: left;background-color:#B8B8B8;
@@ -22,17 +23,17 @@
 	</head>
 
 	<body>
-		<p class=but >Abcdef</p><p  class=but>Ghijkl</p><p class=but>Mnopq</p>
+		<p class=but>Abcdef</p><p  class=but>Ghijkl</p><p class=but>Mnopq</p>
 	</body>
 	<script>
 	window.onload=function(){
-	var links=["http://smapapurf.com/circle","http://smapapurf.com/HTMLpaint","http://smapapurf.com/pi"];
+	var links=["circle","HTMLpaint","pi"];
 	var buts=document.getElementsByClassName("but");
-	var i;
-	for(i=0;i<=buts.length;i++)
-	{buts[i].addEventListener("click",alert(links[i]));}
-	};
-	//jiopojjk 
+	function redirect() {window.location.href(links[this.li]);}
+	for(var i=0;i<buts.length;i++){
+	buts[i].li=i;
+	buts[i].addEventListener("click",redirect);}
+	console.log(buts[1]);};
 	</script>
 	
 </html>      
