@@ -3,26 +3,36 @@
 <html>
 	<head>
 		<style>
-			.but:hover{border-style:solid;padding-bottom:-1vw;margin-top:0;padding-bottom:0;}
-			.but:active{background-color:black;border-color:white;color:white;}
-			.but{margin-left:.2vw;
+			.but:hover{
+				border-style:solid;
+				padding-bottom:-1vw;
+				margin-top:0;
+				padding-bottom:0;}
+			.but:active{
+				background-color:black;
+				border-color:white;
+				color:white;}
+			.but{
+				margin-left:.2vw;
 				border-color:black;border-left-style:solid;border-right-style:solid;border-width:.3vw;font-family:Verdana;
-    float: left;background-color:white;
-	font-size: 3vw;
-	 text-decoration: none;
-    color:black;
-    outline: none;
-    cursor: pointer;
-    padding-left: 2vw;
-	margin-top:.5vw;
-	padding-right:2vw;
-    float:up;}
+  				float: left;
+				background-color:white;
+				font-size: 3vw;
+    				color:black;
+   				cursor: pointer;
+				padding-left: 2vw;
+				margin-top:.5vw;
+				padding-right:2vw;
+    				float:up;
+				}
 			
 		</style>
 	</head>
 
 	<body id=body>
-		<p class=but>ABCDEF</p><p  class=but>GHIJKL</p><p class=but>MNOPQR</p>
+		<p class=but>ABCDEF</p>
+		<p  class=but>GHIJKL</p>
+		<p class=but>MNOPQR</p>
 	</body>
 	<script>
 	window.onload=function(){
@@ -32,10 +42,6 @@
 	for(var i=0;i<buts.length;i++){
 	buts[i].li=i;
 	buts[i].addEventListener("click",redirect);}
-	node=document.createElement("P");
-	node.appendChild(document.createTextNode("safgsdfds"));
-	document.getElementById("body").appendChild(node);   
-	console.log(buts[1]);};
 	</script>
 	
 </html>      
