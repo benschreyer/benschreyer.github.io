@@ -1,46 +1,36 @@
 
+
 <!DOCTYPE HTML>
 <html>
-	<head>
+	<head> 
 		<style>
-			.but:hover{
-				border-top-style:solid;
-				padding-bottom:0;
-				padding-bottom:0;
-				margin-top:.2vw;}
-			.but:active{
-				background-color:#1E90FF;
-				border-color:white;
-				color:white;}
-			.but{	border-radius:4px;
-				margin-left:.2vw;
-				border-color:	#1E90FF;
-				border-left-style:solid;
-				border-right-style:solid;
-				border-bottom-style:none;
-				border-top-style:none;
-				border-width:.3vw;
-				font-family:Verdana;
-  				float: left;
-				background-color:white;
-				font-size: 5vw;
-    				color:black;
-   				cursor: pointer;
-				padding-left: 2vw;
-				margin-top:.5vw;
-				padding-right:2vw;
-    				float:up;
-				}
-			
-			
+		    li a{display:inline;background-color:#E6E6FA;padding-left:3vw;padding-right:3vw;padding-top:2vw;padding-bottom:2vw;margin-left:0;margin-right:0;font-family:Verdana;text-align: center;float: left;}
+			.navbar{
+			    
+			  display: block; float: left
+			    cursor:pointer;
+			  overflow: hidden;
+			  position:fixed;
+			  width:100vw;
+			    list-style-type: none;
+                margin: 0;
+                padding: 0;}
+            li a:hover{background-color:Gainsboro;}
+            .active{background-color:#1E90FF;color:white;}
+            .active:hover{background-color:#1E90FF}
+            
 		</style>
 	</head>
 
 	<body id=body>
-		<button class=but>Home</button>
-		<button class=but>TEST</button>
-		<button class=but>ABCD</button>
-		<iframe width=.2vh height=.2vh src="smapapurf.com/pi"></iframe>
+    <ul class=navbar>
+    <li class=but><a>Sreta</a></li>
+    <li class=but><a>Sasd</a></li>
+    <li class=but><a class=active>Soiu</a></li>
+    <li class=but><a>Aieuf</a></li>
+    </ul>
+   
+    
 	</body>
 	<script>
 	window.onload=function(){
