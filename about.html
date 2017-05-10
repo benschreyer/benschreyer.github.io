@@ -33,14 +33,14 @@
     <li class=but><a class=active>About</a></li>
     <li class=but><a>Projects</a></li>   
     </ul>
-  <p class=text><a class=text href="https://github.com/smapapurf/smapapurf.com/">Github</a>  repository.</p>
+  <p class=text><a class=but>Github</a>  repository.</p>
 	
 	</body>
 	<script>
 	window.onload=function(){
-	var links=["index","","projects","pi","pi"];
+	var links=["smapapurf.com/","smapapurf.com/about","smapapurf.com/projects","https://github.com/smapapurf/smapapurf.com/","pi"];
 	var buts=document.getElementsByClassName("but");
-	function redirect() {window.location=links[this.li];}
+	function redirect() location.replace(links[this.li]);}
 	for(var i=0;i<buts.length;i++){
 	buts[i].li=i;
 	buts[i].addEventListener("click",redirect);
