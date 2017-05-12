@@ -15,15 +15,25 @@ i{color:white}
 </head>
 <body>
 <ul class=nav>
-<li><i class="fa fa-battery-3"></i></li>
-<li><i class="fa fa-home"></i></li>
-<li><i class="fa fa-camera"></i></li>
-<li><i class="fa fa-gamepad"></i></li>
-<li><i class="fa fa-phone"></i></li>
+<li class=but><i class="fa fa-battery-3"></i></li>
+<li class=but><i class="fa fa-home"></i></li>
+<li class=but><i class="fa fa-camera"></i></li>
+<li class=but><i class="fa fa-gamepad"></i></li>
+<li class=but><i class="fa fa-phone"></i></li>
 	
-<li class=active>TAB</li>
-<li>TAB</li>
-<li>TAB</li>
+<li class=but><span class=active>TAB</span></li>
+<li class=but>TAB</li>
+<li class=but>TAB</li>
 </ul>
 
 </body>
+<script>
+window.onload=function(){
+	var links=["index","","projects","pi","pi","about","project","about"];
+	var buts=document.getElementsByClassName("but");
+	function redirect() {window.location=links[this.li];}
+	for(var i=0;i<buts.length;i++){
+	buts[i].li=i;
+	buts[i].addEventListener("click",redirect);
+	}}
+</script>
