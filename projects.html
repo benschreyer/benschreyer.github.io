@@ -1,51 +1,32 @@
-
-
-<!DOCTYPE HTML>
-<html>
-	<head> 
-		<style>
-		       li a{display:inline;background-color:#E6E6FA;padding-left:3vw;padding-right:3vw;padding-top:2vw;padding-bottom:2vw;margin-left:0;margin-right:0;font-family:Verdana;text-align: center;float: left;}
-			.navbar{
-			    top:0;
-			  display: block; float: left
-			    cursor:pointer;
-			  overflow: hidden;
-			  position:fixed;
-			  width:100vw;
-			    list-style-type: none;
-                margin: 0;
-                padding: 0;}
-            li a:hover{background-color:Gainsboro;}
-            .active{background-color:#1E90FF;color:white;}
-            .active:hover{background-color:#1E90FF}
-			iframe{margin-top:9vw;width:45vw;height:45vh;}
-            
-		</style>
-		<title>bschreyer.com-Home</title>
-	</head>
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Home</title>
+<style>	.nav #active{background-color:#0084FF;}
+	.nav #active:hover{background-color:#0153a0;}
+	.nav{font-size:0;position:absolute;top:0;left:-2vw;background-color:#686767;padding:1.1vw 2vw 1.1vw 2vw;width:100vw;margin-top:0;margin:auto;cursor:pointer;}
+	.nav>li{font-size:1.5vw;list-style-type:none;display:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;margin:auto;}
 	
-	<body id=body>
-    <ul class=navbar>
-    <li class=but><a>Home</a></li>
-    <li class=but><a>About</a></li>
-    <li class=but><a class=active>Projects</a></li>
+	.nav>li:hover{background-color:#565656;}
+i{color:white}
+</style>
+</head>
+<body>
+<ul class=nav>
+<li class=but ><i class="fa fa-home"></i></li>	
+<li class=but id=active>PROJECTS</li>
+<li class=but>ABOUT</li>
+<li class=but>PHOTOGRAPHY</li>
+</ul>
 
-	    
-    </ul>
-    <iframe src="pi"></iframe>
-    <iframe src="circle"></iframe>
-    <iframe src="HTMLpaint"></iframe>
-    
-	</body>
-	<script>
-	window.onload=function(){
-	var links=["index","about","projects","pi","pi"];
+</body>
+<script>
+window.onload=function(){
+	var links=["index","","about","photography","pi","about","project","about"];
 	var buts=document.getElementsByClassName("but");
 	function redirect() {window.location=links[this.li];}
 	for(var i=0;i<buts.length;i++){
 	buts[i].li=i;
 	buts[i].addEventListener("click",redirect);
 	}}
-	</script>
-	
-</html>      
+</script>
