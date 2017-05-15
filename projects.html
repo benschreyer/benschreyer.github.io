@@ -6,7 +6,7 @@
 	.nav #active:hover{background-color:#0153a0;}
 	.nav{font-size:0;position:absolute;top:0;left:-2vw;background-color:#686767;padding:1.1vw 2vw 1.1vw 2vw;width:100vw;margin-top:0;margin:auto;cursor:pointer;}
 	.nav>li{font-size:1.5vw;list-style-type:none;display:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;margin:auto;}
-	.project{width:33vw;height:45vh;position:relative;top:15vh;display:inline;border-style:solid;border-color:#0084FF;}
+	.project{width:33vw;height:45vh;position:relative;top:15vh;display:inline;border-style:solid;border-color:#0084FF;font-size:1.2vw;font-family:verdana;}
 	.nav>li:hover{background-color:#565656;}
 i{color:white}
 </style>
@@ -18,9 +18,11 @@ i{color:white}
 <li class=but>ABOUT</li>
 <li class=but>PHOTOGRAPHY</li>
 </ul>
-	
+	<p class=project>Pi approximation</p>
 	<iframe src="pi" class=project></iframe>
+	<p class=project>Pi approximation</p>
 	<iframe src="HTMLpaint" class=project></iframe>
+	<p class=project>Pi approximation</p>
 	<iframe src="circle" class=project></iframe>
 	
 </body>
@@ -34,7 +36,7 @@ window.onload=function(){
 	buts[i].addEventListener("click",redirect);
 	}}
 window.onload=function(){
-	var links=["pi","HTMLpaint","circle"];
+	var links=["pi","pi","HTMLpaint","HTMLpaint","circle","circle"];
 	var buts=document.getElementsByClassName("project");
 	function redirect() {window.location=links[this.li];}
 	for(var i=0;i<buts.length;i++){
