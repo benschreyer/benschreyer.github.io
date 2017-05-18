@@ -4,7 +4,7 @@
 <title>Projects</title>
 <style>	.nav #active{background-color:#0084FF;}
 	.nav #active:hover{background-color:#0153a0;}
-	.nav{font-size:0;position:fixed;top:0;left:-2vw;background-color:#686767;padding:1.1vw 2vw 1.1vw 2vw;width:100vw;margin-top:0;margin:auto;cursor:pointer;}
+	.nav{z-index:2;font-size:0;position:fixed;top:0;left:-2vw;background-color:#686767;padding:1.1vw 2vw 1.1vw 2vw;width:100vw;margin-top:0;margin:auto;cursor:pointer;}
 	.nav>li{font-size:1.5vw;list-style-type:none;display:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;margin:auto;}
 	.projectframe{width:33vw;height:45vh;position:relative;display:inline;border-style:solid;border-color:#0084FF;font-size:1.2vw;font-family:verdana;}
 	.nav>li:hover{background-color:#565656;}
@@ -12,6 +12,7 @@
 	.project{position:relative;display:block;margin-top:4vw;}
 	.projecttxt:hover{cursor:pointer;color:#0084FF;text-decoration: underline;}
 i{color:white}
+	.enav{z-index:-12;}
 </style>
 </head>
 <body>
@@ -20,7 +21,8 @@ i{color:white}
 <li class=but id=active>PROJECTS</li>
 <li class=but>ABOUT</li>
 <li class=but>PHOTOGRAPHY</li>
-</ul>	<div class=project>
+</ul>	<div class=enav>
+	<div class=project>
 	<p class=projecttxt>Pi approximation</p>
 	<iframe src="pi" class=projectframe></iframe>
 	</div>
@@ -32,7 +34,7 @@ i{color:white}
 	<p class=projecttxt>A circle</p>
 	<iframe src="circle" class=projectframe></iframe>
 	</div>
-	
+	</div>
 </body>
 <script>
 window.onload=function(){
