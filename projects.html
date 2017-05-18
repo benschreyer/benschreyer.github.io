@@ -18,13 +18,18 @@ i{color:white}
 <li class=but id=active>PROJECTS</li>
 <li class=but>ABOUT</li>
 <li class=but>PHOTOGRAPHY</li>
-</ul>
+</ul>	<div>
 	<p class=projecttxt>Pi approximation</p>
 	<iframe src="pi" class=project></iframe>
+	</div>
+	<div>
 	<p class=projecttxt>Pi approximation</p>
 	<iframe src="HTMLpaint" class=project></iframe>
+	</div>
+	<div>
 	<p class=projecttxt>Pi approximation</p>
 	<iframe src="circle" class=project></iframe>
+	</div>
 	
 </body>
 <script>
@@ -38,7 +43,7 @@ window.onload=function(){
 	}}
 window.onload=function(){
 	var links=["pi","pi","HTMLpaint","HTMLpaint","circle","circle"];
-	var buts=document.getElementsByClassName("project");
+	var buts=document.getElementsByClassName("projecttxt");
 	function redirect() {window.location=links[this.li];}
 	for(var i=0;i<buts.length;i++){
 	buts[i].li=i;
