@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<head>
+<html><head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Home</title>
 <style>	.nav #active{background-color:#0084FF;}
@@ -13,18 +12,17 @@
     position: relative;
     display: inline-block;
 }
-
+	.dropdown-cont:hover{background-color:#565656;}
 .dropdown-cont {
     display: none;
     position: absolute;
     background-color: #686767;
 	color:white;
-    
+   left:0vw; 
     z-index: 20;
-font-size:1.5vw;list-style-type:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;margin:auto;
-margin-left:0;
-padding-left:0;
-	}
+font-size:1.5vw;list-style-type:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;
+padding-left:2vw;top:4vw
+;margin-left:-12.4vw;float:left;	}
 
 .dropdown:hover .dropdown-cont {
     display: block;
@@ -32,14 +30,14 @@ padding-left:0;
 </style>
 </head>
 <body>
-<ul class=nav>
-<li class=but id=active><i class="fa fa-home"></i></li>	
-<li class=but>Projects</li>
-<li class=but>About</li>
-<li class=dropdown><span>Photograpghy</span><div class=dropdown-cont><a>asdasd</a><a>sadasd</a></div></li>
+<ul class="nav">
+<li class="but" id="active"><i class="fa fa-home"></i></li>	
+<li class="but">Projects</li>
+<li class="but">About</li>
+<li class="dropdown"><span>Photograpghy</span><div class="dropdown-cont"><p>France 2017</p><p>Multiplicity</p></div></li>
 </ul>
 
-</body>
+
 <script>
 window.onload=function(){
 	var links=["","projects","about","photography","pi","about","project","about"];
@@ -50,3 +48,4 @@ window.onload=function(){
 	buts[i].addEventListener("click",redirect);
 	}}
 </script>
+</body></html>
