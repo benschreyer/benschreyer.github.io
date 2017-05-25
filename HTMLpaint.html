@@ -27,28 +27,25 @@
  
  
  		</body>
- 		<script>var fill=false;
+ 		<script>
+			var fill=false;
 			var fillTarg;
 			var invert=false;
- 			
- 		
  			var mouseHeld=false;
  			var c = document.getElementById("myCanvas");
  			var ctx = c.getContext("2d");
 			ctx.lineJoin="round";
 			ctx.lineCap="round";
 			var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-      var imageObj = document.getElementById("img");
-
-      imageObj.onload = function() {
-        context.drawImage(imageObj, 0, 0);
-      };
-
+      			var context = canvas.getContext('2d');
+      			var imageObj = document.getElementById("img");
+			imageObj.onload = function() {
+        		context.drawImage(imageObj, 0, 0);
+      			};
 			function grayScale()
-			{alert("sadsdgdfhg");
-						for(x=0;x<501;x++)
-						{
+			{
+				for(x=0;x<501;x++)
+					{
 						for(y=0;y<501;y++)
 							{pData=ctx.getImageData(x,y,1,1);
 							 var dol=(pData.data[0]+pData.data[1]+pData.data[2])/3;
@@ -59,17 +56,16 @@
 							ctx.putImageData(pData,x,y);	
 								
 							}
-						
-						}
-				
-				
+					}
 			}
  			function mouseMove(e)
- 				{	if(mouseHeld==true&&invert==false&&fill==false){
- 					ctx.lineTo(e.offsetX,e.offsetY);
- 					ctx.stroke();
- 					console.log(e.offsetX.toString(),e.offsetY.toString());
- 					}
+ 				{	
+					if(mouseHeld==true&&invert==false&&fill==false)
+						{
+ 						ctx.lineTo(e.offsetX,e.offsetY);
+ 						ctx.stroke();
+ 						console.log(e.offsetX.toString(),e.offsetY.toString());
+ 						}
  					
  				}
  			function mouseDown(e)
@@ -78,83 +74,53 @@
  					ctx.beginPath();
  					ctx.moveTo(e.offsetX,e.offsetY);
 					if(invert)
-					{alert("sadsdgdfhg");
+						{
 						for(x=0;x<501;x++)
-						{
-						for(y=0;y<501;y++)
-							{pData=ctx.getImageData(x,y,1,1);
-							 
-							 pData.data[0]=255-pData.data[0];
-							 pData.data[1]=255-pData.data[1];
-							 pData.data[2]=255-pData.data[2];
-							 
-							ctx.putImageData(pData,x,y);	
-								
-							}
-						
-						}}
-					if(fill)
-					{
-						
-						var nodesX=[e.offsetX];
-						var nodesY=[e.offsetY];
-						var targColor=ctx.getImageData(nodesX[0],nodesY[0],1,1)
-						for(i=0;i<=nodesX.length;i++)
-						{
-							if(targColor==ctx.getImageData(nodesX[i]+1,nodesY[i],1,1))
 							{
-								nodesX[nodesX.length]=nodesX[i]+1;
+							for(y=0;y<501;y++)
+								{pData=ctx.getImageData(x,y,1,1);
+								 pData.data[0]=255-pData.data[0];
+								 pData.data[1]=255-pData.data[1];
+							 	 pData.data[2]=255-pData.data[2];
+								 ctx.putImageData(pData,x,y);	
+								}
 							}	
-							if(targColor==ctx.getImageData(nodesX[i]-1,nodesY[i],1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]-1;
-							}	
-							if(targColor==ctx.getImageData(nodesX[i],nodesY[i]+1,1,1))
-							{
-								nodesX[nodesX.length]=nodesY[i]+1;
-							}	
-							if(targColor==ctx.getImageData(nodesX[i],nodesY[i]-1,1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]-1;
-							}	
-						
-							
-							
-							
-							
-							
-							
 						}
-						
-						
-						
-						
-					}
-					
-				 	
- 
  				}
  			function mouseUp()
  				{	mouseHeld=false;
  					ctx.stroke();
  				}
-			
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			function invert()
+				{
+				var nodesX=[e.offsetX];
+				var nodesY=[e.offsetY];
+				var targColor=ctx.getImageData(nodesX[0],nodesY[0],1,1)
+				for(i=0;i<=nodesX.length;i++)
+						{
+						if(targColor==ctx.getImageData(nodesX[i]+1,nodesY[i],1,1))
+							{
+								nodesX[nodesX.length]=nodesX[i]+1;
+							}	
+						if(targColor==ctx.getImageData(nodesX[i]-1,nodesY[i],1,1))
+							{
+								nodesX[nodesX.length]=nodesX[i]-1;
+							}	
+						if(targColor==ctx.getImageData(nodesX[i],nodesY[i]+1,1,1))
+							{
+								nodesX[nodesX.length]=nodesY[i]+1;
+							}	
+						if(targColor==ctx.getImageData(nodesX[i],nodesY[i]-1,1,1))
+							{
+								nodesX[nodesX.length]=nodesX[i]-1;
+							}		
+						}
+					}
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
  			document.getElementById("but1").addEventListener("click",function(){invert=false;fill=false;});
- 			document.getElementById("but2").addEventListener("click",function(){invert=!invert;});
+ 			document.getElementById("but2").addEventListener("click",function(){invert();});
 			document.getElementById("but3").addEventListener("click",function(){fill=!fill;});
 			document.getElementById("but4").addEventListener("click",function(){grayScale();});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
