@@ -74,18 +74,6 @@
  					ctx.beginPath();
  					ctx.moveTo(e.offsetX,e.offsetY);
 					if(invert)
-						{
-						for(x=0;x<501;x++)
-							{
-							for(y=0;y<501;y++)
-								{pData=ctx.getImageData(x,y,1,1);
-								 pData.data[0]=255-pData.data[0];
-								 pData.data[1]=255-pData.data[1];
-							 	 pData.data[2]=255-pData.data[2];
-								 ctx.putImageData(pData,x,y);	
-								}
-							}	
-						}
  				}
  			function mouseUp()
  				{	mouseHeld=false;
@@ -93,29 +81,17 @@
  				}
 			function invert()
 				{
-				var nodesX=[e.offsetX];
-				var nodesY=[e.offsetY];
-				var targColor=ctx.getImageData(nodesX[0],nodesY[0],1,1)
-				for(i=0;i<=nodesX.length;i++)
-						{
-						if(targColor==ctx.getImageData(nodesX[i]+1,nodesY[i],1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]+1;
-							}	
-						if(targColor==ctx.getImageData(nodesX[i]-1,nodesY[i],1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]-1;
-							}	
-						if(targColor==ctx.getImageData(nodesX[i],nodesY[i]+1,1,1))
-							{
-								nodesX[nodesX.length]=nodesY[i]+1;
-							}	
-						if(targColor==ctx.getImageData(nodesX[i],nodesY[i]-1,1,1))
-							{
-								nodesX[nodesX.length]=nodesX[i]-1;
-							}		
+				for(x=0;x<501;x++)
+					{
+					for(y=0;y<501;y++)
+						{pData=ctx.getImageData(x,y,1,1);
+						pData.data[0]=255-pData.data[0];
+						pData.data[1]=255-pData.data[1];
+						pData.data[2]=255-pData.data[2];
+						ctx.putImageData(pData,x,y);	
 						}
-					}
+					}	
+				}
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
