@@ -15,9 +15,8 @@
  		</head>
  
  		<body>	
- 			<button id=but1>Brush</button>
+ 			
  			<button id=but2>Invert Colors</button>
-			<button id=but3>Fill</button>
 			<button id=but4>Gray Scale</button>
 			 <input type=color id=slider></range>
  			<input type=range id=slider2></range>
@@ -95,9 +94,7 @@
  			c.addEventListener("mousemove",mouseMove);
  			c.addEventListener("mousedown",mouseDown);
  			c.addEventListener("mouseup",mouseUp);
- 			document.getElementById("but1").addEventListener("click",function(){invert=false;fill=false;});
  			document.getElementById("but2").addEventListener("click",function(){invert();});
-			document.getElementById("but3").addEventListener("click",function(){fill=!fill;});
 			document.getElementById("but4").addEventListener("click",function(){grayScale();});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
  			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value;},200);
