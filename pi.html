@@ -19,7 +19,7 @@
 			var numPoints = document.getElementById("sides").value;
 			ctx.clearRect(0,0,401,401);
  			ctx.lineWidth = 1;
-			ctx.strokeStyle=rgb(numPoints*2.7,0,0);
+			ctx.strokeStyle="rgb("+(numPoints*2.7).toString()+",0,0)";
 			ctx.beginPath();
 			ctx.arc(200,200,180,0,2*Math.PI);
 			ctx.stroke();
