@@ -3,7 +3,7 @@
 <title>Gravity Simulator</title>
 </head>
 <body>
-<canvas id=can width=1000 height=1000></canvas>
+<canvas id=can width=1000 height=500></canvas>
 </body>
 
 
@@ -17,7 +17,7 @@ function physicsob()
 	//x position
 	this.x;
 	//y position
-	this.y=400;
+	this.y=240;
 	//x speed
 	this.xs=0;
 	//current acceleration
@@ -29,41 +29,83 @@ function physicsob()
 	//color
 	this.color;
 	//update physics
+	this.mul;
 	this.update=function(mm,dd)
 		{
 		
 		this.x=this.x+this.xs;
-		this.a=(this.dir*470*this.m*mm/(dd*dd*this.m));
+		this.a=(this.dir*47*this.m*mm/(dd*dd*this.m));
 		this.xs=this.xs+this.a;
 		
 		ctx.beginPath();
-		ctx.arc(this.x,this.y,5,0,2*Math.PI);
-		ctx.strokeStyle=this.color;
-		ctx.stroke();
+		ctx.arc(this.x,this.y,this.m*10*this.mul,0,2*Math.PI);
+		ctx.fillStyle=this.color;
+		ctx.fill();
 		
 		}
 	}
 var tim=true;
+var tim2=true;
 var obj1=new physicsob();
 obj1.x=0;
-obj1.m=12;
+obj1.m=6.3 ;
 obj1.dir=1;
-obj1.color="blue";
+obj1.color="orange";
+obj1.mul=1;
 var obj2=new physicsob();
 obj2.x=1000;
 obj2.dir=-1;
-obj2.m=130;
-obj2.color="green";
+obj2.m=15.97;
+obj2.color="dodgerblue";
+obj2.mul=1;
 
 setInterval(function(){
-	if(obj1.x>obj2.x){
+	
+	if(obj1.x>obj2.x&&tim){
 		tim=false;
+		ctx.fillStyle="orangered";
+		ctx.fillRect(0,0,1000,1000)
+		tim2=false;
+		setTimeout(function(){ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);ctx.arc(obj1.x,obj1.y,(obj1.m+obj2.m)/2.7*10,0,2*Math.PI);
+		ctx.fillStyle="firebrick";
+		ctx.fill();tim2=true;},1000);
 		}
-	if(tim){ctx.clearRect(0,0,1000,1000);
+	if(tim){ctx.fillStyle="black";
+	ctx.fillRect(0,0,1000,1000);
 		ctx.fillRect(498,0,4,1000);
 		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		}
+	if(tim2)
+	{ctx.beginPath();
+	ctx.arc(50,48,3,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(76,200,4,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(150,400,2,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(300,41,1,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(120,100,3,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(240,123,5,0,2*Math.PI);
+		ctx.fillStyle="gold";
+		ctx.fill();
+		ctx.beginPath();
+	ctx.arc(11,120,3,0,2*Math.PI);
+		ctx.fillStyle="yellow";
+		ctx.fill();
 	
-					},100);
+	}
+					},1);
 </script>
