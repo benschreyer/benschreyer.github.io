@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Gravity Simulator</title>
+</head>
+<body>
+<canvas id=can width=1000 height=1000></canvas>
+</body>
+
+
+<html>
+<script>
+//Objects have a given mass and distance factors into newton's gravitational formula to determine their acceleration towards eachother.f=ma and f=G*m1*m2/r^2
+var c = document.getElementById("can");
+var ctx = c.getContext("2d");
+function physicsob()
+	{
+	//x position
+	this.x;
+	//y position
+	this.y=400;
+	//x speed
+	this.xs=0;
+	//current acceleration
+	this.a;
+	//mass
+	this.m;
+	//temp
+	this.dir;
+	//color
+	this.color;
+	//update physics
+	this.update=function(mm,dd)
+		{
+		
+		this.x=this.x+this.xs;
+		this.a=(this.dir*470*this.m*mm/(dd*dd*this.m));
+		this.xs=this.xs+this.a;
+		
+		ctx.beginPath();
+		ctx.arc(this.x,this.y,5,0,2*Math.PI);
+		ctx.strokeStyle=this.color;
+		ctx.stroke();
+		
+		}
+	}
+var tim=true;
+var obj1=new physicsob();
+obj1.x=0;
+obj1.m=12;
+obj1.dir=1;
+obj1.color="blue";
+var obj2=new physicsob();
+obj2.x=1000;
+obj2.dir=-1;
+obj2.m=130;
+obj2.color="green";
+
+setInterval(function(){
+	if(obj1.x>obj2.x){
+		tim=false;
+		}
+	if(tim){ctx.clearRect(0,0,1000,1000);
+		ctx.fillRect(498,0,4,1000);
+		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
+		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
+		}
+	
+					},100);
+</script>
