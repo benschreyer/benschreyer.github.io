@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Gravity Simulator</title>
+<title>Planetary Collision</title>
 </head>
 <body>
 <canvas id=can width=1000 height=500></canvas>
@@ -12,6 +12,31 @@
 //Objects have a given mass and distance factors into newton's gravitational formula to determine their acceleration towards eachother.f=ma and f=G*m1*m2/r^2
 var c = document.getElementById("can");
 var ctx = c.getContext("2d");
+var stars=500;
+starx = new Array(stars);
+stary = new Array(stars);
+starm = new Array(stars);
+for (i = 0; i < starx.length; i++) { 
+    starx[i]=Math.floor((Math.random() * 1000) + 1);
+}
+for (i = 0; i < stary.length; i++) { 
+    stary[i]=Math.floor((Math.random() * 500) + 1);
+}
+for (i = 0; i < starm.length; i++) { 
+    starm[i]=Math.floor((Math.random() * 1.5) + 1);
+}
+ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);
+for (i = 0; i < starx.length; i++) { 
+    ctx.beginPath();
+	ctx.fillStyle="#fdffcc";
+	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+	ctx.fill();
+}
+
+ var imageObj1 = new Image();
+ imageObj1.src = 'tesxture.png';
+
+
 function physicsob()
 	{
 	//x position
@@ -34,7 +59,7 @@ function physicsob()
 		{
 		
 		this.x=this.x+this.xs;
-		this.a=(this.dir*47*this.m*mm/(dd*dd*this.m));
+		this.a=(this.dir*470*this.m*mm/(dd*dd*this.m));
 		this.xs=this.xs+this.a;
 		
 		ctx.beginPath();
@@ -44,68 +69,55 @@ function physicsob()
 		
 		}
 	}
+
 var tim=true;
 var tim2=true;
 var obj1=new physicsob();
-obj1.x=0;
-obj1.m=6.3 ;
+obj1.x=-200;
+obj1.m=9;
 obj1.dir=1;
 obj1.color="orange";
 obj1.mul=1;
 var obj2=new physicsob();
-obj2.x=1000;
+obj2.x=1200;
 obj2.dir=-1;
-obj2.m=15.97;
+obj2.m=15;
 obj2.color="dodgerblue";
 obj2.mul=1;
-
+var newplanet = ctx.createPattern(imageObj1, 'repeat');
 setInterval(function(){
 	
+
 	if(obj1.x>obj2.x&&tim){
 		tim=false;
-		ctx.fillStyle="orangered";
+		ctx.fillStyle="#FF422C";
 		ctx.fillRect(0,0,1000,1000)
 		tim2=false;
-		setTimeout(function(){ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);ctx.arc(obj1.x,obj1.y,(obj1.m+obj2.m)/2.7*10,0,2*Math.PI);
-		ctx.fillStyle="firebrick";
-		ctx.fill();tim2=true;},1000);
+		setTimeout(function(){ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);
+		for (i = 0; i < starx.length; i++) { 
+    ctx.beginPath();
+	ctx.fillStyle="#fdffcc";
+	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+	ctx.fill();
+}
+		ctx.beginPath();
+		ctx.fillStyle=newplanet;
+		ctx.arc(obj1.x,obj1.y,obj1.m+obj2.m/.1,0,2*Math.PI);
+		ctx.fill();},500);
 		}
-	if(tim){ctx.fillStyle="black";
+	if(tim){
+	ctx.fillStyle="black";
 	ctx.fillRect(0,0,1000,1000);
 		ctx.fillRect(498,0,4,1000);
+		for (i = 0; i < starx.length; i++) { 
+    ctx.beginPath();
+	ctx.fillStyle="#fdffcc";
+	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+	ctx.fill();}
 		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		}
-	if(tim2)
-	{ctx.beginPath();
-	ctx.arc(50,48,3,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(76,200,4,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(150,400,2,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(300,41,1,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(120,100,3,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(240,123,5,0,2*Math.PI);
-		ctx.fillStyle="gold";
-		ctx.fill();
-		ctx.beginPath();
-	ctx.arc(11,120,3,0,2*Math.PI);
-		ctx.fillStyle="yellow";
-		ctx.fill();
-	
-	}
-					},1);
+		
+					},10);
+					
 </script>
