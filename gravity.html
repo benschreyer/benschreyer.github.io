@@ -22,13 +22,13 @@ for (i = 0; i < stary.length; i++) {
     stary[i]=Math.floor((Math.random() * 500) + 1);
 }
 for (i = 0; i < starm.length; i++) { 
-    starm[i]=Math.floor((Math.random() * 1.5) + 1);
+    starm[i]=Math.floor((Math.random() * 3) + 1);
 }
 ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);
 for (i = 0; i < starx.length; i++) { 
     ctx.beginPath();
 	ctx.fillStyle="#fdffcc";
-	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+	ctx.rect(starx[i],stary[i],starm[i],starm[i]);
 	ctx.fill();
 }
 function physicsob()
@@ -109,14 +109,14 @@ setInterval(function(){
 					{
 					ctx.beginPath();
 					ctx.fillStyle="#fdffcc";
-					ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+					ctx.rect(starx[i],stary[i],starm[i],starm[i]);
 					ctx.fill();
 					}
 				
 				
 					
 					ctx.fillStyle=magma;
-					ctx.arc(obj1.x,obj1.y,obj1.m+obj2.m/.1,0,2*Math.PI);
+					ctx.rect(starx[i],stary[i],starm[i],starm[i]);
 					ctx.fill();
 					
 	
