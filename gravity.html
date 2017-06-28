@@ -132,7 +132,7 @@ setInterval(function(){
 			{
 			ctx.beginPath();
 			ctx.fillStyle="#fdffcc";
-			ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+			ctx.rect(starx[i],stary[i],starm[i],0,2*Math.PI);
 			ctx.fill();
 			}
 		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
