@@ -1,18 +1,17 @@
 <html>
 <head>
-<title>Planetary Collision</title>
-</head>
-<body>
-<canvas id=can width=1000 height=500></canvas>
-</body>
-
-
-<html>
 <script>
+window.onload=function(){
+console.log("loaded");
 //Objects have a given mass and distance factors into newton's gravitational formula to determine their acceleration towards eachother.f=ma and f=G*m1*m2/r^2
 var c = document.getElementById("can");
 var ctx = c.getContext("2d");
-var stars=500;
+var stars=600;
+//texture creation
+var magma=ctx.createPattern(document.getElementById("magma"),"repeat");
+var mars=ctx.createPattern(document.getElementById("mars"),"repeat");
+var earth=ctx.createPattern(document.getElementById("earth"),"repeat");
+var explosion=ctx.createPattern(document.getElementById("explosion"),"no-repeat");
 starx = new Array(stars);
 stary = new Array(stars);
 starm = new Array(stars);
@@ -32,13 +31,12 @@ for (i = 0; i < starx.length; i++) {
 	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
 	ctx.fill();
 }
-
- var imageObj1 = new Image();
- imageObj1.src = 'tesxture.png';
-
-
 function physicsob()
 	{
+	//texture
+	this.offSet;
+	this.source;
+	this.texture;
 	//x position
 	this.x;
 	//y position
@@ -61,11 +59,18 @@ function physicsob()
 		this.x=this.x+this.xs;
 		this.a=(this.dir*470*this.m*mm/(dd*dd*this.m));
 		this.xs=this.xs+this.a;
-		
-		ctx.beginPath();
-		ctx.arc(this.x,this.y,this.m*10*this.mul,0,2*Math.PI);
+		this.xs=this.xs+this.a;
 		ctx.fillStyle=this.color;
+		 ctx.beginPath();
+		ctx.arc(this.x,this.y,this.m*10*this.mul,0,2*Math.PI);
+		ctx.translate(this.x+this.offSetX, 0+this.offSetX);
 		ctx.fill();
+		ctx.translate(this.x*-1-this.offSetX, 0-this.offSetX);
+			
+					
+					
+					
+				
 		
 		}
 	}
@@ -76,48 +81,80 @@ var obj1=new physicsob();
 obj1.x=-200;
 obj1.m=9;
 obj1.dir=1;
-obj1.color="orange";
+obj1.color=mars;
 obj1.mul=1;
+obj1.offSetX=100;
+obj1.offSetY=100;
 var obj2=new physicsob();
 obj2.x=1200;
 obj2.dir=-1;
 obj2.m=15;
-obj2.color="dodgerblue";
+obj2.color=earth;
 obj2.mul=1;
-var newplanet = ctx.createPattern(imageObj1, 'repeat');
+obj2.offSetX=2000;
+obj2.offSetY=3000;
 setInterval(function(){
-	
-
-	if(obj1.x>obj2.x&&tim){
+	if((obj1.x+obj1.m*10)>(obj2.x-obj2.m*10)&&tim)
+		{
 		tim=false;
-		ctx.fillStyle="#FF422C";
+		ctx.fillStyle=explosion;
 		ctx.fillRect(0,0,1000,1000)
 		tim2=false;
-		setTimeout(function(){ctx.fillStyle="black";ctx.fillRect(0,0,1000,1000);
-		for (i = 0; i < starx.length; i++) { 
-    ctx.beginPath();
-	ctx.fillStyle="#fdffcc";
-	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
-	ctx.fill();
-}
-		ctx.beginPath();
-		ctx.fillStyle=newplanet;
-		ctx.arc(obj1.x,obj1.y,obj1.m+obj2.m/.1,0,2*Math.PI);
-		ctx.fill();},500);
-		}
-	if(tim){
-	ctx.fillStyle="black";
-	ctx.fillRect(0,0,1000,1000);
+		setTimeout
+			(
+			function()
+					{
+				ctx.fillStyle="black";ctx.fillRect(0,0,1000,500);
+				for (i = 0; i < starx.length; i++) 
+					{
+					ctx.beginPath();
+					ctx.fillStyle="#fdffcc";
+					ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+					ctx.fill();
+					}
+				
+				
+					
+					ctx.fillStyle=magma;
+					ctx.arc(obj1.x,obj1.y,obj1.m+obj2.m/.1,0,2*Math.PI);
+					ctx.fill();
+					
+	
+				
+			},1000);
+			}
+	if(tim)
+		{
+		ctx.fillStyle="black";
+		ctx.fillRect(0,0,1000,1000);
 		ctx.fillRect(498,0,4,1000);
-		for (i = 0; i < starx.length; i++) { 
-    ctx.beginPath();
-	ctx.fillStyle="#fdffcc";
-	ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
-	ctx.fill();}
+		for (i = 0; i < starx.length; i++) 
+			{
+			ctx.beginPath();
+			ctx.fillStyle="#fdffcc";
+			ctx.arc(starx[i],stary[i],starm[i],0,2*Math.PI);
+			ctx.fill();
+			}
 		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		}
-		
-					},10);
-					
+		},20);	
+}		
 </script>
+<title>Planetary Collision</title>
+<style>
+.texture{display:none;}
+
+</style>
+</head>
+<body>
+<img class=texture id=magma src=tesxture.png></img>
+<img class=texture id=mars src=mars.png></img>
+<img class=texture id=earth src=earth.png></img>
+<img class=texture id=explosion src=explosion.png></img>
+<canvas id=can width=1000 height=500></canvas>
+</body>
+
+
+<html>
+<script>
