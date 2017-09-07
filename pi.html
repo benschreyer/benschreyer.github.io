@@ -29,7 +29,7 @@
 			var radius =180;
 		  	document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
 			document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
-			if(numPoints<100){
+			if(numPoints<50){
 				ctx.beginPath();
 				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints) + centre[1]);
 				for (var i = 2; i <= numPoints+1; i++) {
