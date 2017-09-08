@@ -1,0 +1,84 @@
+<html>
+<head>
+<script>
+window.onload=function(){
+console.log("loaded");
+//Objects have a given mass and distance factors into newton's gravitational formula to determine their acceleration towards eachother.f=ma and f=G*m1*m2/r^2
+var c = document.getElementById("can");
+var ctx = c.getContext("2d");
+function physicsob()
+	{
+	//texture
+	this.offSet;
+	this.source;
+	this.texture;
+	//x position
+	this.x;
+	//y position
+	this.y=240;
+	//x speed
+	this.xs=0;
+	//current acceleration
+	this.a;
+	//mass
+	this.m;
+	//temp
+	this.dir;
+	//color
+	this.color;
+	//update physics
+	this.mul;
+	this.update=function(mm,dd)
+		{
+		
+		this.x=this.x+this.xs;
+		this.a=(this.dir*470*this.m*mm/(dd*dd*this.m));
+		this.xs=this.xs+this.a;
+		this.xs=this.xs+this.a;
+		ctx.fillStyle=this.color;
+		 ctx.beginPath();
+		ctx.arc(this.x,this.y,this.m*10*this.mul,0,2*Math.PI);
+		ctx.translate(this.x+this.offSetX, 0+this.offSetX);
+		ctx.fill();
+		ctx.translate(this.x*-1-this.offSetX, 0-this.offSetX);
+			
+					
+					
+					
+				
+		
+		}
+	}
+
+var tim=true;
+var tim2=true;
+var obj1=new physicsob();
+obj1.x=-200;
+obj1.m=9;
+obj1.dir=1;
+obj1.color=mars;
+obj1.mul=1;
+obj1.offSetX=100;
+obj1.offSetY=100;
+var obj2=new physicsob();
+obj2.x=1200;
+obj2.dir=-1;
+obj2.m=15;
+obj2.color=earth;
+obj2.mul=1;
+obj2.offSetX=2000;
+obj2.offSetY=3000;
+setInterval(function(){
+		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
+		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
+		},20);	
+}		
+</script>
+<title>Gravity Sim</title>
+<style>
+</style>
+</head>
+<body>
+<canvas id=can width=1000 height=500></canvas>
+</body>
+<html>
