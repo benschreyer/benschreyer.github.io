@@ -27,6 +27,7 @@
  
  		</body>
  		<script>
+			window.onload=function(){
 			var fill=false;
 			var fillTarg;
 			var invert=false;
@@ -98,6 +99,7 @@
 			document.getElementById("but4").addEventListener("click",function(){grayScale();});
  			setInterval(function(){ctx.strokeStyle=document.getElementById("slider").value;},200);
  			setInterval(function(){ctx.lineWidth=document.getElementById("slider2").value;},200);
+			}
  
  		</script>
  	</html>
