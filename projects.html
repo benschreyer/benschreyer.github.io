@@ -23,15 +23,23 @@ i{color:white}
 
 </ul>	<div class=enav>
 	<div class=project>
-	<p class=projecttxt>Pi approximation</p>
+	<p class=projecttxt>Pi approximation.</p>
 	<iframe src="pi" class=projectframe></iframe>
 	</div>
 	<div class=project>
-	<p class=projecttxt>Baisc paint program</p>
+	<p class=projecttxt>Baisc paint program.</p>
 	<iframe src="HTMLpaint" class=projectframe></iframe>
 	</div>
 	<div class=project>
-	<p class=projecttxt>A circle</p>
+	<p class=projecttxt>Accurate Newtonian Gravity simulation.</p>
+	<iframe src="gravitysim" class=projectframe></iframe>
+	</div>
+	<div class=project>
+	<p class=projecttxt>Fancy Gravity sim</p>
+	<iframe src="gravity" class=projectframe></iframe>
+	</div>
+	<div class=project>
+	<p class=projecttxt>A circle.</p>
 	<iframe src="circle" class=projectframe></iframe>
 	</div>
 	</div>
@@ -45,7 +53,7 @@ window.onload=function(){
 	buts[i].li=i;
 	buts[i].addEventListener("click",redirect);
 	}
-	var links2=["pi","HTMLpaint","circle"];
+	var links2=["pi","HTMLpaint","gravitysim","gravity","circle"];
 	var buts2=document.getElementsByClassName("projecttxt");
 	function redirect2() {window.location=links2[this.li2];}
 	for(var i=0;i<buts2.length;i++){
