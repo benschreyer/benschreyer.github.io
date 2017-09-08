@@ -15,13 +15,12 @@
 <ul class="nav">
 <li class="but" id="active"><i class="fa fa-home"></i></li>	
 <li class="but">Projects</li>
-<li class="but">About</li>
 </ul>
 
 
 <script>
 window.onload=function(){
-	var links=["","projects","about"];
+	var links=["","projects"];
 	var buts=document.getElementsByClassName("but");
 	function redirect() {window.location=links[this.li];}
 	for(var i=0;i<buts.length;i++){
