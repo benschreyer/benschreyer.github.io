@@ -28,13 +28,6 @@ function physicsob()
 	this.color;
 	//update physics
 	this.mul;
-	this.reset=function()
-		{
-		if(this.m==obj2.m)
-		{this.x=1200;}
-		else
-		{this.x=-200}
-		}
 	this.update=function(mm,dd)
 		{
 		
@@ -48,7 +41,7 @@ function physicsob()
 		ctx.translate(this.x+this.offSetX, 0+this.offSetX);
 		ctx.fill();
 		ctx.translate(this.x*-1-this.offSetX, 0-this.offSetX);
-			
+		console.log(this.x);	
 					
 					
 					
