@@ -63,7 +63,10 @@ function physicsob()
 		ctx.fillStyle=this.color;
 		 ctx.beginPath();
 		ctx.arc(this.x,this.y,this.m*10*this.mul,0,2*Math.PI);
-		ctx.fill();
+		ctx.translate(this.x+this.offSetX, 0+this.offSetX);
+  		ctx.fill();
+ -		ctx.translate(this.x*-1-this.offSetX, 0-this.offSetX);
+		
 		
 			
 					
