@@ -1,0 +1,88 @@
+<!DOC TYPE html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Ben Schreyer Parts of a Computer</title>
+  <style>
+    .nav #active{background-color:#d62626;}
+	  .nav #active:hover{background-color:#af2121;}
+	  .nav{z-index:0;font-size:0;position:fixed;top:0;left:-2vw;background-color:#686767;padding:1.1vw 2vw 1.1vw 2vw;width:100vw;margin-top:0;margin:auto;cursor:pointer;}
+	  .nav>li{font-size:1vw;list-style-type:none;display:inline;padding:1.1vw 2vw 1.1vw 2vw;font-family:verdana;color:white;text-align:center;margin:auto;}
+	  .nav>li:hover{background-color:#565656;}
+	  i{color:white}
+	  .header{z-index:-1;position:relative;font-family:verdana;font-size:2.0vw;margin-top:0vw;color:#af2121;}
+	  .scrollpos{z-index:-1;position:relative;font-family:verdana;font-size:2.0vw;margin-top:0vw;color:#af2121;visibility:hidden;}
+	  .img{width:72vw;height:40.5vw;}
+	  .paragraph{z-index:-1;position:relative;font-family:verdana;font-size:1.0vw;margin-top:1vw}
+  </style>
+  <script>
+  window.onload=function(){
+	 window.scrollTo(0, 0); 
+	var scrollpos=document.getElementsByClassName("scrollpos");
+	var headers=document.getElementsByClassName("header");
+	var buts=document.getElementsByClassName("but");
+	function redirect() {scrollpos[this.li].scrollIntoView(true); }
+	function clearActive(){for(z=0;z<buts.length;z++){buts[z].id="";}}
+	function isElementVisible(element) {
+    var rect = element.getBoundingClientRect();
+    return rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.left < (window.innerWidth || document.documentElement.clientWidth)  &&
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) ;
+}
+	for(var i=0;i<buts.length;i++){
+	buts[i].li=i;
+	buts[i].addEventListener("click",redirect);
+	}
+
+	setInterval(function(){
+	
+	for(j=0;j<=headers.length;j++)
+		{
+		clearActive();
+		buts[j].id="active";
+		if(isElementVisible(headers[j])){break;}
+		
+		}},100);
+	}  
+  </script>
+</head>
+
+<body>
+  <ul class="nav">
+    <li class="but" id="active"><i class="fa fa-home"></i></li>	
+    <li class="but">Mother Board</li>
+    <li class="but">Processor</li>
+    <li class="but">RAM</li>
+    <li class="but">Storage</li>
+    <li class="but">Video Card</li>
+    <li class="but">Power Supply</li>
+  </ul>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer111</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer222</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer333</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer444</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer555</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer666</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+<p class=scrollpos>The Components of the Modern Computer111</p>
+<p class=header>The Components of the Modern Computer777</p>
+<p class=paragraph>saHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskjsaHDHshdhdsi;F;hDSAHFdsl;ofnds'fldsnfsdfdsl</br>dskjhdfshbfdjblfdsjkkfd</br>diu;asbjkdsajkdj;sad;nsandjnskj</p>
+<img class=img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReri3m08Sk_03mmb4_rdBDkQgK03C1AXeXgtZZ-h5QZVRWudjE"></img>
+</body>
