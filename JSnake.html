@@ -2,6 +2,8 @@
 <head>
 
   <script>
+  window.onload=function()
+  {
     var c = document.getElementById("canvas");
     var ct = c.getContext("2d");
     function snake()
@@ -43,6 +45,7 @@
       }
     setup();
     setInterval(loop,15);
+  }
   </script>
 
 </head>
