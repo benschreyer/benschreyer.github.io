@@ -2,14 +2,35 @@
 <head>
 
   <script>
+    var c = document.getElementById("canvas");
+    var ct = c.getContext("2d");
     function snake()
       {
         this.x=[];
         this.y=[];
         this.xs;
         this.ys;
-        this.length
-  
+        this.loop=function()
+          {
+          
+          }
+        this.respawn=fucntion()
+          {
+          
+          }
+      }
+    function food()
+      {
+        this.x;
+        this.y;
+        this.loop=function()
+          {
+          
+          }
+        this.respawn=function()
+          {
+          
+          }
       }
     function setup()
       {
@@ -17,8 +38,10 @@
       }
     function loop()
       {
-  
+        ct.fillStyle="white";
+        ct.fillRect(0,0,500,500);
       }
+    setup();
     setInterval(loop,15);
   </script>
 
