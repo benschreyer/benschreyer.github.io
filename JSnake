@@ -1,0 +1,31 @@
+<!DOC TYPE html>
+<head>
+
+  <script>
+    function snake()
+      {
+        this.x=[];
+        this.y=[];
+        this.xs;
+        this.ys;
+        this.length
+  
+      }
+    function setup()
+      {
+        
+      }
+    function loop()
+      {
+  
+      }
+    setInterval(loop,15);
+  </script>
+
+</head>
+
+<body>
+
+  <canvas id=canvas></canvas>
+  
+</body>
