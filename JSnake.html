@@ -14,7 +14,11 @@
         this.ys;
         this.loop=function()
           {
-          
+            for(i=0;i<=this.x.length;i++;)
+              {
+              ct.fillStyle="#FF5733";
+              ct.fillRect(this.x[i],this.y[i],10,10);
+              } 
           }
         this.respawn=function()
           {
@@ -47,6 +51,7 @@
       {
         ct.fillStyle="black";
         ct.fillRect(0,0,500,500);
+        s.loop();
       }
     var s=new snake();
     var f=new food();
