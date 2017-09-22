@@ -18,7 +18,12 @@
           }
         this.respawn=fucntion()
           {
-          
+            this.x=[];
+            this.y=[];
+            this.x[0]=Math.floor(Math.random() * 350);
+            this.y[0]=Math.floor(Math.random() * 350);
+            c.fillStyle="#FF5733";
+            c.fillRect(this.x,this.y,10,10);
           }
       }
     function food()
@@ -36,13 +41,15 @@
       }
     function setup()
       {
-        
+        s.respawn();
       }
     function loop()
       {
-        ct.fillStyle="white";
+        ct.fillStyle="black";
         ct.fillRect(0,0,500,500);
       }
+    var s=new snake();
+    var f=new food();
     setup();
     setInterval(loop,15);
   }
