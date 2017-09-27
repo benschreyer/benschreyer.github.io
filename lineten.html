@@ -27,7 +27,12 @@
          c.lineTo(x,y+scale);
          c.stroke();
           }
-          
+        if(y==500)
+          {
+          y=0;
+          x+=scale
+          }
+        y+=10;
        }
     }
   </script>
