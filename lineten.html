@@ -13,12 +13,14 @@
        {
         if(Math.random()>.5)
          {
+         c.beinPath();
          c.moveTo(x,y);
          c.lineTo(x+scale,y+scale);
          c.stroke();
           }
         else
           {
+         c.beginPath();
          c.moveTo(x+scale,7);
          c.lineTo(x,y+scale);
          c.stroke();
