@@ -3,8 +3,10 @@
   <script>
     window.onload=function(){
      c=document.getElementById("canvas").getContext("2d");
-     c.fillStyle="black";
-     c.strokeStyle="white";
+     c.fillStyle="#A6ACAF";
+     c.strokeStyle="#A6ACAF";
+	 c.lineCap="round";
+	 c.lineWidth=5;
      var cS=document.getElementById('canvas').clientHeight;
      c.fillRect(0,0,cS,cS);
      function gen(a){
@@ -15,10 +17,15 @@
      var chance=.5;
      for(i=0;i<=Math.pow(cS/scale,2);i++)
        {
+		if(chance>1)
+			{chance=.5;}
+		if(chance<0)
+			{chance=.5;}
         rand=Math.random();
         if(rand>=chance)
          {
-         chance-=.0008*scale/5;
+		 c.strokeStyle="#28B463";
+         chance-=.008*scale/5;
          c.beginPath();
          c.moveTo(x,y);
          c.lineTo(x+scale,y+scale);
@@ -26,7 +33,8 @@
           }
         else
           {
-         chance+=.0008*scale/5;
+		 c.strokeStyle="#21618C";
+         chance+=.008*scale/5;
          c.beginPath();
          c.moveTo(x+scale,y);
          c.lineTo(x,y+scale);
@@ -38,14 +46,15 @@
           y=0;
           x+=scale
           }
+		console.log(chance.toString() + "   " + x.toString());
        }
      }
-     gen(25);
-     document.GetElementById("scale").value.onchange=gen(document.GetElementById("scale"));
+     //gen(document.getElementById('scale').value);
+     gen(15);
     }
   </script>
 </head>
 <body>
   <canvas id=canvas width=750 height=750></canvas>
-  <input id=scale value=25></input>
+  <input id=scale value=25 type=number min=5 max=250></input>
 </body>
