@@ -10,7 +10,7 @@
      var y=0;
      var scale=10;
      var rand;
-     for(i=0;i<=500/scale;i++)
+     for(i=0;i<=Math.pow(500/scale,2);i++)
        {
         rand=Math.random();
         if(rand>=.5)
@@ -32,7 +32,7 @@
           y=0;
           x+=scale
           }
-        y+=10;
+        y+=scale;
        }
     }
   </script>
