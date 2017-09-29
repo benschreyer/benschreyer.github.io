@@ -17,7 +17,7 @@
         rand=Math.random();
         if(rand>=chance)
          {
-         chance-=.0008;
+         chance-=.0008*scale/5;
          c.beginPath();
          c.moveTo(x,y);
          c.lineTo(x+scale,y+scale);
@@ -25,7 +25,7 @@
           }
         else
           {
-         chance+=.0008;
+         chance+=.0008*scale/5;
          c.beginPath();
          c.moveTo(x+scale,y);
          c.lineTo(x,y+scale);
