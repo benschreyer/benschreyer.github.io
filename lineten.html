@@ -7,9 +7,10 @@
      c.strokeStyle="white";
      var cS=document.getElementById('canvas').clientHeight;
      c.fillRect(0,0,cS,cS);
+     function gen(a){
      var x=0;
      var y=0;
-     var scale=25;
+     var scale=a;
      var rand;
      var chance=.5;
      for(i=0;i<=Math.pow(cS/scale,2);i++)
@@ -38,9 +39,13 @@
           x+=scale
           }
        }
+     }
+     gen(25);
+     document.GetElementById("scale").onchange=gen(document.GetElementById("scale"));
     }
   </script>
 </head>
 <body>
   <canvas id=canvas width=750 height=750></canvas>
+  <input id=scale value=25></input>
 </body>
