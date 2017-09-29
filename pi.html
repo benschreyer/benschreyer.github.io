@@ -1,51 +1,59 @@
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Approximating Pi with polygons</title>
-	</head>
-	<body>
- 		<style>
-	 		html{font-family:Verdana;}
-  			canvas { cursor: crosshair; border-width: 10px;border-color:white;border-style:groove;}
- 		</style>
- 		<p id=inf>nkm</p>
-		<p id=inf2>nkm</p>
-		<canvas id="myCanvas" width="400" height="400"></canvas>
- 		<p>Sides:</p> 
-		<input type="number" id="sides" max="1000000" min="3"  value="3">
-	</body>
-	<script>			
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
-		function draw() {
-			var numPoints = document.getElementById("sides").value;
-			ctx.clearRect(0,0,401,401);
- 			ctx.lineWidth = 1;
-			ctx.strokeStyle="green";
-			ctx.beginPath();
-			ctx.arc(200,200,180,0,2*Math.PI);
-			ctx.stroke();
-			ctx.closePath();
-			ctx.moveTo(200,200);
-			var centre = [200,200];
-			var radius =180;
-		  	document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
-			document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
-			if(numPoints<50){
-				ctx.beginPath();
-				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints) + centre[1]);
-				for (var i = 2; i <= numPoints+1; i++) {
-     					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints ) + centre[1]);
- 					ctx.strokeStyle="#196619";   
- 					ctx.stroke();
-					if(i==numPoints)
-						{	
-						ctx.closePath();
-						}
- 
-					}}
-				};
- 		setInterval(draw,75);
- </script> 
-</html>
+<head>
+  <title>Line 10</title>
+  <script>
+    window.onload=function(){
+     c=document.getElementById("canvas").getContext("2d");
+     c.fillStyle="#A6ACAF";
+     c.strokeStyle="#A6ACAF";
+	 c.lineWidth=5;
+     var cS=document.getElementById('canvas').clientHeight;
+     c.fillRect(0,0,cS,cS);
+     function gen(a){
+     var x=0;
+     var y=0;
+     var scale=a;
+     var rand;
+     var chance=.5;
+     for(i=0;i<=Math.pow(cS/scale,2);i++)
+       {
+		if(chance>1)
+			{chance=.5;}
+		if(chance<0)
+			{chance=.5;}
+        rand=Math.random();
+        if(rand>=chance)
+         {
+		 c.strokeStyle="#28B463";
+         chance-=.008*scale/5;
+         c.beginPath();
+         c.moveTo(x,y);
+         c.lineTo(x+scale,y+scale);
+         c.stroke();
+          }
+        else
+          {
+		 c.strokeStyle="#21618C";
+         chance+=.008*scale/5;
+         c.beginPath();
+         c.moveTo(x+scale,y);
+         c.lineTo(x,y+scale);
+         c.stroke();
+          }
+        y+=scale;
+        if(y>=cS)
+          {
+          y=0;
+          x+=scale
+          }
+		console.log(chance.toString() + "   " + x.toString());
+       }
+     }
+     //gen(document.getElementById('scale').value);
+     gen(25);
+    }
+  </script>
+</head>
+<body>
+  <canvas id=canvas width=750 height=750></canvas>
+  <input id=scale value=25 type=number min=5 max=250></input>
+</body>
