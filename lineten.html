@@ -5,12 +5,13 @@
      c=document.getElementById("canvas").getContext("2d");
      c.fillStyle="black";
      c.strokeStyle="white";
-     c.fillRect(0,0,500,500);
+     var cS=document.getElementById('canvas').clientHeight;
+     c.fillRect(0,0,cS,cS);
      var x=0;
      var y=0;
      var scale=10;
      var rand;
-     for(i=0;i<=Math.pow(500/scale,2);i++)
+     for(i=0;i<=Math.pow(cS/scale,2);i++)
        {
         rand=Math.random();
         if(rand>=.5)
@@ -27,7 +28,7 @@
          c.lineTo(x,y+scale);
          c.stroke();
           }
-        if(y>=500-scale)
+        if(y>=cS)
           {
           y=0;
           x+=scale
@@ -38,5 +39,5 @@
   </script>
 </head>
 <body>
-  <canvas id=canvas width=500 height=500></canvas>
+  <canvas id=canvas width=1000 height=1000></canvas>
 </body>
