@@ -4,7 +4,6 @@
     window.onload=function(){
      c=document.getElementById("canvas").getContext("2d");
      c.fillStyle="#A6ACAF";
-     c.strokeStyle="#A6ACAF";
 	 c.lineCap="round";
 	 c.lineWidth=5;
      var cS=document.getElementById('canvas').clientHeight;
@@ -24,7 +23,7 @@
         rand=Math.random();
         if(rand>=chance)
          {
-		 c.strokeStyle="black";
+	 c.strokeStyle="black";
          chance-=.008*scale/5;
          c.beginPath();
          c.moveTo(x,y);
@@ -33,7 +32,7 @@
           }
         else
           {
-		 c.strokeStyle="black";
+	 c.strokeStyle="black";
          chance+=.008*scale/5;
          c.beginPath();
          c.moveTo(x+scale,y);
