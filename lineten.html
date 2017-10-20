@@ -24,7 +24,7 @@
         rand=Math.random();
         if(rand>=chance)
          {
-		 c.strokeStyle="#8C2181";
+		 c.strokeStyle="black";
          chance-=.008*scale/5;
          c.beginPath();
          c.moveTo(x,y);
@@ -33,7 +33,7 @@
           }
         else
           {
-		 c.strokeStyle="#21618C";
+		 c.strokeStyle="black";
          chance+=.008*scale/5;
          c.beginPath();
          c.moveTo(x+scale,y);
@@ -50,7 +50,7 @@
        }
      }
      //gen(document.getElementById('scale').value);
-     gen(15);
+     gen(5);
     }
   </script>
 </head>
