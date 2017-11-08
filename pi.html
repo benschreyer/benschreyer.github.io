@@ -69,8 +69,9 @@
  				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints) + centre[1]);
  				for (var i = 2; i <= numPoints+1; i++) {
       					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints ) + centre[1]);
-  					ctx.strokeStyle="#ff00f2";   
+  					ctx.strokeStyle="#ffff3a";   
 					ctx.fillStyle="#ff00f2";
+					ctx.stroke();
   					ctx.fill();
  					if(i==numPoints)
  						{	
