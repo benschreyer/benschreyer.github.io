@@ -51,6 +51,9 @@ var obj2=new physicsob(1100,document.getElementById("m2").value,"green",-1);
 setInterval(function(){
 		ctx.fillStyle="white";
 		ctx.fillRect(0,0,1000,1000);
+		ctx.fillStyle="#000000";
+		ctx.font="20px Verdana";
+		ctx.fillText("Change the two input fields to change the mass of the objects",250,500);
 		if(obj1.x>obj2.x){obj1.x=-200;obj2.x=1200;obj1.xs=0;obj2.xs=0;obj1.m=document.getElementById("m1").value;obj2.m=document.getElementById("m2").value;}
 		obj2.update(obj1.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
 		obj1.update(obj2.m,Math.sqrt( (obj1.x-obj2.x)*(obj1.x-obj2.x) + (obj1.y-obj2.y)*(obj1.y-obj2.y)));
