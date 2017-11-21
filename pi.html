@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
  <html>
  	<head>
@@ -10,7 +11,7 @@
     width: 35%;
     height: 15px;
     border-radius: 5px;   
-    background: #d3d3d3;
+    background: #28B463;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -23,7 +24,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: #ff00f2;
+    background: #154360;
     cursor: pointer;
 }
 
@@ -31,16 +32,14 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #ff00f2;
+    background: #154360;
     cursor: pointer;
 }
  	 		html{font-family:Verdana;}
-   			canvas { cursor: crosshair; border-width: 3px;border-color:#ff00f2;border-style:solid;}
+   			canvas { cursor: crosshair; border-width: 3px;border-color:#154360;border-style:solid;}
   		</style>
-  		<p id=inf>nkm</p>
-		<p id=inf2>nkm</p>
- 		<canvas id="myCanvas" width="400" height="400"></canvas>
-  		<p>Sides:</p> 
+ 		<canvas id="myCanvas" width="1000" height="1000"></canvas>
+		<p></p>
  		<input class="slider" type="range" id="sides" max="49" min="3"  value="3">
  	</body>
  	<script>			
@@ -50,27 +49,30 @@
  		function draw() {
  			var numPoints = Math.floor(document.getElementById("sides").value);
 			console.log(numPoints);
- 			ctx.clearRect(0,0,401,401);
+ 			ctx.clearRect(0,0,1000,1000);
 			ctx.fillStyle="black";
-			ctx.fillRect(0,0,401,401);
-  			ctx.lineWidth = 2;
- 			ctx.strokeStyle="#ffff3a";
+			ctx.fillRect(0,0,1000,1000);
+  			ctx.lineWidth = 3;
+ 			ctx.strokeStyle="#28B463";
  			ctx.beginPath();
- 			ctx.arc(200,200,180,0,2*Math.PI);
+ 			ctx.arc(500,500,400,0,2*Math.PI);
  			ctx.stroke();
  			ctx.closePath();
- 			ctx.moveTo(200,200);
- 			var centre = [200,200];
- 			var radius =180;
- 		  	document.getElementById("inf").innerHTML="Under Estimate="+numPoints*Math.sin((Math.PI/numPoints)).toString();
- 			document.getElementById("inf2").innerHTML="Over Estimate="+numPoints*Math.tan((Math.PI/numPoints)).toString();
+ 			ctx.moveTo(500,500);
+ 			var centre = [500,500];
+ 			var radius =400;
+			ctx.font="25px Verdana";
+			ctx.fillStyle="#28B463";
+			ctx.fillText("Sides: "+numPoints.toString(),5,25);
+			ctx.fillText("\u03C0 Over Estimate: "+numPoints*Math.tan((Math.PI/numPoints)).toString(),5,47);
+			ctx.fillText("\u03C0 Under Estimate: "+numPoints*Math.sin((Math.PI/numPoints)).toString(),5,69);
  			if(numPoints<50){
  				ctx.beginPath();
  				ctx.moveTo(radius * Math.cos(2*Math.PI*1/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*1/numPoints) + centre[1]);
  				for (var i = 2; i <= numPoints+1; i++) {
       					ctx.lineTo(radius * Math.cos(2*Math.PI*i/numPoints ) + centre[0],radius * Math.sin(2*Math.PI*i/numPoints ) + centre[1]);
-  					ctx.strokeStyle="#ffff3a";   
-					ctx.fillStyle="#ff00f2";
+  					ctx.strokeStyle="##28B463";   
+					ctx.fillStyle="#154360";
 					ctx.stroke();
   					ctx.fill();
  					if(i==numPoints)
@@ -80,6 +82,6 @@
   
  					}}
  				};
-  		setInterval(draw,75);
+  		setInterval(draw,20);
   </script> 
  </html>
