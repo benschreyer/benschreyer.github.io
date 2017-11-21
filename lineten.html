@@ -1,60 +1,83 @@
+<html>
 <head>
-  <title>Line 10</title>
-  <script>
-    window.onload=function(){
-     c=document.getElementById("canvas").getContext("2d");
+  <title>fsdasdasdas</title>
+  <style>
+  canvas{border-style:solid;position:relative;}
+  body{background-color:#DADADA}
+  button{position:relative;}
+  input{position:relative;}
+  </style>
+</head>
+ <script>
+	function gen(){
+	  c=document.getElementById("canvas").getContext("2d");
      c.fillStyle="#A6ACAF";
      c.strokeStyle="#A6ACAF";
 	 c.lineCap="round";
-	 c.lineWidth=10;
+	 c.lineWidth=7;
      var cS=document.getElementById('canvas').clientHeight;
-     c.fillRect(0,0,cS,cS);
-     function gen(a){
      var x=0;
      var y=0;
-     var scale=a;
+     var scale=20;
      var rand;
      var chance=.5;
+	 var color1=document.getElementById("color1").value;
+	 var color2=document.getElementById("color2").value;
+	 console.log(color1);
+	 c.fillStyle=color1;
+	 c.fillRect(0,0,cS,cS);
+	 console.clear();
      for(i=0;i<=Math.pow(cS/scale,2);i++)
        {
 		if(chance>1)
-			{chance=.5;}
+			{chance=chance;}
 		if(chance<0)
-			{chance=.5;}
+			{chance=chance;}
         rand=Math.random();
         if(rand>=chance)
          {
-		 c.strokeStyle="black";
+		 c.strokeStyle=color2;
 		 
-         chance-=.008*scale/5;
+         chance-=.0008*scale/5;
          c.beginPath();
          c.moveTo(x,y);
          c.lineTo(x+scale,y+scale);
          c.stroke();
+		 console.log(chance);
           }
         else
           {
-		 c.strokeStyle="black";
-         chance+=.008*scale/5;
+		 c.strokeStyle=color2;
+         chance+=.0008*scale/5;
          c.beginPath();
          c.moveTo(x+scale,y);
          c.lineTo(x,y+scale);
          c.stroke();
+		 console.log(chance);
           }
         y+=scale;
         if(y>=cS)
           {
           y=0;
-          x+=scale
+          x+=scale;
           }
-		console.log(chance.toString() + "   " + x.toString());
        }
+	   
      }
-     //gen(document.getElementById('scale').value);
-     gen(20);
+     window.onload=function(){
+	gen();
+     c.fillRect(0,0,cS,cS);
+     
+	  document.getElementById("button1").addEventListener("click",gen());
     }
+	
   </script>
-</head>
 <body>
-  <canvas id=canvas width=1000 height=1000></canvas>
+  <canvas id=canvas width=500 height=500></canvas>	
+  <input type=color id=color1 value="#000000"/>
+  <input type=color id=color2 value="#ffffff"/>
+  <button type=button id=button1 onclick=gen(20)>Generate</button>
+  
 </body>
+</html>
+ 
