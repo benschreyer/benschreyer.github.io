@@ -1,0 +1,66 @@
+body
+{
+	margin:0;
+	background-color:#0099cc;
+}
+h1::first-letter
+{
+	color:red;
+}
+h1
+{	
+	color:#55ff00;
+	font-family:'Gloria Hallelujah', cursive;
+	text-align:center;
+	font-size:7em;
+	padding:0px;
+	border-width:0px;
+	margin:0px 0px 0px 0px;
+}
+h2
+{
+	text-align:center;
+	font-family:Courier;
+	padding:0px;
+	font-size:3em;
+	margin: 0px 0px 0px 0px;
+	color:white;
+}
+img
+{
+	margin:auto;
+	width:55vw;
+	display:block;
+	border-width:0px;
+	height:27.5vw;
+	border-radius: 15px;
+}
+ul
+{
+	
+	list-style:none;
+	text-align:center;
+	font-family:Verdana;
+	font-size:2em;
+}
+li
+{
+	margin:6vh 0px 6vh -1.3vw;
+	color:white;
+}
+.column
+{
+	float:left;
+}
+.left,.right
+{
+	width:20vw;
+}
+.middle
+{
+	width:58vw;
+}
+h2.side-column-heading
+{
+	margin-top:23vh;
+}

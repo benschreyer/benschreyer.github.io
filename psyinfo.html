@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<head>
+	<title>PSY Information</title>
+</head>
+<body>
+	<div class="column left">
+		<h2 class="side-column-heading">Notable Songs</h2>
+		<ul>
+			<li>Gagnam Style</li>
+			<li>Gentlemen</li>
+			<li>New Face</li>
+		</ul>
+	</div>
+	<div class="column middle">
+		<h1>PSY</h1>
+		<h2><em>dance-pop performer</em></h2>
+		<img src="psy1.jpg" class="slideshow" alt="PSY">
+	</div>
+	<div class="column right">
+		<h2 class="side-column-heading">Achievements</h2>
+		<ul>
+			<li>Gagnam Style most viewed video of 2012</li>
+			<li>Performed at Time Square NY on new years eve</li>
+			<li>"Gagnam Style" entered in to Yale's book of quotations</li>
+		</ul>
+	</div>
+</body>
+<script>
+var count=1;
+setInterval(function(){document.getElementsByClassName("slideshow")[0].src="psy"+count.toString()+".jpg";count++;if(count>4){count=1;}},2500);
+</script>
