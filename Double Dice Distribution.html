@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<title>Double Dice Distribution</title>
+	<style>
+		canvas{border-style:solid;}
+	</style>
+</head>
+<body>
+	<canvas width="1000" height="500" id="c"></canvas>
+	<input type="number" id="input1">
+	<button onclick="roll()">Add Rolls</button>
+</body>
+<script>
+	var data = [0,0,0,0,0,0,0,0,0,0,0,0];
+	var c=document.getElementById("c").getContext("2d");
+	var sum;
+	const reducer = (accumulator, currentValue) => accumulator + currentValue;
+	function roll(){
+		var rolls=document.getElementById("input1").value;
+		for(i=0;i<rolls;i++){
+			data[(Math.floor((Math.random() * 6) + 1)+Math.floor((Math.random() * 6) + 1))-1]++;
+		}
+		sum=data.reduce(reducer);
+		c.clearRect(0,0,1000,500);
+		for(i=0;i<=data.length;i++){
+			c.fillRect(i*50+200,500-(data[i]/sum)*1000,49,(data[i]/sum)*1000);
+		}
+	}
+
+</script>
