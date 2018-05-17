@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+	<title>Snake</title>
+	<style>
+		canvas{border-style:solid;}
+	</style>
+</head>
+<body>
+	<canvas width="1000" height="500" id="c"></canvas>
+</body>
+<script>
+	var c=document.getElementById("c").getContext("2d");
+	c.font="100px Verdana"
+	var snake=[[20*(Math.floor(Math.random()*40)+1),20*(Math.floor(Math.random()*20)+1)]];
+	var dir=[0,0];
+	var points=0;
+	var fps=15;
+	var apple=[20*(Math.floor(Math.random()*40)+1),20*(Math.floor(Math.random()*20)+1)];
+	function loop(){
+		if(snake[0][0]==apple[0]&&snake[0][1]==apple[1]){
+			snake.push(snake[snake.length-1]);
+			apple=[20*(Math.floor(Math.random()*40)+1),20*(Math.floor(Math.random()*20)+1)];
+			points++;
+		}
+		for(i=snake.length-1;i>0;i--){
+				snake[i]=snake[i-1];
+		}
+		snake[0]=[dir[0]*20+snake[0][0],dir[1]*20+snake[0][1]];
+		c.clearRect(0,0,1000,500);
+		c.fillStyle="red";
+		c.fillRect(apple[0],apple[1],20,20);
+		c.fillStyle="green";
+		for(i=0;i<snake.length;i++){
+			c.fillRect(snake[i][0],snake[i][1],20,20);
+		}
+		c.font="20px Verdana"
+		c.fillText("Score:"+points.toString(),0,20);
+		for(i=1;i<snake.length;i++){
+			if(snake[0][0]==snake[i][0]&&snake[0][1]==snake[i][1]){
+				c.clearRect(0,0,1000,500);
+				c.fillStyle="red";
+				c.font="100px Verdana"
+				c.fillText("Game Over",250,250);
+				clearInterval(loop);
+			}	
+		}
+		if(snake[0][0]>1000||snake[0][0]<0||snake[0][1]>500||snake[0][1]<0){
+			c.clearRect(0,0,1000,500);
+			c.fillStyle="red";
+			c.font="100px Verdana"
+			c.fillText("Game Over",210,270);
+			clearInterval(loop);
+		}
+	}
+	document.onkeypress=function(event){
+		switch(event.which){
+			case 119:
+				dir[0]=0;
+				dir[1]=-1;
+				break;
+			case 97:
+				dir[0]=-1;
+				dir[1]=0;
+				break;
+			case 115:
+				dir[0]=0;
+				dir[1]=1;
+				break;
+			case 100:
+				dir[0]=1;
+				dir[1]=0;
+				break;
+		}
+	}
+	var loop=setInterval(loop,1000/fps);
+</script>
