@@ -14,7 +14,7 @@
 	var snake=[[20*(Math.floor(Math.random()*40)+1),20*(Math.floor(Math.random()*20)+1)]];
 	var dir=[0,0];
 	var points=0;
-	var fps=15;
+	var fps=60;
 	var apple=[20*(Math.floor(Math.random()*40)+1),20*(Math.floor(Math.random()*20)+1)];
 	function loop(){
 		if(snake[0][0]==apple[0]&&snake[0][1]==apple[1]){
@@ -25,7 +25,7 @@
 		for(i=snake.length-1;i>0;i--){
 				snake[i]=snake[i-1];
 		}
-		snake[0]=[dir[0]*20+snake[0][0],dir[1]*20+snake[0][1]];
+		snake[0]=[dir[0]*5+snake[0][0],dir[1]*5+snake[0][1]];
 		c.clearRect(0,0,1000,500);
 		c.fillStyle="red";
 		c.fillRect(apple[0],apple[1],20,20);
