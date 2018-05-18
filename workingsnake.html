@@ -42,8 +42,6 @@
 		for(i=0;i<snake.length;i++){
 			c.fillRect(snake[i][0]+1,snake[i][1]+1,18,18);
 		}
-		c.font="20px Verdana"
-		c.fillText("Score:"+points.toString(),0,20);
 		for(i=1;i<snake.length;i++){
 			if(snake[0][0]==snake[i][0]&&snake[0][1]==snake[i][1]){
 				reset();
@@ -52,6 +50,9 @@
 		if(snake[0][0]>1000||snake[0][0]<0||snake[0][1]>500||snake[0][1]<0){
 			reset();
 		}
+		c.font="20px Verdana";
+		c.fillStyle="#5578D6";
+		c.fillText("Score:"+points.toString(),0,20);
 	}
 	document.onkeypress=function(event){
 		switch(event.which){
