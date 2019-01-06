@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--Written by Ben Schreyer 2018-->
+<!--Set up 2d graphics window and input fields-->
+<head>
+	<style>
+		input{display:block;}
+		canvas{border-style:solid;}
+	</style>
+	<title>Projectile Motion with Drag Simulation</title>
+</head>
+<body>
+	<canvas id = "c" width = "1000" height = "500"></canvas>
+	</p>
+		Modeling of a spherical mass fired with an initial velocity at a set angle, the area is 5 meters high and 10 meters wide.Distance between one dot and the next is proportional to the velocity. Simulated using <a href=https://en.wikipedia.org/wiki/Euler_method>Euler's method</a>.
+	</p>
+	<label>Starting Velocity(meters per second)</label><input type = "number" id = "startingVelocity" step = ".001" value="8">
+	<label>Initial Height(meters)</label><input type = "number" id = "heightInitial" step = ".001" value="0">
+	<label>T delta(seconds)</label><input type = "number" id = "tD" step = ".000001" value=".01">
+	<label>Launch Angle(degrees)</label><input type = "number" id = "launchAngle" step = ".001" value="45">
+	<label>Mass(kilograms)</label><input type = "number" id = "mass" step = ".001" value=".04">
+	<label>Drag Constant(number)</label><input type = "number" id = "dragConstant" step = ".001" value=".002">
+	<label>Gravity(meters per seconds squared)</label><input type = "number" id = "gravity" step = ".001" value="9.8">
+	<button onclick = "simulate()">Simulate</button>
+	<button onclick = "reset()">Clear</button>
+</body>
+<script>
+//https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion
+//https://en.wikipedia.org/wiki/Euler_method
+//https://en.wikipedia.org/wiki/Drag_(physics)
+	var c = document.getElementById("c").getContext("2d"); //get access  to html canvas object
+	var vI; //initial velocity
+	var aI; //initial angle
+	var k; //drag constant
+	var m; //mass 
+	var g; //acceleration due to gravity
+	var vX; // velocity in horizontal direction
+	var x; // horizontal position
+	var vY; // velocity in vertical direction
+	var y; // vertical position
+	var t; // time
+	var tD = .0001; // distance in time between calculations
+	var interval; //store javascript interval object
+	var hI = 0; //initial height of object
+	// function that returns random rgb color
+	function randomRgb() {
+            var col =  "rgb("
+            + Math.floor(Math.random() * 255) + ","
+            + Math.floor(Math.random() * 255) + ","
+            + Math.floor(Math.random() * 255) + ")";
+            return col;
+        }
+	// clears 2d graphics window
+	function reset() {
+		c.clearRect(0,0,1000,1000);
+	}
+	// function that runs simulation
+	function simulate() {
+		//choose random color to show path of object
+		c.fillStyle = randomRgb();
+		// set variables to user inputted values, or just reset value 
+		vI = document.getElementById("startingVelocity").value;
+		aI = document.getElementById("launchAngle").value * 0.01745329;
+		m = document.getElementById("mass").value;
+		g = document.getElementById("gravity").value;
+		k = document.getElementById("dragConstant").value;
+		tD = document.getElementById("tD").value;
+		//hI = document.getElementById("heightInitial").value;
+		x = 0;
+		y = .001 + hI;
+		vX = Math.cos(aI) * vI;
+		vY = Math.sin(aI) * vI;
+		// set a loop that uses drag formula, newton's laws, and euler's method
+		// runs every 1000 * tD milliseconds
+		
+
+var start = (new Date).getTime();
+
+
+		interval = setInterval(function(){
+		// calculate new position and velocity for x and y axis
+		x = x + vX * tD;
+		vX = vX - (k * Math.pow(vX,2)) / (2 * m) * tD;
+		y = y + vY * tD;
+		vY = vY - g * tD - Math.abs(vY) / vY * (k * Math.pow(vY,2)) / (2 * m) * tD;
+		t = t + tD;
+		// draw position of object
+		c.beginPath();
+		c.arc(x*100,500-y*100,1,0,Math.PI*2,true);
+		c.fill();
+		// end simulation loop if object hits the ground
+			if(y < 0){
+				console.log(x);
+				console.log(y);
+				console.log(
+
+((new Date).getTime() - start) / 1000
+
+);
+				clearInterval(interval);
+				}
+		},tD * 1000)
+	}
+</script>
