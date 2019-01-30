@@ -19,7 +19,7 @@
 	<h2>Code and PID theory</h2>
 	<p>PID systems were first used for automatic steering of ships and are still used today. The three elements of a PID controller are propotional, integral, and derivative. Proportional correction is based on how much error in the system there is at the current time, so if the drone wishes to be level with the horizon but it is currently perpendicular to the horizon the proportional controller will respond with very strong output. The integral element of a PID loop is responsible for long term corrections such as a video camera on one side of the drone causing a slight imbalance of weight. By integrating the error(how many degrees are we from being level with the horizon) the drone can "learn" that it has a weight stuck to its side and will adjust its motor speeds to compensate. The derivative element takes the derivative of the error and uses it to create control output, if the derivative element of a PID loop is very high the controlled variable will be very difficult to change. This is because derivative of error is the rate of change of error, the derivative controller wants the rate of change of the error to be zero. In terms of a drone the error is the angular position, the derivative of position is velocity, therefore in a drone the derivative controller trys to minimize the speed of rotation the drone experiences.Each of these control elements has a tuning parameter that effects the elements power to effect the system. If these tuning parameters are set perfectly the drone should be almost perfectly stable in flight. In reality it takes alot of analysis and tuning to get a set of three parameters that give the drone ease of control and stability. This is why in the below video you can see the drone never fully compensates for imbalance and drifts heavily in the x and z directions. If the parameters were tuned correctly the drone should be able to hover in place with little change in position. The PID system was implemented using the C++ programming language in the arduino development environment.</p>
 	<video controls>
-		<source src="Arduino Drone non ideal tuning parameters.mp4" type="video/mp4"/>
+		<source src="Arduino Drone non ideal tuning parameters.mp4" type="video/mp4">
 	</video>
 	<p>Not perfect but stable tuning.</p>
 	<h2>Summary</h2>
@@ -28,9 +28,11 @@
 	<p>For the past five years i have been creating online demos of math concepts using Javascript control of an HTML canvas. These projects have helped me learn and cement understanding of math in the cartesian space.</p>
 	<h2>Projectile Physics Simulation</h2>
 	<p>After doing basic projectile motion in algebra class i was inspired to create a more complex and applicable model. In class we had assumed no drag forces and only acceleration due to gravity. I intended to calculate for drag force. At first i thought that a simple function could be used to derive the coordinates of a launched projectile. After doing some math on paper using newtons laws and the drag equation i realised that building said simulation would be more challengeing. Since acceleration is linked to velocity, velocity is linked to drag, and drag is linked to acceleration a circular dependance is present. This means only approximations using infinitecimals can be used to find the approximate position of the object as it flys through the air. By calculating new velocitys and forces every delta seconds an approximation of the objects position can be made, the smaller the time between calculations the more accurate the approximation.</p>
-	<iframe src = "myp2019" title = "Projectile Simulation">
-		NO SUPPORT
-	</iframe> 
+	<iframe src = "myp2019" title = "Projectile Simulation"></iframe> 
+	<h2>Newtonian Gravity Simulations</h2>
+	<p>This project was a precursor to the one listed above. About a year and a half earlyer i became interested in the math behind Newtonian Physics. Using the inverse square law and the same simulation on a small time scale to approximate positions of two objects i built two different web apps. Both had the same physics engine, but one employed png textureing to give a more dramatic effect. The physics engine keeps track of the object's mass, velocity, and distance from the other object to calculate the movements of the two objects towards each other due to gravity.</p>
+	<iframe src = "gravity" title = "Gravity Animation"></iframe> 
+	<iframe src = "gravitysim" title = "Gravity Simulation"></iframe> 
 	<nav>
 		<ul>
 			<li>
