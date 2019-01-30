@@ -81,6 +81,22 @@
 			text-indent:4vw;
 			display:block;
 		}
+		h2 + a{
+			font-family:'Barlow', sans-serif;;
+			font-size:1.2em;
+			width:50vw;
+			margin:auto;
+			text-indent:4vw;
+			display:block;
+		}
+		a + a{
+			font-family:'Barlow', sans-serif;;
+			font-size:1.2em;
+			width:50vw;
+			margin:auto;
+			text-indent:4vw;
+			display:block;
+		}
 		p{
 			font-family:'Barlow', sans-serif;;
 			font-size:1.2em;
