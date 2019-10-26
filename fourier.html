@@ -94,7 +94,7 @@
             }
             //c.fillRect(i,250 - accum,1,1);
             
-            data[i] = accum + Math.random() * parseInt(document.getElementById("noiseAmplitude").value);
+            data[i] = accum + (Math.random()-0.5) * parseInt(document.getElementById("noiseAmplitude").value);
 			c.lineTo(i,125-data[i]);
         }
         c.stroke();
