@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--Written by Ben Schreyer 2019-->
+<!--Set up 2d graphics window and input fields-->
+<head>
+    <style>
+        input{display:block;}
+        canvas{border-style:solid;}
+    </style>
+    <title>Fourier Series Proccessing Demo</title>
+</head>
+<body>
+    <canvas id = "c" width = "1000" height = "500"></canvas>
+    </p>
+        The Fourier Transform takes a function of amplitude over time and turns it into a function of power over frequency, it is usefull for filtering noise out of a noisey signal. The red wave is the user generated wave and the green wave is the proccessed wave.
+    </p>
+    <label>Input Waves Format:"[frequency,amplitude]"</label><input value = "[15,20][2,60][1,30]" type = "text" id = "waveParameters" >
+    <label>Noise Amplitude</label><input type = "number" id = "noiseAmplitude" step = "1" value="60">
+    <label>Minimum Amplitude Cut Off</label><input type = "number" id = "minimumAmplitudeCutOff" step = "1" value="4">
+    <label>Maximum Amplitude Cut Off</label><input type = "number" id = "maximumAmplitudeCutOff" step = "1" value="500">
+    <label>Minimum Frequency Cut Off</label><input type = "number" id = "minimumFrequencyCutOff" step = "1" value="0">
+    <label>Maximum Frequency Cut Off</label><input type = "number" id = "maximumFrequencyCutOff" step = "1" value="500">
+    <button onclick = "plot()">Plot</button>
+</body>
+<script>
+    var userAmplitudeCoefficents = new Array();
+    var userFrequencyCoefficents = new Array();
+    var data = new Array();
+
+    
+    var cosCoefficents = new Array(501);
+    var sinCoefficents = new Array(501);
+    var c = document.getElementById("c").getContext("2d"); //get access  to html canvas object
+
+    //parse input data
+    function fillUserData()
+    {
+        var waveCount = 0;
+    userAmplitudeCoefficents = new Array();
+        userFrequencyCoefficents = new Array();
+        for(var i = 0;i < document.getElementById("waveParameters").value.length;i++)
+        {
+            if(document.getElementById("waveParameters").value.charAt(i) == '[')
+            {
+                var charsInFreq = 0;
+                var charsInAmp = 0;
+                var toConvertFreq = "";
+                var toConvertAmp = "";
+                while(document.getElementById("waveParameters").value.charAt(1 + i + charsInFreq) != ',')
+                {
+                    toConvertFreq += document.getElementById("waveParameters").value.charAt(1 + i + charsInFreq);
+                    charsInFreq++;
+                }
+                while(document.getElementById("waveParameters").value.charAt(2 + i + charsInFreq + charsInAmp) != ']')
+                {
+                    toConvertAmp += document.getElementById("waveParameters").value.charAt(2 + i + charsInFreq + charsInAmp);
+                    charsInAmp++;
+                }
+                console.log("" + parseFloat(toConvertFreq) + "__" + parseFloat(toConvertAmp) );//+ document.getElementById("waveParameters").value.charAt(1 + i + charsInFreq + charsInAmp));
+        userFrequencyCoefficents[waveCount] =   parseFloat(toConvertFreq);
+        userAmplitudeCoefficents[waveCount] =   parseFloat(toConvertAmp);
+        waveCount++;
+        i = 1 + i + charsInFreq + charsInAmp;
+            }
+        }
+
+    
+    }
+
+    
+    function randomRgb() {
+            var col =  "rgb("
+            + Math.floor(Math.random() * 255) + ","
+            + Math.floor(Math.random() * 255) + ","
+            + Math.floor(Math.random() * 255) + ")";
+            return col;
+        }
+
+    function plot() {
+	cosCoefficents = new Array(501);
+    sinCoefficents = new Array(501);
+        c.clearRect(0,0,1000,1000);
+            fillUserData();
+        c.strokeStyle = "red";
+
+        c.beginPath();
+        c.moveTo(0,250);
+        for(var i = 0;i < 1000;i++)
+        {
+            
+            var accum = 0;
+            for(var j = 0;j < userAmplitudeCoefficents.length;j++)
+            {
+                accum +=userAmplitudeCoefficents[j] * Math.sin(2 * Math.PI / 1000 * i * userFrequencyCoefficents[j]);
+            }
+            //c.fillRect(i,250 - accum,1,1);
+            
+            data[i] = accum + Math.random() * parseInt(document.getElementById("noiseAmplitude").value);
+			c.lineTo(i,125-data[i]);
+        }
+        c.stroke();
+		for(var i = 0;i < 501;i++)
+		{
+			sinCoefficents[i] = 0;
+            cosCoefficents[i] = 0;
+		}
+		console.log(document.getElementById("minimumFrequencyCutOff").value);
+		console.log(document.getElementById("maximumFrequencyCutOff").value);
+        for(var f = parseInt(document.getElementById("minimumFrequencyCutOff").value);f < parseInt(document.getElementById("maximumFrequencyCutOff").value) + 1;f++)
+        {
+	
+            for(var i = 0;i < 1000;i++)
+            {
+                sinCoefficents[f] += Math.sin(f * 2 * Math.PI / 1000 * i) * data[i] / 500;
+                cosCoefficents[f] += Math.cos(f * 2 * Math.PI / 1000 * i) * data[i] / 500;
+                
+            }
+           if(sinCoefficents[f] < parseInt(document.getElementById("minimumAmplitudeCutOff").value) ||sinCoefficents[f] > parseInt(document.getElementById("maximumAmplitudeCutOff").value))
+			{
+				sinCoefficents[f] = 0;
+			}
+			if(cosCoefficents[f] < parseInt(document.getElementById("minimumAmplitudeCutOff").value) ||cosCoefficents[f] > parseInt(document.getElementById("maximumAmplitudeCutOff").value))
+			{
+				cosCoefficents[f] = 0;
+			}
+			
+        }
+		c.strokeStyle = "green";
+		c.beginPath();
+		c.moveTo(0,250);
+		 for(var i = 0;i < 1000;i++)
+        {
+			var accum = 0;
+			for(var j = 0;j < 501;j++)
+			{
+				accum += sinCoefficents[j] * Math.sin( 2 * Math.PI / 1000 * i * j) + cosCoefficents[j] * Math.cos( 2 * Math.PI / 1000 * i * j);
+			}
+			c.lineTo(i,375-accum);
+			
+		}
+		c.stroke();
+				console.log("hero brian!");
+		console.log(sinCoefficents);
+    }
+</script>
