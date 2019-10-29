@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	</head>
+	<body>
+		<p>Total Profit:</p>
+		<p id = "totalProfit">0.0</p>
+		<p>  </p>
+		<p>  </p>
+		
+		<script>
+		var myStocks = ["NVDA","KEYS","ON","TXN","ADI"];
+		for(var i = 0;i < myStocks.length;i++)
+		{
+fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="+ myStocks[i] +"&apikey=1XX8C841PTEPN0TF")
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+    // Work with JSON data here
+	var mine = [["NVDA",1,154.0],["KEYS",2,88.0],["ON",14,20.0],["TXN",2,132.0],["ADI",2,113.0]];
+    console.log(data["Global Quote"]["05. price"]);
+	var profit;
+	for(var i = 0;i < mine.length;i++)
+	{
+		if(mine[i][0] ==data["Global Quote"]["01. symbol"])
+		{
+			profit = mine[i][1] * (parseFloat(data["Global Quote"]["05. price"]) - mine[i][2]);
+			document.getElementById("totalProfit").innerHTML = (parseFloat(document.getElementById("totalProfit").innerHTML) + profit).toFixed(3);
+		}
+	}
+	var temp = document.createElement("p");
+	temp.innerHTML = data["Global Quote"]["01. symbol"]+" Current Price:  " + data["Global Quote"]["05. price"] + "   Profit:  " + profit.toFixed(3);
+	document.body.appendChild(temp);
+  })
+  .catch(err => {
+    // Do something for an error here
+  })
+}
+		</script>
+	</body>
+</html>
