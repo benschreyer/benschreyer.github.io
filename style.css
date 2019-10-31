@@ -89,7 +89,7 @@
 			text-indent:4vw;
 			display:block;
 		}
-		a + a{
+		body > a{
 			font-family:'Barlow', sans-serif;;
 			font-size:1.2em;
 			width:50vw;
