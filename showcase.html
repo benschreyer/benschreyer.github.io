@@ -30,8 +30,15 @@
 	<p>The project was finnished and worked with an overseas portforwarded connection, below are pictures of the UI which I did not spend much time on.</p>
 	<img src="scrumcapture.png"/>
 	<img src="scrumcapture2.png"/>
-	<h1>C++ Projects</h1>
-	<p>I have been using C++ to program Arduino boards since the 7th grade, I got more serious about using compiled language for high computation projects and decided to dive deeper into C++ as i was already somewhat familiar with it.</p>
+	<h1>C/C++ Projects</h1>
+	<p>I have been using C++ to program Arduino boards since the 7th grade, I got more serious about using compiled language for high computation projects and decided to dive deeper into C++ as I was already somewhat familiar with it. I generated the salt for the hash using a 32bit seed for the Fibonacci sequence.</p>
+	<h2>C++ OpenGL Sand Physics Simulator</h2>
+	<p>I decided I wanted to learn to do computing on GPU and found a <a href="https://web.engr.oregonstate.edu/~mjb/vulkan/Handouts/OpenglComputeShaders.1pp.pdf">powerpoint</a> that introduces the basics of OpenGL compute shaders. This project is in progress, currently rendering one million grains of sand and using Euler's method to simulate gravity. Currently I am implementing GPU radix sort to make collision detection sub O(n*n) to allow atleast 50,000 grain simulation with collision, hopefully one million in real time. Currently my parallel sorting is too slow but does work, in the below video particles are colored based off their index in a sorted array sorted by the Y axis.</p>
+	<a href="https://www.youtube.com/watch?v=cANG6Yxjy1A">WIP demo, I fixed the parallel sorting implementation so that it sorts all particles every frame</a>
+	<h2>C Bcrypt Hashing</h2>
+	<p>I wanted to learn more about the low level often obscured parts of computer security, so I implemented the Blowfish cipher to use to hash passwords. These algorithms are useful for databases where passwords are stored as storing passwords in plaintext is not safe.</p>
+	<a href= "https://www.youtube.com/watch?v=Vqg3J4zVdvQ">Youtube Demo</a>
+	<a href= "https://github.com/benschreyer/blowfishHasherC-/blob/master/bcryptnew.c">Github</a>
 	<h2>Newtonian Gravity Sandbox/Simulator</h2>
 	<p>This project came out of previous gravity simulations and reading about the <a href = "https://en.wikipedia.org/wiki/N-body_problem">n-body problem</a> using a provided graphics library I tested my C++ and physics knowledge by using <a href="https://en.wikipedia.org/wiki/Euler_method">Euler's method</a> to approximate the movement of the bodys and conservation of momentum to make collisions appear as if they were complete absorbtions(inelastic). This projects basically brought the projectile motion and gravity simulator together but in C++ for faster speed.</p>
 	<img src="2dgravitycapture.png"/>
