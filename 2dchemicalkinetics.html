@@ -469,7 +469,7 @@ document.getElementById("reactivityInput").value = parseFloat(this.children[4].i
 
         Partner.x += ((Atom.radius + Partner.radius) - dist) * 0.5 *(px - ax) /dist;
         Partner.y += ((Atom.radius + Partner.radius) - dist) * 0.5 *(py - ay) /dist;
-        if(Atom.bonds.length < Atom.valenceElectrons &&  Partner.bonds.length < Partner.valenceElectrons && Math.random() * 0.6 * (Atom.valenceElectrons + Partner.valenceElectrons)/7<reactivitySigmoid(Math.abs(Partner.reactivity - Atom.reactivity),1) *reactivitySigmoid(Atom.reactivity * 0.02,Partner.reactivity) && (Atom.weight + Partner.weight) * reactivitySigmoid(Atom.speed(),Partner.speed()) * reactivitySigmoid(Atom.reactivity,Partner.reactivity) > 5)
+        if(Atom.bonds.length < Atom.valenceElectrons &&  Partner.bonds.length < Partner.valenceElectrons && Math.random() * 0.6 * (Atom.valenceElectrons + Partner.valenceElectrons)/7<reactivitySigmoid(Math.abs(Partner.reactivity - Atom.reactivity),1) *reactivitySigmoid(Atom.reactivity * 0.02,Partner.reactivity) && (Atom.weight + Partner.weight) * reactivitySigmoid(Atom.speed(),Partner.speed()) * reactivitySigmoid(Atom.reactivity,Partner.reactivity) > 2.43)
         {
           //console.log("BOND");
           if(Atom.bonds.indexOf(Partner) < 0)
