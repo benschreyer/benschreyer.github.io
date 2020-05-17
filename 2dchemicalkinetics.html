@@ -358,6 +358,7 @@ document.getElementById("weightInput").value = parseFloat(this.children[2].inner
 document.getElementById("bondsInput").value = parseFloat(this.children[3].innerHTML);
 document.getElementById("reactivityInput").value = parseFloat(this.children[4].innerHTML);
 
+
 });
   }
   for(var i = 0;i < 50;i++)
@@ -392,7 +393,20 @@ document.getElementById("reactivityInput").value = parseFloat(this.children[4].i
                };
                if(inList.indexOf(document.getElementById("nameInput").value) < 0)
                {
-                 document.getElementsByTagName("table")[0].innerHTML = document.getElementsByTagName("table")[0].innerHTML + ("<tr>"+"<td>" +  String(document.getElementById("nameInput").value) +"</td>"+"<td>" +  String(document.getElementById("colorInput").value) +"</td>" +"<td>" +  String(document.getElementById("weightInput").value) + "</td>"+"<td>" +  String(document.getElementById("bondsInput").value) + "</td>" +"<td>" +  String(document.getElementById("reactivityInput").value) + "</td>"+ "</tr>");
+                 var d = document.createElement("tr");
+                 d.innerHTML = ("<td>" +  String(document.getElementById("nameInput").value) +"</td>"+"<td>" +  String(document.getElementById("colorInput").value) +"</td>" +"<td>" +  String(document.getElementById("weightInput").value) + "</td>"+"<td>" +  String(document.getElementById("bondsInput").value) + "</td>" +"<td>" +  String(document.getElementById("reactivityInput").value) + "</td>");
+                d.addEventListener("click", function(){
+                  console.log("test");
+            var tableRow = document.getElementsByTagName("tr");
+            document.getElementById("nameInput").value = this.children[0].innerHTML;
+            document.getElementById("colorInput").value = this.children[1].innerHTML;
+            document.getElementById("weightInput").value = parseFloat(this.children[2].innerHTML);
+            document.getElementById("bondsInput").value = parseFloat(this.children[3].innerHTML);
+            document.getElementById("reactivityInput").value = parseFloat(this.children[4].innerHTML);
+
+
+            });
+                 document.getElementsByTagName("tbody")[0].appendChild(d);
                }
 
          }
