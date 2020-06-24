@@ -185,5 +185,5 @@
 			height:10vw;
 		}
 		li .imgS{
-			display:inline;
+			display:inline-block;
 		}
