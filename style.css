@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow|Patua+One');
-		div{
+figure{
+	 display:inline-block;
+	 width:10vw;
+ }
+ figcaption{
+		display:inline-block;
+ }		
+div{
 			  display: block;
   margin-left: auto;
   margin-right: auto;
