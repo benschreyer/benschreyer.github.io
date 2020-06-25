@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow|Patua+One');
-figure{
-	 display:inline-block;
-	 width:10vw;
- }
- figcaption{
-		display:inline-block;
- }		
-div{
+		div{
 			  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 		}
+ figure{
+	 display:inline-block;
+	 width:10vw;
+	 height:20vw;
+ }
+ figcaption{
+		display:inline-block;
+ }
 		*{
 			margin:0;
 			padding:0;
@@ -143,6 +144,10 @@ div{
 			border-top-color:#0066ff;
 			border-bottom-color:#97f26a;
 			border-width:1vh;
+		}
+		.iframeS{
+			width:320;
+			height:180;
 		}
 		iframe{
 			display:block;
