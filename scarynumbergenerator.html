@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+	<style>
+	</style>
+	<title>Generate Scary Random Numbers</title>
+</head>
+<body>
+	<input type = "number" id="length">Length</input><br/>
+	<input type = "number" id="line">Lines</input><br/>
+	<input type = "checkbox" id="abc">Alpha</input><br/>
+	<input type = "checkbox" id="num">Decimal</input><br/>
+	<input type = "checkbox" id="sym">Symbols</input><br/>
+	<input type = "checkbox" id="hex">Hexadecimal(Hacker)</input><br/>
+	<input type = "checkbox" id="bin">Binary</input><br/>
+	<button onclick = "myfunction()">Generate</button>
+	<p id="generated"></p><br/><br/>
+	<script>
+		
+		function myfunction()
+		{
+		
+		var departmentSynonyms = ["DEPARTMENT","OFFICE","BUREAU","BOARD","AGENCY"];
+		var scaryDescriptors = ["CRYPTOGRAPHIC","CHAOTIC","FINANCIAL","CHEMICAL","ASSAULT","INFORMATIONAL","CRYOGENIC","DESTRUCTIVE","QUARTIC","TRIBLOMIC","TERRESTRIAL","ORGANIC","MODIFIABLE","GENERATIVE","BIOINFORMATIC","AZURIAL","STANDARD","AGRICULTURAL","INDUSTRIAL","NUCLEAR","PSYCHOLOGICAL","EXPRESSIVE","RADIATIVE","DISCRETE","DEEP SEA","ENDOTHERMIC","ANTARCTIC","FLUID","AERONAUTICAL","NAUTICAL","XENOTROPIC","TEMPORAL","ARTIFICIAL"];
+		var scrayNouns = ["WORD PROCCESSORS","ENGINES","SIMULATION","GREENERY","RENEWABLES","DEMOCRACY","ENTRENCHMENT","MANUFACTURING","ANALYSIS","MINING","CODES","OBSERVATION","SWITCHING DEVICES","STANDARDS","TRADE","FARMERS","COSMOLOGY","INTERPOLATION","IDENTITY","EXPLOSIVES","RELIGION","INDUCTION","ALLEGORY","COMPUTATION","EXPLORATION","INDECISION","WAVES","FREQUENCIES","INTERCEPTION","WARFARE","SCIENCE","WATER","MEDICINE","VETERANS","EMERGENCY","VIROLOGY","SPACE FLIGHT","ESPIONAGE","INTELLIGENCE","DEFENSE","ENGINEERING","COLLECTION","TELECOMMUNCATIONS","PUBLIC PROGRAMMING","CONCATENATION","REPLACEMENT","RESONANCE","RESISTANCE","THOUGHT","ELECTRIFICATION","COPRODUCTION"];
+		var abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		var num = ["1","2","3","4","5","6","7","8","9","0"];
+		var sym = ["!","@","#","$","%","^","&","*","(",")"];
+		var hex = ["1","2","3","4","5","6","7","8","9","0","A","B","C","D","E","F"];
+		var bin = ["0","1"]
+		var len = document.getElementById("length").value;
+		var lines = document.getElementById("line").value;
+		var use = [];
+		if(document.getElementById("abc").checked)
+		{
+			use = abc;
+		}
+		if(document.getElementById("num").checked)
+		{
+			use = use.concat(num);
+		}
+		if(document.getElementById("sym").checked)
+		{
+			use = use.concat(sym);
+		}
+		if(document.getElementById("hex").checked)
+		{
+			use = use.concat(hex);
+		}
+		if(document.getElementById("bin").checked)
+		{
+			use = use.concat(bin);
+		}
+		var lowerCase = true;
+		var text =document.getElementById("generated");
+		text.innerHTML="";
+		text.innerHTML+=":START ENCRYPTED MESSAGE:<br/>";
+		for(var i = 0;i < lines;i++)
+		{
+			for(var j = 0;j < len;j++)
+			{
+			//Math.floor(Math.random() * 10);     // returns a random integer from 0 to 9 
+			if(lowerCase)
+			{
+				text.innerHTML+= use[Math.floor(Math.random() * use.length)].toLowerCase();
+			}
+			else
+			{
+				text.innerHTML+= use[Math.floor(Math.random() * use.length)];
+			}
+			}
+			text.innerHTML+= "<br/>";
+		}
+		text.innerHTML+=":END ENCRYPTED MESSAGE:<br/>";
+		text.innerHTML+=":START PUBLIC KEY:<br/>";
+		for (var i =0; i < Math.floor(lines/3);i++)
+		{
+		for(var j = 0;j < len;j++)
+			{
+			//Math.floor(Math.random() * 10);     // returns a random integer from 0 to 9 
+			if(lowerCase)
+			{
+				text.innerHTML+= use[Math.floor(Math.random() * use.length)].toLowerCase();
+			}
+			else
+			{
+				text.innerHTML+= use[Math.floor(Math.random() * use.length)];
+			}
+				
+			}
+			text.innerHTML+= "<br/>";
+		}
+		text.innerHTML+=":END PUBLIC KEY:<br/>";
+		syn = departmentSynonyms[Math.floor(Math.random() * departmentSynonyms.length)];
+		des = scaryDescriptors[Math.floor(Math.random() * scaryDescriptors.length)];
+		nou = scrayNouns[Math.floor(Math.random() * scrayNouns.length)];
+		randomDate = 1930 + Math.floor(Math.random() * 130);
+		randomString = "";
+		for(var i =0; i < 4;i++)
+		{
+			randomString+= abc[Math.floor(Math.random() * abc.length)];
+		}
+		text.innerHTML+=syn[0] + des[0] + nou[0] + " " + syn + " OF " + des + " " + nou + " " + randomDate.toString() + " " + randomString + "<br/>" ;
+	}
+	</script>
+</body>
