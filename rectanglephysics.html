@@ -52,7 +52,8 @@
 			ctx.rotate(2 * 3.1415926535897932384626433832795028841971693993 - rect.theta);
 			ctx.translate(-1*(rect.x), -1*(rect.y));
 			ctx.fillStyle="blue";
-			ctx.fillRect(px,py,5,5);
+			ctx.arc(px, py, 5, 0, 2 * Math.PI);
+			ctx.fill();
 			ppx = Math.cos(rect.theta) * (px - rect.x) + Math.sin(rect.theta) * (py - rect.y);
 			ppy = Math.sin(-1 * rect.theta) * (px - rect.x) + Math.cos(rect.theta) * (py - rect.y);
 			//console.log(rect.w);
