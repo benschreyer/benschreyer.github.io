@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		canvas{border-style:solid}
+	</style>
+</head>
+
+<body>
+	<canvas width = 500 height = 500 id = "cv"></canvas>
+	<script>
+		ctx = document.getElementById("cv").getContext("2d");
+		var t = 0.0;
+		class RectBody 
+		{
+			constructor(height, width, x, y, mass)
+			{
+				this.height = height;
+				this.width = width;
+				this.x = x;
+				this.vx = 0;
+				this.y = y;
+				this.vy = 10;
+				this.theta = 0.0;
+				this.w = 0.0;
+				this.mass = mass;
+				this.moment_of_inertia = mass * (this.width * this.width + this.height * this.height)/12;
+			}
+			physics_step(dt)
+			{
+				this.x += dt * this.vx;
+				this.y += dt * this.vy;
+				this.theta += dt * this.w;
+				this.vy += 10 * dt;
+				
+			}
+			
+		}
+		rectColor = "red";
+		rect = new RectBody(100, 100, 290, 120, 422.2);
+		var px= 250;
+		var py = 350;
+		var deltaTime = 0.007;
+		setInterval(function(){
+			ctx.clearRect(0,0,500,500);
+			
+			//canvas.save();
+			ctx.translate(rect.x , rect.y );
+			ctx.rotate(rect.theta); 
+			ctx.fillStyle = rectColor;
+			
+			ctx.fillRect(0-rect.width/2,0- rect.height/2,rect.width, rect.height);
+			ctx.rotate(2 * 3.1415926535897932384626433832795028841971693993 - rect.theta);
+			ctx.translate(-1*(rect.x), -1*(rect.y));
+			ctx.fillStyle="blue";
+			ctx.fillRect(px,py,5,5);
+			ppx = Math.cos(rect.theta) * (px - rect.x) + Math.sin(rect.theta) * (py - rect.y);
+			ppy = Math.sin(-1 * rect.theta) * (px - rect.x) + Math.cos(rect.theta) * (py - rect.y);
+			//console.log(rect.w);
+			
+			if(Math.abs(ppy) < rect.height/2 && Math.abs(ppx) < rect.width/2 )
+			{
+			var corrective_vx = -1*rect.w * (py - rect.y);
+			var corrective_vy = 1*rect.w * (px - rect.x);
+			var yforce =   -1 * ((rect.vy  + corrective_vy)*16000 +10 * rect.mass);
+			var xforce =   -1 * (rect.vx + corrective_vx)*16000 ;//+ 10 * rect.mass * (py - rect.x) /  Math.pow((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y),0.5);
+			var fdc =(xforce*(px - rect.x) + yforce*(py - rect.y))/ ((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y));
+			/*if(px < rect.x)
+			{
+				xforce*=-1;
+			}
+			if(py < rect.y)
+			{
+				yforce*=-1;
+			}*/
+				//rect.x -= deltaTime * rect.vx;
+				//rect.y -= deltaTime * rect.vy;
+				rectColor = "green";
+			
+				rect.w += (yforce * (px - rect.x) - xforce * (py - rect.y))/rect.moment_of_inertia * deltaTime;
+				rect.vy += (py - rect.y)  * fdc * deltaTime/rect.mass;
+				rect.vx += (px - rect.x)  * fdc * deltaTime /rect.mass;
+				console.log((px - rect.x)  * fdc * deltaTime /rect.mass);
+				
+			}
+			else
+			{
+			rectColor = "red";
+			}
+			
+			rect.physics_step(deltaTime);
+			//if();
+			//console.log(rect.theta);
+			//console.log(rect.y);
+		},10);
+	</script>
+</body>
