@@ -8,20 +8,25 @@
 <body>
 	<canvas width = 500 height = 500 id = "cv"></canvas>
 	<script>
+	//grab a reference to the canvas
 		ctx = document.getElementById("cv").getContext("2d");
-		var t = 0.0;
+	//what is the downward acceleration to gravity (pixels/second^2)
+		var gravity = 10;
+	//timestep for simulation
+		var deltaTime = 0.02;
+	//all the data about a rectangular rigidbody stored in a class, plus ease of use method for basic timestep
 		class RectBody 
 		{
-			constructor(height, width, x, y, mass)
+			constructor(height, width, x, y,vx,vy ,w,theta,mass)
 			{
 				this.height = height;
 				this.width = width;
 				this.x = x;
-				this.vx = 0;
+				this.vx = vx;
 				this.y = y;
-				this.vy = 10;
-				this.theta = 0.0;
-				this.w = 0.0;
+				this.vy = vy;
+				this.theta = theta;
+				this.w = w;
 				this.mass = mass;
 				this.moment_of_inertia = mass * (this.width * this.width + this.height * this.height)/12;
 			}
@@ -30,68 +35,98 @@
 				this.x += dt * this.vx;
 				this.y += dt * this.vy;
 				this.theta += dt * this.w;
-				this.vy += 10 * dt;
+				this.vy += gravity * dt;
 				
 			}
 			
 		}
+		//color to draw rect as
 		rectColor = "red";
-		rect = new RectBody(100, 100, 290, 120, 422.2);
+		//constructor(height, width, x, y,vx,vy ,w,theta,mass)
+			
+		rect = new RectBody(130, 170, 790, 140,-75,0,1.32,1.3, 422.2);
+		//position of the collideable peg(blue)
 		var px= 250;
 		var py = 350;
-		var deltaTime = 0.007;
+		//simulation loop for simulation, run it up to 100 times a second (10ms period)
 		setInterval(function(){
+		//clear screen
 			ctx.clearRect(0,0,500,500);
 			
-			//canvas.save();
+			//draw our rectangle in the right place
 			ctx.translate(rect.x , rect.y );
 			ctx.rotate(rect.theta); 
 			ctx.fillStyle = rectColor;
 			
+		
 			ctx.fillRect(0-rect.width/2,0- rect.height/2,rect.width, rect.height);
 			ctx.rotate(2 * 3.1415926535897932384626433832795028841971693993 - rect.theta);
 			ctx.translate(-1*(rect.x), -1*(rect.y));
+			//draw the static peg
 			ctx.fillStyle="blue";
 			ctx.arc(px, py, 5, 0, 2 * Math.PI);
 			ctx.fill();
+			//find the coordinates of the peg in a coordinate system where the box's center of mass is 0,0 and the x axis is parallel to the width of the box
 			ppx = Math.cos(rect.theta) * (px - rect.x) + Math.sin(rect.theta) * (py - rect.y);
 			ppy = Math.sin(-1 * rect.theta) * (px - rect.x) + Math.cos(rect.theta) * (py - rect.y);
-			//console.log(rect.w);
 			
+			//collision check box and peg in coordinates based off of box since it is easyer
 			if(Math.abs(ppy) < rect.height/2 && Math.abs(ppx) < rect.width/2 )
 			{
-			var corrective_vx = -1*rect.w * (py - rect.y);
-			var corrective_vy = 1*rect.w * (px - rect.x);
-			var yforce =   -1 * ((rect.vy  + corrective_vy)*16000 +10 * rect.mass);
-			var xforce =   -1 * (rect.vx + corrective_vx)*16000 ;//+ 10 * rect.mass * (py - rect.x) /  Math.pow((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y),0.5);
-			var fdc =(xforce*(px - rect.x) + yforce*(py - rect.y))/ ((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y));
-			/*if(px < rect.x)
-			{
-				xforce*=-1;
-			}
-			if(py < rect.y)
-			{
-				yforce*=-1;
-			}*/
-				//rect.x -= deltaTime * rect.vx;
-				//rect.y -= deltaTime * rect.vy;
+			//find the angle of the normal to the surface of the box that the peg collided with
+				var nang =0;
+					if(Math.abs(ppy) - rect.height/2 < Math.abs(ppx) - rect.width/2)
+					{
+						if(ppy > 0)
+						{
+							nang = rect.theta - Math.PI/2;
+						}
+						else
+						{
+							nang = rect.theta + Math.PI/2;
+						}
+					}
+					else
+					{					
+						if(ppx > 0)
+						{
+							nang = rect.theta;
+						}
+						else
+						{
+							nang = rect.theta - Math.PI;
+						}
+					}
+					//equations derived from rotation of coordinate frame and how a normal force works(tangential into x,y universal coordinates plus normal into x,y universal coordinates)
+				var gx = -gravity * Math.sin(2*nang);
+				var gy = gravity * Math.cos(2*nang);
+				// the point collided with inherits the overall rect's x and y linear velocity's but also needs a velocity change as the rectangle is rotating
+				var vx_rotation = -1*rect.w * (py - rect.y);
+				var vy_rotation = 1*rect.w * (px - rect.x);
+				// there is a force on the point of collision due to gravity and it's normal and tangent forces and I also added a force due to the velocity of the collision which is just 1000x the net velocity
+				var yforce =   -1 * ((rect.vy + vy_rotation)*10000 + gy * rect.mass);
+				var xforce =   -1 * ((rect.vx + vx_rotation)*10000 + gx * rect.mass);//+ gravity * rect.mass * (py - rect.x) /  Math.pow((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y),0.5);
+				//the force vector dot the line to center of mass, lets us determine how much of the force will change linear momentum(dot product)
+				var fdc =(xforce*(px - rect.x) + yforce*(py - rect.y))/ ((px - rect.x)*(px - rect.x) + (py - rect.y)*(py - rect.y));
+
+				//turn the cube green to show collision
 				rectColor = "green";
-			
+				//torque over moment of inertia integrated with time, the torque is the radial vector from the center of mass to the collision cross the force behind the collision(cross product)
 				rect.w += (yforce * (px - rect.x) - xforce * (py - rect.y))/rect.moment_of_inertia * deltaTime;
+				
+				//the force component that is linear split into x and y components and applied to the body
 				rect.vy += (py - rect.y)  * fdc * deltaTime/rect.mass;
 				rect.vx += (px - rect.x)  * fdc * deltaTime /rect.mass;
-				console.log((px - rect.x)  * fdc * deltaTime /rect.mass);
+				
 				
 			}
 			else
 			{
 			rectColor = "red";
 			}
-			
+			//physics step for gravity and velocities of the rectangle.
 			rect.physics_step(deltaTime);
-			//if();
-			//console.log(rect.theta);
-			//console.log(rect.y);
+		
 		},10);
 	</script>
 </body>
