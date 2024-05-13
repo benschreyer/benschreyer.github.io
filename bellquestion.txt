@@ -1,0 +1,90 @@
+I am considering homework problems, trying to understand the solutions. For quantum teleportation, I am realizing, that we still need to classically send information, so it is still limited by the speed of light, is this correct?
+
+
+
+
+
+Secondly what is flawed about the calculation by the following approach, to send a classical bit instantly:
+
+
+
+
+
+Share a bell pair between A,B, and A promises to B "by t = T, you will be able to measure your qubit to gain information"
+
+
+
+
+
+|11> + |00>
+
+
+
+
+
+A has some information (say the results of the superbowl) they want to share with B, at a known time between both parties (end of the game).
+
+
+
+
+
+After A knows their bit of information, they prepare a state in |0> or |1>, the bit they wish to encode x.
+
+
+
+
+
+A applies the following to their qubits CZ (|x>|bell_pair_a>), where CZ is controled Z.
+
+
+
+
+
+Case: |x> = 0:
+
+
+
+
+
+State is |0>|00> +|0> |11>, since the CZ did nothing
+
+
+
+
+
+Case |x> = 1
+
+
+
+
+
+State is |1>|00> - |1>|11> ( CZ flipped the sign)
+
+
+
+
+
+Now clearly B can measure their qubit in the +/- basis,
+
+
+and will gain the bit x, all they have to do is wait long enough that they know A has done the promised operation to their shared pair
+
+
+
+
+
+B(x = 1) <-> B measures |0> -  |1> = |->
+
+
+B(x = 0) <-> B measures |0>  + |1> = |+>
+
+
+
+
+
+
+
+
+
+
+
