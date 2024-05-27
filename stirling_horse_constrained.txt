@@ -1,0 +1,23 @@
+I did the calculations and checked them once,
+
+B_3, and B_4 I did by hand, then by OEIS, the coefficients are the signed Stirling numbers of the first kind, the numerator coefficients is what is interesting, the denominator is always just a factorial. Stirling 1st kind makes sense because when subtracting off all the ways we could have NOT(x1<x2<x3<...), we are counting all the ways we can place x1,x2,x2...  at least some equal (as to violate x1<x2<x3<x4....):
+Stirling numbers can be defined as the number of permutations on elements with cycles, so I think n elements in the number of restricted variables x1,x2,...xn, and k cycles is the number of equivalence classes once restrictions are in place (ie x1 = x2, x3= x5...).
+B_k = | NOT (H_x1 = x2 OR H_x1 = x3 OR H_x1 = ...) |/ k! (divide out permutations of the imposed ordering)
+
+Certainly (calculated by hand):
+
+3! * B_3(n) = H(n) - 3H(n-1) + 2H(n - 2)
+4! * B_4(n) = H(n) - 6H(n - 1) + 11 H(n - 2) - 6H(n-3)
+Yet to prove:
+k! B_k(n) = s(k,k) H(n - 2) + s(k, k - 1) H (n - 1)... s(k,0) H(0)
+
+uses n differently then the nth Horse no:
+
+H(a) is with  s(n, n) n cycles (n equivalence classes) between the constrained variables x1,x2,x3...xn under equalityH(a - 1) is with s(n, n - 1) n - 1 cycles (n - 1 equivalence classes) between the constrained variables x1,x2,x3...xn under equalityH(a - 2) is with s(n, n - 2), n - 2 cycles (n - 2 equivalence classes) between the constrained variables x1,x2,x3...xn under equality
+The signed nature is I think because when we permute x1<x2 to x1>x2, this should not be counted, it should be subtracted, because it is against the constraint? More generally that if the number of equivalence classes does not agree with the number of < relations, this is removed. The signed nature can also be explained by looking at it from the perspective of set union, where the intersection of the two unioned sets must be subtracted off giving the flipping signs.
+
+I am yet to formally prove the fact that B_k has coefficients a_m = s(k, m), that is the next step. I am at least certain I could prove that B_k(n) only depends linearly on H(n), H(n - 1)... H(n - 2)... H(n - k + 1). Proving the value as Stirling numbers will probably be connecting the properties of the binary operator =, equivalence classes, to the formulation of Stirling numbers. Then thinking about why the signed numbers. I will also write down for evaluating SET-AND and SET-OR for horse numbers restricted with arbitrary constraint, not just partial ordering.
+
+I did a partial check for atleast up to k=300 by computer checking the following B_k (k) = 1.
+This makes me appreciate OEIS more, I am not sure anyone but a math PhD would have a chance to recognize this, and never as quickly as OEIS can match it.
+The other thing from reading on OEIS is I think if you want to prove combinatorics isn't useless, just try to revert to groups and matrices.
