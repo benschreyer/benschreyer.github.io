@@ -1,0 +1,379 @@
+\documentclass[12pt,reqno]{article}
+
+\usepackage[usenames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{graphicx}
+
+\usepackage[colorlinks=true,
+linkcolor=webgreen,
+filecolor=webbrown,
+citecolor=webgreen]{hyperref}
+
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+\usepackage{color}
+\usepackage{fullpage}
+\usepackage{float}
+
+
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{epsf}
+\usepackage{breakurl}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
+
+\newcommand{\seqnum}[1]{\href{https://oeis.org/#1}{\rm \underline{#1}}}
+\def\modd#1 #2{#1\ \mbox{\rm (mod}\ #2\mbox{\rm )}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Leg}[3][]{\left(\frac{#2\mathstrut}{#3}\right)_{\mkern-6mu#1}}
+
+
+\begin{document}
+
+\begin{center}
+\epsfxsize=4in
+\leavevmode
+
+\end{center}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{center}
+\vskip 1cm{\LARGE\bf Rigged Horse Numbers and Modular Periodicity\\
+\vskip .1in
+}
+\vskip 1cm
+\large
+Benjamin Schreyer\\
+\href{mailto: benontheplanet@gmail.com}{\tt benontheplanet@gmail.com} \\
+
+\end{center}
+
+\vskip .2 in
+
+\begin{abstract}
+{\em The horse numbers, Fubini numbers, or Ordered Bell numbers}  count the total weak orderings ($<, >, =$) on a set of elements. The {\em $r$-Fubini numbers} count orderings of elements such that a subset are in a specific strong ordering relative to each other. The $r$-Fubini numbers are expressed as a sum of horse numbers with weightings given by {\em the signed Stirling numbers of the first kind}.  Considering the case of fully ordered constraint, a recurrence for the horse numbers is determined. The new recurrence is used to connect the sequence of counts of strong and weak orderings by a matrix transformation. Finally the Horse numbers are proven to be eventually periodic modulo any natural number by invoking the eventual modular periodicity of the \textit{Stirling numbers of the second kind} in their first argument. The linear expression for the $r$-Fubini numbers in terms of the horse numbers immediately admits a proof of their modular periodicity modulo any natural number.
+\end{abstract}
+
+
+\section{Introduction}
+
+The cardinality of totally ordered sets is considered. No incomparable element is allowed or calculated for.
+
+\subsection{Orderings weak and strong}
+If the finite set is $\{d,e,a,b,c \ldots\}$, then a weak ordering may be applied with symbols $<, >, =$, such as $a < d < e \cdots $, or $(c = d) < a \cdots$. The number of such orderings are known as the horse numbers, Fubini numbers, or ordered Bell numbers $H(n)$. A horse race is a combinatorial setting where ties may occur, hence horse numbers. A strong ordering is any weak ordering that contains no equalities. There are always atleast as many weak orderings as strong orderings.
+
+\subsection{Stirling numbers of the first and second kind}\label{sec:stirling}\label{int:matinv}\label{int:eveper}
+Given in a table of identities in {\em Concrete Mathematics} \cite{cc:cm}, the signed Stirling numbers of the first kind $s(l, m)$ give the coefficient on $x^{m}$ in the falling factorial $(x)_{l}$ where $(x)_{l} = (x) (x - 1) \cdots (x -l + 1)$. The formula is $(x)_{l} = \sum_{m = 0}^{l} s(l,m)x^{m}$. Usually these numbers appear when counting permutations with a set number of cycles. Here they appear for $r$-Fubini numbers, and a recurrence for the ordered Bell numbers.
+
+The Stirling numbers of the second kind are here introduced given two properties that are useful. Usually these numbers may count the number of partitions of a set. Stated in \textit{Advanced combinatorics} \cite{cc:matrix} if $s(n,k)$ the signed Stirling numbers of the first kind and $S(n,k)$ are treated as matrices (even infinite matrices, for $n,k \geq 0$) with rows indexed by $n$ and columns by $k$, then they are inverses of each other. Denote such matrices $M_{s}$ for the signed Stirling numbers of the first kind, and $M_{S}$ for the Stirling numbers of the second kind. Put in an equation:
+\begin{align}
+	M_{s} M_{S} = M_{S} M_{s} = I \label{eqn:invs}
+\end{align}
+
+The second important property of $S(n,k)$ are that they are eventually periodic in $n$ modulus any finite natural number  for fixed $k$. This may be shown using the following formula lifted from the paper \textit{Stirling matrix via Pascal matrix} \cite{cc:relation}.
+\begin{align}
+	S(n,k) = \frac{1}{(k - 1)!} \sum_{t = 1}^{k}(-1)^{k-t}\binom{k-1}{t-1} t^{n-1}
+\end{align}
+The only dependence on $n$ for fixed $k$ is a finite summation of power functions of $n$. The individual power functions must repeat because integers under multiplication and modulus a fixed integer form a finite group. The finite sum of these eventually periodic sequences weighted with constants is then also eventually periodic in the same modular equivalence. Therefore modulus any finite natural number the sum will be eventually periodic in $n$.
+
+\subsection{$r$-Fubini numbers or rigged weak orderings}
+
+
+$r$-Fubini numbers $H_{r}$ count weak orderings such that $r$ elements of the finite set are chosen, and constrained to follow a specific strong ordering. If the elements under total weak ordering are $x_{1}, x_{2}, \ldots, x_{n}$, such a strong ordering could be $x_{1} < x_{2} < \cdots < x_{r}$. These numbers have been studied by R\'acz who derived an expression in terms of the $r$-Lah numbers and factorials \cite{cc:racz} for them. Asgari and Jahangiri \cite{cc:asgari} proved the eventual periodicity of the $r$-Fubini numbers modulo any natural number, which will also be shown here more briefly using the new expression for $r$-Fubini numbers, and eventual periodicity of $H(n)$. Asgari and Jahangiri also gave calculations for the period.
+\subsection{Summation, shifting, and scaling of eventually periodic functions}
+\begin{proposition}
+
+Consider $g(n)~{} (mod ~{} K)$, where $K$ is a natural number, formed by scaling an eventually periodic function $f$ with period $r$  (i.e. $f(n)~{}  = f(n + r)~{} (mod ~{} K)$) by factor $m$. The function $g(n) = mf(n)$ will also be eventually periodic modulo $K$. 
+\begin{proof}
+
+\begin{align}
+	g(n +r) =m f(n + r)~{} (mod ~{} K)\\
+	g(n +r) = m f(n)~{} (mod ~{} K) \\
+	g(n +r)	= g(n) ~{} (mod ~{} K)
+\end{align}
+
+\end{proof}
+	
+\end{proposition}
+\begin{proposition}
+
+Consider $f(n)$ formed by summing two eventually period functions modulo $K$ $h(n), g(n)$ with period $x$ and $y$ respectively. $f(n) = h(n) + g(n) ~{}(mod ~{} K)$ will also be eventually periodic.
+\begin{proof}
+\begin{align}
+	f(n + xy) = h(n + xy) + g(n + xy)~{} (mod ~{} K)\\
+	f(n + xy) = h(n) + g(n) ~{} (mod ~{} K)\\
+	f(n +xy)= f(n)~{} (mod ~{} K)
+\end{align}
+\end{proof}
+
+
+
+\end{proposition}
+\begin{proposition}
+	If $f(n) ~{} (mod ~{} K) $is eventually periodic, then so is $f(n + w) ~{} (mod ~{} K)$ where $w$ is a constant integer. 
+	
+	\begin{proof}
+	For clarity let $n + w = m$.
+		\begin{align}
+			f(n + w) ~{}  = f(m) ~{}(mod ~{} K)\\
+			f(m + r) = f(m) ~{}(mod ~{} K)\\
+			f(n + w + r) = f(n + w) ~{}(mod ~{} K)
+		\end{align}
+		
+	\end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+\subsection{Shift operators}
+
+Shift operators are used to formally show the number of orderings where $x_{1}, x_{2}, \ldots, x_{k}$ have a strong but not specific ordering can be expressed using $s(l,m)$,  the signed Stirling numbers of the first kind. 
+
+Consider expressing the counting in terms of the left, right shift operators $T_{+}, T_{-}$ on the sequence $H(0), H(1), \ldots, H(n + k)$. On a sequence $F(n)$ shift operators are defined such that $T_{+} F(n) = F(n + 1)$ and $T_{-}F(n) = F(n - 1)$. Importantly $T_{+}T_{-} = T_{-}T_{+} = I$ ($I$ being the identity operation), so any product of shift operators may be abbreviated $T_{a}$ where $a$ is an integer and $T_{a}F(n) = F(n + a)$ so long as $F(n + a)$ is in the domain. In the case $F(n + a)$ is not part of the finite sequence $T_{a}F(n) = 0$. The shift operator is linear and commutes with integers acting as scalars.
+
+\section{General rigged orderings} \label{ls}
+
+\subsection{Strong ordering of $r \leq n$ Elements}
+\begin{theorem}\label{thm:2}
+
+\begin{align}
+	H_{r} = \frac{1}{r!} \sum_{j=0}^{r} s(r,r-j) H(n - j) 
+\end{align}
+
+
+\begin{proof}
+First remove or ignore the counting of $r$ elements to be counted in strong ordering $x_{1}, x_{2}, x_{3}, \ldots, x_{r}$: $T_{- r}H(n)$.
+
+\begin{itemize}
+	\item{Reintroduce the element $x_{1}$ by increasing the argument to $H(n - r + 1)$, then subtract any case where $x_{1} \in \emptyset$. That is $(T_{+})T_{-r}H(n)$ }
+	\item{Reintroduce the element $x_{2}$ by increasing the argument, then subtract any case where $x_{2} \in\{x_{1}\}$. That is $(T_{+} - 1I)T_{- r}T_{+}H(n)$ }
+	\item{Reintroduce the element $x_{3}$ by increasing the argument, then subtract any case where $x_{3} \in \{x_{1}, x_{2}\}$. That is $(T_{+} - 2I)(T_{+} - 1I)T_{+}T_{-r}H(n)$ }
+	\item{$\cdots$}
+	\item{Reintroduce the element $x_{k}$ by increasing the argument, then subtract any case where $x_{k} \in \{x_{1}, x_{2}, \ldots ,x_{r - 1}\}$. The total is $(T_{+} - (r - 1)I)\cdots(T_{+} - 2I)(T_{+} - 1I)T_{+}T_{-r}H(n)$.}
+\end{itemize}
+Now all elements are counted, but those from $x_{1}, x_{2}, \ldots, x_{r}$ have had mutual equalities removed from the count, such that any counted ordering has $x_{1}, x_{2}, \ldots, x_{r}$ strongly ordered. The falling factorial appears with argument $T_{+}$ and $r$ terms. 
+
+\begin{align}
+	(T_{+} - (r - 1)I)\cdots(T_{+} - 2I)(T_{+} - 1I)T_{+} T_{-r}H(n)
+\end{align}
+
+
+By commuting shift operators and integer scalars, the count is:
+\begin{align}
+	T_{-r}(T_{+})_{r} H(n)\label{eqn:fall}
+\end{align}
+Where $(x)_{n}$ is the falling factorial of x with $n$ terms. As discussed in the introduction \ref{sec:stirling}, Stirling number $s(n,a)$ expresses the integer coefficient of $x^{a}$ in $(x)_{n}$. The count is now expressed as follows.
+\begin{align}
+	T_{-r} [\sum_{j = 0}^{r} s(r,j)T_{j}] H(n)
+\end{align}
+The formula applies because $T_{a}$ commute and repetition of $T_{a}$ may be treated as would exponentiation of a polynomial variable. The effect of the shift operators is now trivial upon $H(n)$.
+
+\begin{align}
+	\sum_{j = 0}^{r} s(k,j) H(n - r + j)
+\end{align}
+By re-indexing the sum.
+\begin{align}
+	\sum_{j = 0}^{r} s(k,r - j) H(n - j)
+\end{align}
+
+The number of arrangements of $x_{1}, x_{2}, \ldots, x_{n}$ where $x_{1}, x_{2}, \ldots, x_{r}$ are strongly ordered have been counted. Given the strongly ordered subset count it is straightforward  to determine $H_{r}(n)$ by dividing by $r!$, since there are $k!$ total strong orderings of $x_{1}, x_{2}, \ldots, x_{r}$, and only one is desired per the definition of $H_{r}(n)$.
+
+\begin{align}
+	H_{r} (n) = \frac{1}{r!}\sum_{j = 0}^{r} s(r,r - j) H(n - j) \nonumber
+\end{align}
+
+
+
+\end{proof}
+
+\end{theorem}
+
+
+An interesting notation is given using the relation between falling factorials and binomial coefficients on the equation for strong orderings (\ref{eqn:fall}) after it has been divided by $r!$ to pick a specific ordering.
+\begin{align}
+	H_{r} (n)  &= \frac{T_{+} (T_{+} - 1) \cdots (T_{+} - r + 1)}{r!} H(n - r)\\
+	H_{r} (n)  &= \binom{T_{+}}{r} H(n - r) \label{eqn:binom}
+\end{align}
+
+It appears that the fully removed operator $\binom{T_{+}}{r} T_{-r}$ could be used to create counting for multiple strongly ordered subsets. For brevity this will not be explored. Additionally different counting such as using $\binom{a}{b}$ could be used to do more complicated counting than subtracting out equalities as is given above.
+
+
+
+
+\section{Horse numbers}
+\subsection{A complete alternating recurrence}
+\begin{corollary}\label{cor:rec}
+
+
+\begin{align}
+	H(n) = n!  - \sum_{j = 1}^{n} s(n,n - j) H(n - j)
+\end{align}
+\begin{proof}
+$H_{n}(n) = 1$, if the set is $x_{1}, x_{2},\ldots, x_{n}$, and $x_{1} < x_{2} < \cdots < x_{n}$ the number of arrangements is $1$. It follows from the first theorem (\ref{thm:2}) :
+\begin{align}
+	1  = \frac{1}{n!}\sum_{j = 0}^{n} s(n,n - j) H(n - j)
+\end{align}
+Which may be rearranged after the substitution $s(n,n) = 1$ to the result.
+\begin{align}
+	H(n)  = n! - \sum_{j = 1}^{n} s(n,n - j) H(n - j) \nonumber
+\end{align}
+\end{proof}
+\end{corollary}
+
+\section{Linear transformation between strong and weak orderings, modular periodicity}
+\subsection{Linear transformation}
+\begin{theorem}
+	The infinite vectors $f_{n}$ and $H_{n}$ with entries $n!$ and $H(n)$ respectively obey the following relation with other symbols as defined in the introduction \ref{int:matinv}:
+	\begin{align}
+		M_{S}f_{n} = H_{n}\label{eqn:mat1}\\
+		M_{s}H_{n} = f_{n}
+	\end{align}
+
+	\begin{proof}
+		The above corollary \ref{cor:rec} may be written as a matrix  equation by moving the sum to the the left hand side (note $s(n,n)$ is $1$, and $s(n,k)$ is zero for $k > n$). An infinite lower triangular matrix as $s(n,k)$ multiplied on a vector may be expressed as exactly the sum derived by including $s(n,n)H(n)$.
+		\begin{align}
+			M_{s}H_{n} = f_{n} \nonumber
+		\end{align}
+		The first relation then immediately follows given the inverse of $M_{s}$ is $M_{S}$ (\ref{eqn:invs}).
+		\begin{align}
+			M_{S}M_{s}H_{n} = M_{S} f_{n}\\
+			H_{n} = M_{S} f_{n} \nonumber
+		\end{align}
+	\end{proof}
+\end{theorem}
+In light of this theorem, the Stirling numbers of the first kind could be appropriately labeled as the weak Stirling numbers (those that act naturally on $H_{n}$). The Stirling numbers of the second kind are then the strong Stirling numbers.
+\subsection{Modular periodicity}
+\begin{proposition}
+The Horse numbers $H(n)$ are eventually periodic modulo any natural number modular $K$.
+
+\begin{proof}
+	Consider the existing relation (\ref{eqn:mat1}).
+	\begin{align}
+		H_{n} = M_{S}f_{n}\nonumber
+	\end{align}
+	The entries of $f_{n}$ are simply $n!$. Consider this relation modulus some natural number $K$. The vector entries $f_{n}$ are certainly zero for $n \geq K$ in the modular equivalence $K$.
+	
+	Therefore modulus $K$ the relation stands in a simplified form:
+	
+	\begin{align}
+		H(n) = \sum_{k = 0}^{K - 1} S(n,k) k! ~{} (mod ~{} K)
+	\end{align}
+
+	For all $n \geq 0$, $H(n)~{} (mod ~{} K)$ is written as a finite sum of $S(n,k)$ with coefficients independent of $n$. Each $S(n,k) ~{} (mod~{} K)$ for $0 \leq k \leq K$ is eventually periodic in $n$ for any $k$ as was shown in the introduction \ref{int:eveper}. The finite sum of such eventually periodic functions scaled by constants is also eventually periodic, as was also shown in the introduction \ref{int:eveper}, this eventually periodic sum gives $H(n)~{} (mod ~{} K)$ .
+
+\end{proof}
+\end{proposition}
+
+\begin{corollary}
+	$H_{r}(n)$ the $r$-Fubini numbers are eventually periodic modulus any integer $K$.
+	
+	\begin{proof}
+		According to Theorem \ref{thm:2} $H_{r}(n)$ may be written as a sum of horse numbers with argument $n - c_{j}$ where $c_{j}$ are constant, it follows by the properties of eventual periodicity under sums and scaling \ref{int:eveper} that $H_{r}(n) ~{}(mod ~{} K)$ is eventually periodic.
+	\end{proof} 
+\end{corollary}
+
+\section{Remarks}
+
+
+\subsection{Infinite matrices}
+The matrix entries $M_{s}$ form Sierpi\'nski triangles sometimes with defects when plotted modulus some natural number.
+
+The diagonals of the infinite matrix $M_{s}$ appear to be eventually periodic modulus any natural number.
+\subsection{Shift operators}
+It is interesting to consider where else in combinatorics the shift operator may yield simplified understanding or proofs. Interpreting the binomial form (\ref{eqn:binom}) is expected to be useful to this end. 
+
+
+
+
+
+
+\section{Acknowledgments}
+\begin{enumerate}
+	\item{William Gasarch, bringing the rigged horse race problem to my attention, and providing critique of proofs, writing, and format.}
+	\item{Kevin Flanary, critical feedback on writing.}
+	\item{Nathan Constantinides, for checking the single strong ordering case $H_{2}(n)$ numerically for small $n$.}
+	\item{Elan Fisher, for engaging discussion.}
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+\bibitem{cc:cm}R. L. Graham, D. E. Knuth, and O. Patashnik, Concrete Mathematics, Second Edition, {\em Pearson Education\/} (1994), 259-264. 
+
+
+\bibitem{cc:matrix}L. Comtet, Advanced combinatorics; the art of finite and infinite expansions, {\em Dordrecht, Boston, D. Reidel Pub. Co\/} (1974), 144.
+
+\bibitem{cc:relation} G. Cheon, J. Kim, Stirling matrix via Pascal matrix, {\em Linear Algebra and its Applications} \textbf{329} (2001), 49-59.
+
+\bibitem{cc:relation} G. R\'acz, The $r$-Fubini-Lah numbers and polynomials, {\em Australasian Journal of Combinatorics} \textbf{78} (2020), 145-153.
+
+\bibitem{cc:relation} A. A. Asgari, M. Jahangiri, On the Periodicity Problem for Residual $r$-Fubini Sequences, {\em Journal of Integer Sequences} \textbf{21} (2018), article 18.4.5.
+
+
+\end{thebibliography}
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent 2020 {\it Mathematics Subject Classification}: 06A05.
+
+\noindent \emph{Keywords:} modular periodicity, shift operator, ordered Bell numbers, Fubini numbers, r-Fubini numbers,  Stirling numbers of the first kind, Stirling numbers of the second kind, weak ordering, constrained weak ordering. 
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent (Concerned with sequence
+\seqnum{A000670}, \seqnum{A008277}, 
+\seqnum{A051141}, 
+\seqnum{A232473},
+and \seqnum{A232474}.)
+
+\bigskip
+
+\bigskip
+
+
+\noindent
+
+
+\bigskip
+
+\bigskip
+
+\noindent
+
+\vskip .1in
+
+
+\end{document}
+
+                                                                                
+

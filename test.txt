@@ -1,0 +1,394 @@
+\documentclass[12pt,reqno]{article}
+
+\usepackage[usenames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{graphicx}
+
+\usepackage[colorlinks=true,
+linkcolor=webgreen,
+filecolor=webbrown,
+citecolor=webgreen]{hyperref}
+
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+\usepackage{color}
+\usepackage{fullpage}
+\usepackage{float}
+
+
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{epsf}
+\usepackage{breakurl}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
+
+\newcommand{\seqnum}[1]{\href{https://oeis.org/#1}{\rm \underline{#1}}}
+\def\modd#1 #2{#1\ \mbox{\rm (mod}\ #2\mbox{\rm )}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Leg}[3][]{\left(\frac{#2\mathstrut}{#3}\right)_{\mkern-6mu#1}}
+
+
+\begin{document}
+
+\begin{center}
+\epsfxsize=4in
+\leavevmode
+
+\end{center}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{center}
+\vskip 1cm{\LARGE\bf Horse Numbers, Rigging, and Scheduling\\
+\vskip .1in
+}
+\vskip 1cm
+\large
+Benjamin Schreyer\\
+\href{mailto: benontheplanet@gmail.com}{\tt benontheplanet@gmail.com} \\
+
+\end{center}
+
+\vskip .2 in
+
+\begin{abstract}
+{\em The Horse numbers, Fubini numbers, or Ordered Bell numbers}  count the total weak orderings ($<, >, =$) on a set of $n$ elements. {\em Constrained Horse numbers} count orderings of $n$ elements such that $k$ are in a specific strong ordering relative to each other. Constrained Horse numbers are expressed as a sum of Horse numbers with weightings given by {\em the signed Stirling numbers of the first kind}.  Considering the case of fully ordered constraint, a recurrence for the Horse numbers is determined. Additionally, cardinality for unions and intersections of strong ordering or equivalence constraints on subsets is given. An application to enumeration of constrained task schedules is finally exemplified.
+\end{abstract}
+
+
+\section{Introduction}
+
+The cardinality of totally ordered sets is considered. No incomparable element is allowed or calculated for.
+
+\subsection{Total Weak Ordering}
+If the finite set is $\{d,e,a,b,c \ldots\}$, then a weak ordering may be applied with symbols $<, >, =$, such as $a < d < e \cdots $, or $(c = d) < a \cdots$. The number of such orderings are known as the Horse numbers, Fubini numbers, or ordered Bell numbers $H(n)$. A horse race is a combinatorial setting where ties may occur, hence Horse numbers. Fubini's name is associated in relation to his theorem for integrals, where integrals over two variables may be taken as one (analogues to equality ordering), or performed separately in some strong order. Counting the ways to perform these integrals is an equivalent problem.
+\subsection{Total Strong Ordering}
+A strong ordering is a permutation of a set of elements. Permutation in the sense of only allowing the relations $<$ and $>$. Strong orderings are counted by the factorial.
+
+\subsection{Stirling Numbers of the First Kind}\label{sec:stirling}
+Given in a table of identities in {\em Concrete Mathematics} \cite{cc:cm}, the signed Stirling numbers of the first kind $s(l, m)$ give the coefficient on $x^{m}$ in the falling factorial $(x)_{l}$ where $(x)_{l} = (x) (x - 1) \cdots (x -l + 1)$. The formula is $(x)_{l} = \sum_{m = 0}^{l} s(l,m)x^{m}$. Usually, as is the case in {\em Concrete Mathematics} \cite{cc:cm} these numbers appear when counting permutations with a set number of cycles.
+
+\subsection{Constrained or Rigged Weak Ordering}
+
+
+Constrained Horse numbers $B_{k}(n)$ count weak orderings such that $k$ elements of the finite set are chosen, and constrained to follow a specific strong ordering. If the elements under total weak ordering are $x_{1}, x_{2}, \ldots, x_{n}$, such a strong ordering could be $x_{1} < x_{2} < \cdots < x_{k}$. Another type of constraint may be imposed by equality, for example $x_{1} = x_{2} = \cdots = x_{k}$. Both of these types will be counted, with equality being the easier case.
+
+
+
+
+\subsection{Example by Hand: Single Strong Ordering}
+
+The case $B_{2}(n)$ is given a short expression in terms of the Horse numbers. $B_{2}(n)$ counts when $x_{1} < x_{2}$, or any other two elements are placed in a specific strong ordering, and provides inspiration for the generalized case.
+
+
+\begin{theorem}\label{thm:1}
+	
+
+\begin{align}
+	B_{2}(n) = \frac{H(n) - H(n-1)}{2}
+\end{align}
+\begin{proof}
+The expression $[x_{1} < x_{2}] \lor [x_{1} > x_{2}] \lor [x_{1} = x_{2}]$ is a tautology on over any set ${x_{1}, x_{2}\ldots x_{n}}$ that is weakly ordered, so long as $n \geq 2$. The three conditions are mutually exclusive, so their union has cardinality that may be expressed as a sum of each of the three relation's cardinalities. Consider each case:
+\begin{itemize}
+	\item{Count for $x_{1} < x_{2}$, this is $B_{2}(n)$.}
+	\item{Count for $x_{1} = x_{2}$, this is $H(n - 1)$.}
+	\item{Count for $x_{1} > x_{2}$, this is $B_{2}(n)$ again by symmetry.}
+\end{itemize}
+The sum of these counts is $H(n)$ because the expression as a whole is a tautology.
+\begin{align}
+	H(n) = 2B_{2}(n) + H(n - 1)
+\end{align}
+Finally as was to be shown
+\begin{align}
+	B_{2}(n) = \frac{H(n) - H(n-1)}{2} \nonumber
+\end{align}
+\end{proof}
+
+\end{theorem}
+\subsection{Shift Operators}
+
+Shift operators are used to formally show the number of orderings where $x_{1}, x_{2}, \ldots, x_{k}$ have a strong but not specific ordering can be expressed using $s(l,m)$,  the Stirling numbers of the first kind. 
+
+Consider expressing the counting in terms of the left, right shift operators $T_{+}, T_{-}$ on the sequence $H(0), H(1), \ldots, H(n + k)$. Shift operators are defined such that $T_{+} F(n) = F(n + 1)$ and $T_{-}F(n) = F(n - 1)$. Importantly $T_{+}T_{-} = T_{-}T_{+} = I$ ($I$ being the identity operation), so any product of shift operators may be abbreviated $T_{a}$ where $a$ is an integer and $T_{a}F(n) = F(n + a)$ so long as $F(n + a)$ is in the domain. In the case $F(n + a)$ is not part of the finite sequence $T_{a}F(n) = 0$. The shift operator is linear and commutes with integers acting as scalars.
+
+\section{General Rigged Orderings} \label{ls}
+
+\subsection{Strong Ordering of $k \leq n$ Elements}
+\begin{theorem}\label{thm:2}
+
+\begin{align}
+	B_{k}(n) = \frac{1}{k!} \sum_{j=0}^{k} s(k,k-j) H(n - j) 
+\end{align}
+
+
+\begin{proof}
+First remove or ignore the counting of $k$ elements to be counted in strong ordering $x_{1}, x_{2}, x_{3}, \ldots, x_{k}$: $T_{- k}H(n)$.
+
+\begin{itemize}
+	\item{Reintroduce the element $x_{1}$ by increasing the argument to $H(n - k + 1)$, then subtract any case where $x_{1} \in \emptyset$. That is $(T_{+})T_{-k}H(n)$ }
+	\item{Reintroduce the element $x_{2}$ by increasing the argument, then subtract any case where $x_{2} \in\{x_{1}\}$. That is $(T_{+} - 1I)T_{- k}T_{+}H(n)$ }
+	\item{Reintroduce the element $x_{3}$ by increasing the argument, then subtract any case where $x_{3} \in \{x_{1}, x_{2}\}$. That is $(T_{+} - 2I)(T_{+} - 1I)T_{+}T_{-k}H(n)$ }
+	\item{$\cdots$}
+	\item{Reintroduce the element $x_{k}$ by increasing the argument, then subtract any case where $x_{k} \in \{x_{1}, x_{2}, \ldots ,x_{k - 1}\}$. The total is $(T_{+} - (k - 1)I)\cdots(T_{+} - 2I)(T_{+} - 1I)T_{+}T_{-k}H(n)$.}
+\end{itemize}
+Now all elements are counted, but those from $x_{1}, x_{2}, \ldots, x_{k}$ have had mutual equalities removed from the count, such that any counted ordering has $x_{1}, x_{2}, \ldots, x_{k}$ strongly ordered. The falling factorial appears with argument $T_{+}$ and $k$ terms. 
+
+\begin{align}
+	(T_{+} - (k - 1)I)\cdots(T_{+} - 2I)(T_{+} - 1I)T_{+} T_{-k}H(n)
+\end{align}
+
+
+By commuting shift operators and integer scalars, the count is:
+\begin{align}
+	T_{-k}(T_{+})_{k} H(n)\label{eqn:fall}
+\end{align}
+Where $(x)_{n}$ is the falling factorial of x with $n$ terms. As discussed in the introduction \ref{sec:stirling}, Stirling number $s(n,a)$ expresses the integer coefficient of $x^{a}$ in $(x)_{n}$. The count is now expressed as follows.
+\begin{align}
+	T_{-k} [\sum_{j = 0}^{k} s(k,j)T_{j}] H(n)
+\end{align}
+The formula applies because $T_{a}$ commute and repetition of $T_{a}$ may be treated as would exponentiation of a polynomial variable. The effect of the shift operators is now trivial upon $H(n)$.
+
+\begin{align}
+	\sum_{j = 0}^{k} s(k,j) H(n - k + j)
+\end{align}
+By reindexing the sum.
+\begin{align}
+	\sum_{j = 0}^{k} s(k,k - j) H(n - j)
+\end{align}
+
+The number of arrangements of $x_{1}, x_{2}, \ldots, x_{n}$ where $x_{1}, x_{2}, \ldots, x_{k}$ are strongly ordered have been counted. Given the strongly ordered subset count it is straightforward  to determine $B_{k}(n)$ by dividing by $k!$, since there are $k!$ total strong orderings of $x_{1}, x_{2}, \ldots, x_{n}$, and only one is desired per the definition of $B_{k}(n)$.
+
+\begin{align}
+	B_{k} (n) = \frac{1}{k!}\sum_{j = 0}^{k} s(k,k - j) H(n - j) \nonumber
+\end{align}
+
+
+
+\end{proof}
+Note constrained Horse numbers may be efficiently computed by applying a discrete Fourier domain convolution. This is the case because $B_{k}(n)$ has an expression as a weighted sum of $H(m)$, $m \leq n$, with constant coefficients for fixed $k$.
+\end{theorem}
+
+
+Another interesting form is given using the relation between falling factorials and binomial coefficients on the equation for strong orderings (\ref{eqn:fall}) after it has been divided by $k!$ to pick a specific ordering.
+\begin{align}
+	B_{k}(n) &= \frac{T_{+} (T_{+} - 1) \cdots (T_{+} - k + 1)}{k!} H(n - k)\\
+	B_{k}(n) &= \frac{T_{+}!}{k! (T_{+} - k)!} H(n - k)\\
+	B_{k}(n) &= \binom{T_{+}}{k} H(n - k) \label{eqn:binom}
+\end{align}
+
+If a useful interpretation can be given to this expression, it should be undertaken, to qualify the meaning of division here. There is ambiguity between inversion of a linear operation or division in the sense of counting.
+
+\subsection{Union and Intersection of Disjoint Strong Constraints}
+\begin{corollary}
+
+The cardinality of weakly ordered arrangements of the elements $x_{1}, x_{2}, \ldots, x_{n}$ under condition $[x_{a_{1}} < x_{a_{1} + 1} < \cdots < x_{a_{1} + A_{1} - 1}] \land [x_{a_{2}} < x_{a_{2} + 1} < \cdots < x_{a_{2} + A_{2} - 1}] \land \cdots \land [x_{a_{N}} < x_{a_{N} + 1} < \cdots < x_{a_{N} + A_{N} - 1} ]$ of $N$ specifically strongly ordered subsets of sizes $A_{1}, A_{2}, \ldots, A_{N}$  where $\{x_{a_{j}} , x_{a_{j} + 1}, \ldots , x_{a_{j} + A_{j} - 1}\}  \cap\{x_{a_{i}} , x_{a_{i} + 1} , \ldots , x_{a_{i} + A_{i} - 1}\}  = \emptyset  ~{}\forall i,j$:
+\begin{align}
+	\frac{1}{A_{1}! A_{2}! \cdots A_{N}!}[(T_{+})_{A_{1}}(T_{+})_{A_{2}}\cdots (T_{+})_{A_{N}}]T_{-(\sum_{j = 1}^{N} A_{j})}H(n)\label{eqn:general}
+\end{align}
+
+This is equivalent to the following by the notation used earlier (\ref{eqn:binom}).
+\begin{align}
+	[\prod_{j=1}^{N}\binom{T_{+}}{A_{j}} ]H(n -\sum_{j = 1}^{N} A_{j})\label{eqn:general}
+\end{align}
+\begin{proof}
+
+The procedure of the proof of the second theorem (\ref{thm:2}) may be repeated for any amount of disjoint subsets which are strongly ordered, because counting only involves the number of elements from the respective subset already reintroduced, and the total count. The subsets being disjoint allows this to remain trivial. An additional provision of allowing $H(0), H(1) ,\ldots, H(n + (\sum_{j = 1}^{N} A_{j}))$ under shift operation is needed. Factorial division for the size of each strongly ordered subset again accomplishes specifying a strong ordering, rather than over counting all strong orderings of a subset. The resulting formula is given above (\ref{eqn:general}).
+\end{proof}
+The cardinality for union of conditions immediately follows by the inclusion-exclusion principle.
+\end{corollary}
+
+\subsection{Union and Intersection of Equality Constraints}
+\begin{corollary}
+
+
+The first theorem exemplified that dealing with conditions $x_{a} = x_{b}$ is a simple reduction in the effective number of elements being ordered, for $x_{a} = x_{b}$, $a \neq b$, this is $H(n - 1)$. For an intersection of such equalities, the number of elements that are removed from counting is determined by counting the number of equivalence classes introduced by the intersection of equality constraints, $k$, the cardinality is then $H(n + k - m)$, where $m$ is the number of elements included non-trivially ($x_{a} = x_{a}$ is trivial) in the intersection of equality constraints. The cardinality for union of equality constraints is easily expressed via the inclusion-exclusion principle.
+
+\end{corollary}
+
+
+\section{Horse Numbers}
+\subsection{A Complete Alternating Recurrence}
+\begin{corollary}
+
+
+\begin{align}
+	H(n) = n!  - \sum_{j = 1}^{n} s(n,n - j) H(n - j)
+\end{align}
+\begin{proof}
+$B_{n}(n) = 1$, if the set is $x_{1}, x_{2},\ldots, x_{n}$, and $x_{1} < x_{2} < \cdots < x_{n}$ the number of arrangements is $1$. It follows from the second theorem (\ref{thm:2}) :
+\begin{align}
+	1  = \frac{1}{n!}\sum_{j = 0}^{n} s(n,n - j) H(n - j)
+\end{align}
+Which may be rearranged after the substitution $s(n,n) = 1$ to the result.
+\begin{align}
+	H(n)  = n! - \sum_{j = 1}^{n} s(n,n - j) H(n - j) \nonumber
+\end{align}
+\end{proof}
+\end{corollary}
+\section{Remarks}
+Problems of optimal job shop scheduling or production lines may be more easily characterized in the size of their search space using the given mathematical tools. Consider scheduling $n$ jobs, to be executed in a large shop, but $g$ sub-groupings of the jobs have a required strong order. For example testing of an engine may only occur after some fuel pumps are repaired, this is a strong ordering in the schedule. Other shop tasks allow for equality ordering, say painting a chassis or producing spare parts, these tasks are independent and may be scheduled to co-occur, not having any prerequisite steps at the model scale considered.
+\subsection{Worked Example: Finite Factory Schedule}
+Production problems are usually interesting in the case where the production capacity per time step $m$ is smaller than the demanded total production over multiple time steps. Consider a factory floor with $n$ tasks to complete, each taking up one of the $m$ sets of equipment available. Not only can only up to $m$ tasks be completed at once, but additionally a group of tasks of size $k$ must occur in a strictly enforced order as described above. A computer scientist is trying to optimize the factory schedule, and wants to know the number of possible scheduling plans they must search through. Translation operator based counting is extremely useful.
+
+First count the production plans where there are at most $m$ tasks executed in a given time step. To do this, remove all tasks, then add them back one by one, subtracting those in which a variable takes on equality (same time step scheduling) with more than $m - 1$ other task. Tasks are weakly ordered because they may be co-occurring, so the base counting function is $H(n)$.
+
+Remove all tasks:
+
+\begin{align}
+	T_{-n}H(n)
+\end{align}
+
+Add back the first $m$ tasks:
+
+\begin{align}
+	T_{m} T_{-n} H(n)
+\end{align}
+
+\begin{itemize}
+\item{
+
+Now add back the $m + 1$'th task, and subtract out any case where it is equal to $m$ or more tasks.
+
+\begin{align}
+	(T_{+} - \binom{m}{m})T_{m} T_{-n} H(n)
+\end{align}}
+\item{
+Now add back the $m + 2$'th, subtracting out cases where it is equal to at least $m$ tasks.
+
+
+\begin{align}
+	(T_{+} - \binom{m + 1}{m} - \binom{m + 1}{m + 1})(T_{+} - \binom{m }{m })T_{m} T_{-n} H(n)
+\end{align}}
+
+
+\item{$\cdots$}
+
+
+\item{
+	Now add back the $n$'th, removing cases where it is equal to $m$ or more tasks.
+	\begin{align}
+	(T_{+} - [\sum_{l = m}^{n - 1}\binom{j}{l}]) \cdots (T_{+} - \binom{m + 1}{m} - \binom{m + 1}{m + 1})(T_{+} - \binom{m}{m })T_{m} T_{-n} H(n)
+\end{align}}
+
+\end{itemize}
+The partial sums of binomial coefficients are clearly involved, to count ways which the introduced task may violate the $m$ co-scheduling limit. Following this pattern to its conclusion:
+
+\begin{align}
+	[\prod_{j = m}^{n - 1} (T_{+} - [2^{j} - \sum_{l = 0}^{m - 1}\binom{j}{l}])] H(m) \label{eqn:grouplimit}
+\end{align}
+
+Note the sum of binomial coefficients has been written in complement form to reduce computations, since $m$ is considered smaller than $n$ in interesting cases.
+
+For use in more general cases this could also be written as follows. 
+
+\begin{align}
+	\hat{C}_{n,m} H(n)
+\end{align}
+
+Where $\hat{C}_{n,m}$ is defined to match the first expression (\ref{eqn:grouplimit}).
+
+\begin{align}
+	\hat{C}_{n, m} = [\prod_{j = m}^{n - 1} (T_{+} - [2^{j} - \sum_{l = 0}^{m - 1}\binom{j}{l}])] T_{m - n}
+\end{align}
+
+Now the counting operator for a constrained subset of $k$ is applied, which has been given in a less expanded form before in the formal section (\ref{eqn:binom}) as: 
+
+\begin{align}
+	\hat{B}_{k} = \binom{T_{+}}{k} T_{-k}
+\end{align}
+
+Note both of these operators contain $T_{0}$, this should not be surprising since at some point, all manipulated elements should be included, when dealing with these two constraints.
+
+The total count of possible schedules for a factory limited to $m$ concurrent units, with a required strong ordering on $k$ specified tasks out of $n$ total tasks is then:
+
+\begin{align}
+	\hat{B}_{k} \hat{C}_{n,m} H(n)
+\end{align}
+
+A clean result for a nontrivial constraint that may have sent some straight to taking the term enumerative combinatorics too seriously. Clean means computation and size of both operators are calculations on polynomials of length order $n$. Multiplication may be expedited by discrete Fourier methods for polynomial multiplication. Adding more strongly ordered tasks of length $k', k'' \ldots$ is trivial by using more $\hat{B}_{k'}, \hat{B}_{k''} \ldots $ operators. Processes that are dependent on two or more steps may be added, as all inequalities may be broken into unions and intersections of pairwise relations, but this can require the inclusion-exclusion principle.
+
+
+\subsection{Tools Developed}
+It is interesting to consider where else in combinatorics the shift operator may yield simplified understanding or proofs. Interpreting the binomial form (\ref{eqn:binom}) is expected to be useful to this end. Here the treatment revealed an over arching structure allowed the existing counting properties of $H(n)$ to be utilized, without considering a recurrence or explicit definition for $H(n)$. More concretely, $B_{k}(n)$ has some recurrence that could be shown to yield the second theorem (\ref{thm:2}), by defining $B_{k}(n)$ then making a connection to a recurrence for $H(n)$ or $s(l,m)$. The possibility to make adjustments to counting allowed by the shift operator means the second theorem (\ref{thm:2}) is revealed without such low level considerations. 
+
+The shift operator also allows for certain recurrences such as the discrete coupled oscillators problem of physics to be solved as a linear differential equation after separation of variables is done. This occurs by letting the shift operator act like a differential operator on indices $n$ as $T_{\pm} = e^{\pm \frac{d}{dn}}$, revealing the dispersion relation of the system. Are there interesting combinatorial problems that can be solved with tools of differential equations by such an abuse of notation?
+
+
+
+
+\section{Acknowledgments}
+\begin{enumerate}
+	\item{William Gasarch, bringing the rigged horse race problem to my attention, and providing critique of proofs, writing, and format.}
+	\item{Nathan Constantinides, for checking the single strong ordering case \ref{thm:1} numerically for small $n$.}
+	\item{Elan Fisher, discussion of applications.}
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+\bibitem{cc:cm}Ronald L. Graham, Donald E. Knuth, and Oren Patashnik, Concrete Mathematics, Second Edition, {\em Pearson Education\/} (1994), 259-264.
+
+
+\end{thebibliography}
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent 2020 {\it Mathematics Subject Classification}: 06A05.
+
+\noindent \emph{Keywords:} Horse numbers, Ordered Bell numbers, Fubini numbers,  Stirling numbers of the first kind, Weak ordering, Constrained weak ordering, Scheduling. 
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent (Concerned with sequence
+\seqnum{A000670}.)
+
+\bigskip
+%\hrule
+\bigskip
+
+
+\noindent
+%Received ---- --  20--;
+%%revised versions received  ---y 1- 20--; ---- -8 20--; 
+%---- -- 20--.
+%Published in {\it Journal of Integer Sequences}, -----y -- 20--.
+
+\bigskip
+%\hrule
+\bigskip
+
+\noindent
+%Return to
+%\htmladdnormallink{Journal of Integer Sequences home page}{https://cs.uwaterloo.ca/journals/JIS/}.
+\vskip .1in
+
+
+\end{document}
+
+                                                                                
+
