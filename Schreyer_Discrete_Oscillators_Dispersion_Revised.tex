@@ -1,0 +1,281 @@
+\documentclass{article}   
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{ amssymb }
+\usepackage{amsmath}
+\pagestyle{fancy}
+\usepackage{mathtools}
+
+\graphicspath{ {./} }
+%dot product dot
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{amsmath,amsthm,amssymb}
+\begin{document}
+	\section*{Solving Physical Systems of Identically Coupled Oscillators}
+	Benjamin Schreyer 2023
+	
+	\subsection{The Problem}
+	Consider a system of masses, connected by identical springs, that can extend for any discrete number of masses. Each mass (except for the end masses) follows
+	Newton's second law in the form:
+	\begin{align}
+			m\frac{dx_{n}^{2}}{dt^{2}} &= k(x_{n - 1} - 2x_{n} + x_{n + 1})	
+	\end{align}
+		\begin{figure}[H]
+		\includegraphics[scale=0.13]{fig_system.jpeg.jpeg}
+	\end{figure}
+	
+	
+	\subsection{Tools Needed}
+	
+	\paragraph{}
+	To solve the discrete oscillators problem, some significant mathematical machinery is required if one does not simply want to accept solutions that are found by others before you, then plugging them in and checking them, or plugging in experimentally observed solutions and seeing they solve the system. I will introduce these hopefully not too jarring tools first before applying them.
+	\subsection{Euler Polynomial Method for Differential Equations}
+	\paragraph{}
+	Differential equations are often of the form: $\sum_{n=0}^{\infty}a_{n}\frac{d^{n}y}{dx^{n}} = 0$, with $a_{n}$ arbitrary and finite (probably also converging to zero, go ask a mathematician). Euler found a smart way to solve these equations by assuming solutions of the form $Ze^{rx}$ where $Z$ is any complex number and $r$ is a specific complex number that solves the differential equation. Plugging in Euler's guess we find a polynomial replaces our differential equation.
+	\begin{align}
+		\sum_{n=0}^{\infty}a_{n}\frac{d^{n}y}{dx^{n}} &= 0\\
+		\sum_{n=0}^{\infty}a_{n}\frac{d^{n}(Ze^{rx})}{dx^{n}} &= 0\\
+		Z\sum_{n=0}^{\infty}a_{n}\frac{d^{n}(e^{rx})}{dx^{n}} &= 0\\
+		Z\sum_{n=0}^{\infty}a_{n}e^{rx}r^{n}&= 0
+	\end{align}
+	\paragraph{}
+	Note this DE must hold for $x = 0$, so we can get rid of the $e^{rx}$ term by letting it become $1$ by setting $x = 0$. $Z$ can also be divided out, since $\frac{0}{Z}$ is still $0$. We find a polynomial in $r$ and the coefficients of our DE that give us $r$ to solve the DE. In summary if we can solve the a polynomial, we can solve its corresponding linear differential equation.
+	\begin{align}
+		\sum_{n=0}^{\infty}a_{n}r^{n}&= 0
+	\end{align}
+
+	\paragraph{}
+	Try to use Euler's polynomial method on the follow DE, i.e. find solutions of the form $Ae^{rx}$ that solve the equation. Think about how to interpret the $0'th$ derivative.
+	\begin{align}
+		3\frac{d^{2}y}{dx^{2}} - \frac{dy}{dx} + 11\frac{d^{0}y}{dx^{0}} &= 0 
+	\end{align}
+\subsection{Separation of Variables}
+	\paragraph{}
+	A classic and widely applied method for solving partial differential equations. Common examples of its use in physics include the wave equation (EM waves, sound waves, the string of a guitar), and solutions of the Schrödinger equation (simple well systems, the Hydrogen atom, and more).
+	
+	\paragraph{}
+	Here we need to use a two variable separation. In other words we will have two dependent variables in a PDE we come upon while approaching the problem. Below I will demonstrate the solution to the heat equation, in the hopes that this will refresh you or give you an example of the methods use while referencing a specific source.
+	
+	Start with the 1d heat equation, giving us two variables $x,t$ and the following relation:
+	\begin{align}
+		\frac{du}{dt} &= \frac{d^{2}u}{dx^{2}}\\
+	\end{align}
+	\paragraph{}
+	Now we assume a solution of the form $u = S(x) \cdot C(t)$ essentially assuming that the solution is the product of two functions that only depend on each variable respectively. There may be mathematical reasons to expect this solution to work just based on our governing PDE, but it is above me to explain them. For our purposes we are just happy that it works. We now plug in our assumed solution, then divide so that we have functions of only $t$ on the LHS, and only $x$ on the RHS.
+	
+	\begin{align}
+		\frac{dC(t)}{dt} \cdot S(x) &= \frac{d^{2}S(x)}{dx^{2}} \cdot C(t)\\
+		\frac{dC(t)}{dt} \frac{1}{C(t)} &= \frac{d^{2}S(x)}{dx^{2}} \frac{1}{S(t)}
+	\end{align}
+	\paragraph{}
+	We now have two functions which depend on different variables, and they are equal, if we want to have a solution that works for all $x,t$ or all the time, and for all points in our domain, we need the two sides to be equal to a constant. We call that constant a separation constant, in our case $\lambda$.
+	\begin{align}
+		\frac{dC(t)}{dt} \frac{1}{C(t)} &= \frac{d^{2}S(x)}{dx^{2}} \frac{1}{S(t)} = \lambda
+	\end{align}
+	\paragraph{}
+	We can break these into two simple differential equations by just multiplying $\lambda$ by $C(t)$ and $S(t)$ respectively. These equations will both be solved with Euler polynomials, as discussed above.
+	\begin{align}
+		\lambda C(t) &= \frac{dC(t)}{dt}\\
+		\therefore C(t) &= Ae^{\lambda t}\\
+		\lambda S(x) &= \frac{d^{2}S(x)}{dx^{2}}\\
+		\therefore S(x) &= Be^{\pm \sqrt{\lambda} x}
+	\end{align}
+	\paragraph{}
+	We recover a full form for the solution by simplifying letting $u$ be defined again as the product of $S$, $C$. The rest of the solution is specific to boundary conditions and initial conditions.
+	\begin{align}
+		u(x,t) &= A \cdot e^{\pm \sqrt{\lambda} x} e^{\lambda t}
+	\end{align}
+	
+	\subsection{Translation Operator}
+	\paragraph{}
+	The most tricky tool we use, the translation operator, takes a function, and translates it only by applying a sum of derivative and scaling operations. In math terms if we have a translation operator $T_{a}$ that translates some function by $+a$ we can state this as follows:
+	\begin{align}
+		T_{a}f(x) &= f(x + a)
+	\end{align}
+	\paragraph{}
+		It happens that this operator is a linear differential operator, or in other words, it is simply a sum of derivative operators. This may seem to come out of nowhere, and honestly to me it almost does, a more mature mathematician would call the derivative operator a generator of translation.
+	
+	\begin{align}
+		T_{a} &= \sum_{n = 0}^{\infty}\frac{d^{n}}{dx^{n}} \cdot \frac{a^{n}}{n!}\\
+		T_{a}f(x) &= \sum_{n = 0}^{\infty}\frac{d^{n}f(x)}{dx^{n}} \cdot \frac{a^{n}}{n!}
+	\end{align}
+	\paragraph{}
+	You should recognize a Taylor series once the operator is applied, namely the Taylor series for $f$, centered on $x$, yielding a value for $f(x + a)$. Any time we use this method, we assume that the function we apply the operator on has a Taylor series that is valid.
+	\begin{align}
+		T_{a}f(x) &= \sum_{n = 0}^{\infty}\frac{d^{n}f(x)}{dx^{n}} \cdot \frac{a^{n}}{n!} = f(x + a)
+	\end{align}
+	\paragraph{}
+	Finally we use convenient notation to write the translation operator as follows:
+	\begin{align}\label{eq:test}
+		T_{a} &= e^{a\frac{d}{dx}}
+	\end{align}
+	\paragraph{}
+	If you are doubtful about this, just write the Taylor series for $e^{z}$, and replace $z$ with $a\frac{d}{dx}$, recovering the translation operator.
+	\paragraph{}
+	Try applying the translation operator $T_{1}$ on the polynomial $y = x^{2}$
+	\begin{align}
+		y &= x^{2}\\
+		T_{1}y &= e^{1 \cdot \frac{d}{dx}}x^{2}\\
+		T_{1}y &= (1 + \frac{d}{dx} + \frac{1}{2}\frac{d^{2}}{dx^{2}} + \frac{1}{6}\frac{d^{3}}{dx^{3}} + ...)x^{2}\\
+		T_{1}y &= x^{2} + \frac{d}{dx}(x^{2}) + \frac{1}{2}\frac{d^{2}}{dx^{2}}(x^{2})  + \frac{1}{6}\frac{d^{3}}{dx^{3}}(x^{2})  ...\\
+		T_{1}y &= x^{2} + 2x + 1 + 0 + ...\\
+		T_{1}y &= (x + 1)^{2}
+	\end{align}
+	\paragraph{}
+	The observant reader may ask where the rest of the infinite terms for the Taylor series of $e^{\frac{d}{dx}}$ went. This is a good question, they are infact all zero when applied to $x^{2}$, since higher derivatives of the $x^{2}$ are all zero.
+	\subsection{Finding the Solutions for N Linearly Coupled Oscillators}
+
+	\paragraph{}
+		We start with the equations of motion for the N'th oscillator, assuming oscillating masses are of mass $m$, with coupling springs with linear constant $k$.
+	\begin{align}
+		m\frac{dx_{n}^{2}}{dt^{2}} &= k(x_{n - 1} - 2x_{n} + x_{n + 1})	
+	\end{align}
+
+	\paragraph{Reformulating with Translation Operators}
+		We now make our problem more complicated (luckily only temporarily) in order to make it more solvable. Instead having $n$ be a discrete variable that numbers each coupled element, we let $n$ be continuous. This is completely justified, if we note that our $x(n,t)$ can be made to take on the exact value we need when $n$ takes integer values. This is probably not fun to prove, but just think about fitting a polynomial to a collection of points, the model fitting program never fails to find a polynomial that can fit a discrete number of points. 
+	\paragraph{}
+		The equations of motion are now of the form:
+	\begin{align}
+		m\frac{d^{2}x(n,t)}{dt^{2}} &= k(x(n + 1,t)- 2x(n,t) + x(n - 1,t))
+	\end{align}
+	\paragraph{}
+	That doesn't look much better, but now we bring in the translation operator for the variable $n$, since we have things like $x(n - 1, t)$. We keep the subscript $n$ on the operator so we know it translates with respect to the variable $n$.
+	\begin{align}
+		m\frac{d^{2}x(n,t)}{dt^{2}} &= k(T_{n,1}x(n,t)- 2x(n,t) + T_{n,-1}x(n,t))
+	\end{align}
+	\paragraph{}
+	We now bring in our exponential form of the translation operator \eqref{eq:test}, note that 2 is also a differential operator, of the simplest kind. We also factor out the operator from acting on $x$, which is well defined since each part of the operator is linear.
+	\begin{align}
+		m\frac{d^{2}x(n,t)}{dt^{2}} &= k(e^{\frac{d}{dn}} - 2 + e^{\frac{-d}{dn}})x(n,t)
+	\end{align}
+	\paragraph{Separating the Variables}
+	Remember the heat equation we solved above with separation of variables $\frac{du}{dt} = \frac{d^{2}u}{dx^{2}}$. Our equation is not much worse, also having linear differential operators on both sides, just with some constants. This gives us the idea to try and apply separation of variables on this admittedly ugly equation. We guess $x(n, t) = C(t)\cdot A(n)$. Plugging this in, and using a separation constant of $\lambda$ we find:
+	\begin{align}
+		m\frac{d^{2}C(t)}{dt^{2}} A(n) &=[ k(e^{\frac{d}{dn}} - 2 + e^{\frac{-d}{dn}})A(n) ]\cdot C(t)\\
+		\frac{m}{k}\frac{\frac{d^{2}C(t)}{dt^{2}}}{C(t)} &= \frac{[ (e^{\frac{d}{dn}} - 2 + e^{\frac{-d}{dn}})A(n) ]}{A(n)} = \lambda
+	\end{align}
+
+	\paragraph{}
+	Just like the heat equation we end up with two differential equations, one in $t$ and one in $n$. We try the easy one first.
+	\begin{align}
+		\frac{m}{k}\frac{\frac{d^{2}C(t)}{dt^{2}}}{C(t)} &= \lambda\\
+		\frac{d^{2}C(t)}{dt^{2}} &= \frac{k}{m}\lambda C(t)\\
+	\end{align}
+	\paragraph{}
+	Note that this is the equation for the simple harmonic oscillator, but with the factor lambda, using Euler's polynomial method the solutions are as follows:
+	\begin{align}
+		C(t) &= Ae^{\sqrt{\lambda} \sqrt{\frac{k}{m}}t}
+	\end{align}
+	\paragraph{}
+	If $\lambda$ is negative one recognizes the oscillating form as being part of the solution $e^{i \omega t}$. With $\omega = \sqrt{-\lambda} \sqrt{\frac{k}{m}}$.
+	
+	\paragraph{}
+	Now we have found $C(t)$ we move to find $A(n)$ in a similar fashion.
+	
+	\begin{align}
+		 (e^{\frac{d}{dn}} - 2 + e^{\frac{-d}{dn}})A(n)  &= \lambda A(n)\\
+		 (e^{\frac{d}{dn}} - 2 - \lambda + e^{\frac{-d}{dn}})A(n)  &= 0\\
+		 (2cosh(\frac{d}{dn}) - 2 - \lambda)A(n)  &= 0
+	\end{align}
+	\paragraph{}
+	To get anywhere from here, we need to realize that this is still just a linear differential equation in the variable $n$, just more complicated than what you may be used to. We also make the notational substitution $cosh(b) = \frac{e^{b} + e^{-b}}{2}$ $cosh$ is just a common function, the hyperbolic cosine, related to cosine and sine, and also composed of exponentials. Just like sine and cosine, it also has its own Taylor series and is a smooth curve. Now just like any other Euler problem, we replace derivatives to the $n'th$ power with $r^{n}$, we can do this by just plugging in $r$ where we see $\frac{d}{dn}$. Our solutions are of course of the form $Ze^{rn}$.
+
+	\begin{align}
+		cosh(b) &= \frac{e^{b} + e^{-b}}{2}\\ \label{eq:cosh}
+		2cosh(r) - 2 - \lambda &= 0\\
+		\therefore r &= acosh(1 + \frac{\lambda}{2})
+	\end{align}
+	\paragraph{}
+	We now know what our function looks like, for $n$ and $t$, but now we need to determine what $\lambda$ is in terms of physical parameters. Right now its hard to see any meaning in our solution.
+	\begin{align}
+		r &= acosh(1 + \frac{\lambda}{2})\\
+		x(n,t) &= Ae^{\sqrt{\lambda} \sqrt{\frac{k}{m}}t} \cdot e^{rn}
+	\end{align}
+	\paragraph{Physical Meaning for $t$ Dependence}
+Since $e^{\sqrt{\lambda}\sqrt{\frac{k}{m}}t}$ looks like the solution of a harmonic oscillator and is simpler, it will be useful to try and get it into a physically useful form. We name the parameter $\sqrt{\frac{k}{m}} = \omega_{0}$, yielding:
+	\begin{align}
+		e^{\sqrt{\lambda}\omega_{0}t}
+	\end{align}
+	\paragraph{}
+		Now we expect do not expect the solutions of our system to be exponentially decaying, but rather oscillating (we started with the assumption that the only forces were conservative, due to springs). Therefore $\lambda$ will be negative as to give an imaginary factor in the exponent, and so that we can think about our solutions like a harmonic oscillator, which is defined by its angular frequency $\omega$ (different from $\omega_{0})$, we define $\lambda$ like so $\lambda = -(\frac{\omega}{\omega_{0}})^{2}$. Now we have the following, which represents our system in a familiar way in terms of an oscillating complex exponential.
+
+	\begin{align}
+		e^{\sqrt{-(\frac{\omega}{\omega_{0}})^{2}}\omega_{0}t} &= 	e^{\pm i \omega t}
+	\end{align}
+	\paragraph{}
+	Going back to our full solution:
+	\begin{align}
+		r &= acosh(1 + \frac{\lambda}{2})\\
+		x(n,t) &= Ae^{\pm i \omega t} \cdot e^{rn}
+	\end{align}
+	\paragraph{Physical Meaning for $n$ Dependence}
+	We now work to find the missing parameter $r$. The $cosh$ function is not so familiar, but we can replace it with cosine by noting the following if we start from the equation that gave us $r$, letting $i\theta = r$, where $\theta$ is a new parameter that turns out to be useful. Specifically because we are going to use the trigonometric identity $cosh(ib) = cos(b)$. This identity can be understood by looking at the exponential form \eqref{eq:cosh}, and using Euler's Formula $e^{ib} = isin(b) + cos(b)$.
+	\begin{align}
+		2cosh(i\theta) - 2 - \lambda &= 0\\
+		2cos(\theta) - 2 - \lambda &= 0
+	\end{align}
+	\paragraph{}
+	We now remember to substitute our physically determined value of $\lambda$.
+	\begin{align}
+		2cos(\theta) - 2 + (\frac{\omega}{\omega_{0}})^{2} &= 0\\
+		\theta &= acos(1 - \frac{1}{2}(\frac{\omega}{\omega_{0}})^{2})\\
+		\therefore r &= i\cdot acos(1 - \frac{1}{2}(\frac{\omega}{\omega_{0}})^{2})
+	\end{align}
+	\paragraph{}
+		Bringing our new definition of $r$ in terms of physical parameter $\omega$, the time frequency of the solution, our full solution is:
+		
+	\begin{align}
+		\theta &= acos(1 - \frac{1}{2}(\frac{\omega}{\omega_{0}})^{2})\\
+		x(n,t) &= Ae^{\pm i \omega t} \cdot e^{i\theta n}
+	\end{align}
+	\paragraph{Determining the Real Solution}
+	Now to get rid of the imaginary part of our solution, since clearly a solution for the real system cannot have displacements of imaginary distance. We start by applying Euler's formula.
+	\begin{align}
+		x(n,t) &= Ae^{\pm i \omega t} \cdot e^{i\theta n}\\
+		x(n,t) &= A[(isin(\pm \omega t) + cos(\omega t)) \cdot (isin(\theta n) + cos(\theta n))]\\
+			x(n,t) &= A[-sin(\pm \omega t)sin(\theta n) + cos(\theta n)cos(\omega t) + i(...)]
+		\end{align}
+	\paragraph{}
+	I write $...$ for the imaginary part of our solution because we do not care what is value its. As one sees with the simple harmonic oscillator, one can simply throw away this part to get a physical solution. There is a more mathematically rigorous way to be sure of this, that just relies on writing $cos(b) = \frac{e^{ib} + e^{-ib}}{2}$ and similar to get only real valued solutions by adding up our imaginary solutions.
+\begin{align}
+				x_{real}(n,t) &= A[-sin(\pm \omega t)sin(\theta n) + cos(\theta n)cos(\omega t)]\\
+\end{align}
+\paragraph{}
+Now we use trig angle sum identities ($sin(\alpha \pm \beta) = sin(\alpha)sin(\beta) \pm cos(\alpha)sin(\beta)$) to find a simpler form
+\begin{align}
+	x_{n}(t) &= A[-sin(\pm \omega t)sin(\theta n) + cos(\theta n)cos(\omega t)] = Asin(\pm \omega t +\theta n)
+\end{align}
+\paragraph{Wave Velocities}
+And there it is, our discrete oscillators act just like a traveling wave $\psi = cos(\omega t - kx)$, just with our coordinate of space being $n$ labeling the $n'th$ discrete oscillator. One may ask how this can be, that solutions are the same form as a completely different PDE, the wave equation $\frac{d^{2}u}{dt^{2}} = c^{2} \frac{d^{2}u}{dx^{2}}$. The answer is that in the limit of infinite oscillators we recover the wave equation, secondly the solutions are not the same for different frequencies of waves. The maybe familiar phase velocity (speed of the troughs and peaks of a sin wave) is $v_{wave, phase} =\frac{\omega}{k} = c$, ie all wave shapes move at the same speed under the wave equation. for our discrete oscillators, we see a velocity that varies. For relatively small frequencies, the solutions to our discrete oscillator system look just like those of the wave equation. A good example of this is sound waves, or the string of a guitar. In reality these systems are made up of many many discrete atoms, but since there are so many atoms and the frequencies of the waves present are relatively low, the behavior of the system is immeasurably different from simply the wave equation.
+\begin{align}
+	v_{wave, phase} = \frac{\omega}{k} = \frac{\omega}{acos(1-\frac{1}{2}(\frac{\omega}{\omega_{0}})^{2})}
+\end{align}
+	\begin{figure}[H]
+	\includegraphics[scale=0.8]{disc_cont_comp.png}
+\end{figure}
+	\paragraph{}
+		Besides a bunch of math giving us an equation that would be hard to expect (inverse cosine relating wave frequency to velocity), the main take away here is that when ones professor or textbook states the solution to such a problem, you will save a lot of time by just accepting it as true $\qed$
+
+\subsection{Varying Spring Constants and the WKB Approximation}
+
+\paragraph{}
+	A method, maybe less contrived than others, has been shown to determine the solutions to this problem. Is there any other significance to this besides providing a better justification of the solution? Yes, placing this equation in the realm of differential equations instead of discrete equations gives access to useful tools for finding solutions, and this applies to more complex versions of the problem. Consider the problem of variable spring constants, i.e. each spring has its own spring constant that can be specified arbitrarily. This is mathematically formulated as follows:
+	
+\begin{align}
+	m\frac{dx_{n}^{2}}{dt^{2}} &= (k_{n} \cdot x_{n - 1} - (k_{n} + k_{n + 1})x_{n} + k_{n + 1} \cdot x_{n + 1})	
+\end{align}
+
+\paragraph{}
+	The variables separate between $t$ and $n$ as usual.
+\begin{align}
+			k_{n} &= f(n) k_{0}	\\
+			 (k_{n + 1}e^{\frac{d}{dn}} - (k_{n} + k_{n + 1}) + k_{n}e^{\frac{-d}{dn}})A(n)  &= \lambda k_{0} A(n)\\
+			 [( \frac{d^{1}}{dn^{1}}\frac{1}{1!} + \frac{d^{3}}{dn^{3}}\frac{1}{3!} ...) (f(n + 1) - f(n))\\ + ( \frac{d^{2}}{dn^{2}}\frac{1}{2!} + \frac{d^{4}}{dn^{4}}\frac{1}{4!} ...) (f(n) + f(n + 1)) - \lambda ]A(n) &= 0
+\end{align}
+
+\end{document}
