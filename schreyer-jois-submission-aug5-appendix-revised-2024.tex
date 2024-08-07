@@ -1,0 +1,517 @@
+\documentclass[12pt,reqno]{article}
+
+\usepackage[usenames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{graphicx}
+
+\usepackage[colorlinks=true,
+linkcolor=webgreen,
+filecolor=webbrown,
+citecolor=webgreen]{hyperref}
+
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+\usepackage{color}
+\usepackage{fullpage}
+\usepackage{float}
+
+
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{epsf}
+\usepackage{breakurl}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
+
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+
+\newcommand{\seqnum}[1]{\href{https://oeis.org/#1}{\rm \underline{#1}}}
+\def\modd#1 #2{#1\ \mbox{\rm (mod}\ #2\mbox{\rm )}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Leg}[3][]{\left(\frac{#2\mathstrut}{#3}\right)_{\mkern-6mu#1}}
+\DeclareMathOperator{\lcm}{lcm}
+
+\begin{document}
+
+\begin{center}
+	\epsfxsize=4in
+	\leavevmode
+
+\end{center}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{center}
+	\vskip 1cm{\LARGE\bf Rigged Horse Numbers and their Modular Periodicity\\
+			\vskip .1in
+		}
+	\vskip 1cm
+	\large
+	Benjamin Schreyer\\
+
+	Departments of Computer Science and Physics\\
+	University of Maryland \\
+	College Park, Maryland 20742\\
+	USA\\
+	Plasma Physics Division\\
+	U.S. Naval Research Laboratory\\
+	Washington, D.C. 20375\\
+	USA\\
+
+	\href{mailto: benontheplanet@gmail.com}{\tt benontheplanet@gmail.com} \\
+
+\end{center}
+
+\vskip .2 in
+
+\begin{abstract}
+	The permutations of horse racing, where ties are possible, are counted by the {\em Fubini numbers}, also called the {\em horse numbers}. The {\em  $r$-Fubini numbers} are a counting of such horse race finishes where some subset of $r$ horses agree to finish the race in a specific strong ordering. The $r$-Fubini numbers for fixed $r$ are expressed as a sum of $r$ index shifted  sequences of Fubini numbers weighted with the signed Stirling numbers of the first kind. Then eventual modular periodicity of $r$-Fubini numbers is shown and their maximum period is determined to be the Carmichael function of the modulus. The maximum is attained in the case of an odd modulus.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{Contributions}
+
+A new expression is found for the $r$-Fubini numbers. For fixed $r$, $r$-Fubini numbers are a constant coefficient sum of the  Fubini numbers under index shifts.  Proofs for the eventual modular periodicity of Fubini and $r$-Fubini numbers are formulated, which give an upper bound for their modular eventual period. The upper bound is the Carmichael function $\lambda(K)$ where $K$ is the modulus. When $K$ is odd it is shown that $\lambda(K)$ is the exact period.
+
+\subsection{Orderings weak and strong}
+
+\begin{definition}
+	{\em Fubini numbers} are denoted $H(n)$, which count weak orderings of $n$ elements.
+\end{definition}
+
+In the case of a horse race, the ordering is weak, equality determines ties, and $<$ and $>$ determine clear succession. Other common names for the counting of weak orderings are the horse numbers, or  ordered Bell numbers. Without the  possibility of a tie, such orderings are regular permutations (strong).
+
+\subsection{The $r$-Fubini numbers or rigged weak orderings}
+\begin{definition}
+ {\em Relative strong ordering} among elements of a set demands that for elements in the relative strong ordering, their relations may be described only by $<$ or $>$. An element in a relative strong ordering may be set equal to another element, but that element cannot come from the elements participating in the relative strong ordering.
+\end{definition}
+\begin{definition}
+	The {\em $r$-Fubini numbers} $H_{r}(n)$ count weak orderings such that $r$ elements of the finite set of cardinality $n$ are distinguished, and constrained to follow a specific relative strong ordering.
+\end{definition}
+
+The $r$-Fubini numbers count the simplest nontrivial restrictions on weak permutations. A restriction where two  or more horses agree to tie is simply counted by reducing the number of elements in the permutation, since the horses act as a single unit in any permutation. The nontrivial counting is further exemplified. Consider arbitrary elements under total weak ordering $x_{1}, x_{2}, \ldots, x_{n}$. A strong ordering of a subset of elements inducing $r$-Fubini counting could be $x_{1} < x_{2} < \cdots < x_{r}$. In this text $r$-Fubini counted permutations are indexed by denoting the number of total elements to be ordered $n$, and the size of the subset  that follow a fixed strong ordering $r$.
+
+Others choose to instead express the number of elements constrained to be relatively strongly ordered and the number of unconstrained elements. Related orderings and $r$-Fubini numbers have been studied by R\'acz  \cite{cc:racz} who references an expression in terms of the $r$-Stirling numbers of the second kind and factorials for $H_{r}(n)$ due to Mez\H{o} and Nyul. Asgari and Jahangiri \cite{cc:asgari} proved the eventual periodicity of the $r$-Fubini numbers modulo an arbitrary natural number. Asgari and Jahangiri also gave calculations for the period.
+
+\subsection{Stirling numbers of the first and second kind}\label{sec:stirling}
+
+\begin{definition}
+	{\em Signed Stirling numbers of the first kind}, labeled $s(n,k)$, count partitions of $n$ elements into $k$ cycles (the sign gives the parity of permutation). Two index sequences may naturally be arranged into a matrix with indexing of rows $n$ and columns $k$, for the case of $s(n,k)$. Let $\hat{s}$ denote the infinite matrix of $s(n,k)$.
+\end{definition}
+
+\begin{definition}
+	{\em Stirling numbers of the second kind}, labeled $S(n,k)$, count ways to partition a set into unordered groups. The matrix of $S(n,k)$, labeled $\hat{S}$, is indexed as is $\hat{s}$ above.
+\end{definition}
+
+The Stirling numbers are here introduced with the addendum of three useful properties, which are expressed with notation $I$ as the identity operation. The first proposition is stated in \textit{Advanced Combinatorics} \cite[Eqn.\ 6f, p.\ 144]{cc:matrix}.
+
+\begin{proposition}
+	The matrices$\hat{s}$ and $\hat{S}$ are inverses of each other. This applies even to the infinite matrices, where $n,k \geq 0$:
+	\begin{align}
+	\hat{s} \hat{S} = \hat{S} \hat{s} = I \label{eqn:stirlinginvs}
+	\end{align}
+
+	Both $\hat{s}$ and $\hat{S}$ are additionally lower triangular.
+
+\end{proposition}
+
+The second important property is listed in {\em Concrete Mathematics} \cite[Eqn.\ 6.13, p.\ 263]{cc:cm}.
+The notation $(x)_{\ubar{n}}$ is the falling factorial of $x$ with $n$ multiplicative terms $(x)_{\ubar{n}} = x (x - 1) \cdots (x - n  + 1)$.
+
+\begin{proposition}
+	The Stirling numbers of the first kind give the coefficient for fixed powers of the argument of the falling factorial.
+	\begin{align}
+		(x)_{\ubar{n}} = \sum_{k = 0}^{n} s(n,k) x^{k}\label{eqn:fallfac}
+	\end{align}
+\end{proposition}
+
+In order that the last property may be introduced a further definition is needed.
+
+\begin{definition}
+	{\em Eventual modular periodicity} for a sequence $f(n)$ is defined as follows. A sequence $f(n)$ is {\em eventually modular periodic} if there exists a $q \in \mathbb{N} \cup \{0\}$ such that,
+	for large enough $n$:
+	\begin{align}
+		f(n)~{}  \equiv f(n + q) \pmod{K}, K \in \mathbb{N}
+	\end{align}
+\end{definition}
+
+The third important property, specific to $S(n,k)$ with fixed $k$, is their eventual modular periodicity. This may be shown using the following formula from the paper \textit{Stirling matrix via Pascal matrix} \cite[p. 55]{cc:relation} which is re-expressed under multiplication by unity, specifically $\frac{k}{k}$.
+
+\begin{lemma}
+	\begin{align}
+		S(n,k) = \frac{1}{k!} \sum_{t = 0}^{k}(-1)^{k-t}\binom{k}{t} t^{n}\label{eqn:stirlingsecond}
+	\end{align}
+\end{lemma}
+
+The finite period of modular exponentiation determines eventual modular periodicity for $S(n,k)$ for fixed $k$.
+
+\subsection{The Carmichael function}
+\begin{definition}
+	$(\mathbb{Z}/K\mathbb{Z})^{\times}$ is the group of integers coprime to $K \in \mathbb{N}$ under multiplication modulo $K$.
+\end{definition}
+\begin{definition}
+	$\lambda(K)$ is the {\em Carmichael function}, which gives the exponent (least common multiple of all periods of exponentiations) of integers under multiplication modulo a natural number, often in the context of the group $(\mathbb{Z}/K\mathbb{Z})^{\times}$.
+\end{definition}
+
+The Carmichael function has the following recurrence \cite{cc:carmichael} using $\varphi(n)$ {\em Euler's totient function}.
+
+\begin{equation}
+	\lambda(n) = \begin{cases}
+		\varphi(n) & \text{if } n \in \{1,2,4\} \text{ or n is an odd prime power};
+		\\
+		\frac{1}{2}\varphi(n) & \text{if } n = 2^{r}, r \geq 3;
+		\\
+		\lcm (\lambda(n_{1}), \lambda(n_{2}), \ldots) & \text{if } n = n_{1}n_{2} \cdots \text{ where } n_{1}, n_{2}, \ldots \text{ are powers of unique primes.}
+	\end{cases}\label{eqn:carmichaelrecur}
+\end{equation}
+
+
+
+The previously stated equation for $S(n,k)$ has dependence on $n$ exclusively as a sum of exponentiations of integers \eqref{eqn:stirlingsecond} by $n$. Importantly under a modulus $K$, the function $\lambda(K)$ is the maximum eventual period of exponentiation of integers. Two properties of the Carmichael function stated further are leveraged.
+\begin{proposition}
+	$\forall a \in \{0, 1, \ldots, K - 1\}$
+	\begin{align}
+		a^{R} \equiv a^{\lambda(K) + R} \pmod {K}
+	\end{align}
+	Where $R$ is the greatest exponent in the factorization of $K$ into unique prime powers.
+\end{proposition}
+For coprime elements to $K$ a stronger statement may be made.
+\begin{proposition}
+	$\forall b \in (\mathbb{Z}/K\mathbb{Z})^{\times}$
+
+	\begin{align}
+		b^{\lambda(K)} \equiv 1 \pmod {K}
+	\end{align}
+\end{proposition}
+
+\subsection{Operations preserving eventual periodicity}\label{subsec:evperioprop}
+The common operations scaling by an integer, addition of eventually periodic sequences, and index shifting preserve eventual periodicity. Upper bounds for the eventual period are preserved for scaling and shifting. To include addition of sequences, the least common multiple of the sequences' eventual periods must be considered. A further proof for Theorem \ref{thm:exactcarm} requires a lower bound on the modular period for sums of exponentiated bases, which is given in Appendix \ref{app:expsum}. 
+
+\subsection{Shift operators}
+
+Shift operators are used to formally show $r$-Fubini numbers may be expressed using the signed Stirling numbers of the first kind.
+
+\begin{definition}
+	Operators $E^{\pm 1}$ are the right and left shift operators respectively. Often multiple single shift operations are abbreviated $E^{m}$, $m \in \mathbb{Z}$.
+\end{definition}
+
+Computation of the $r$-Fubini numbers uses the left and right shift operators $E, E^{-1}$ on the sequence $H(0), H(1), \ldots, H(n + r)$. Shift operators may be viewed through the lens of countably infinitely indexed vectors as sequences, which immediately yield matrix representations of shift operators. Zero is placed in the first index of the vector sequence when $E^{-1}$ is applied.
+Shift operators applied on a sequence $F(n)$ are linear operators, defined such that $E F(n) = F(n + 1)$ and $E^{-1}F(n) = F(n - 1)$. In vector notation, indexing by subscript:
+\begin{align}
+	 (E\vec{F})_{n} &= \vec{F}_{n + 1}\\
+ (E^{-1}\vec{F})_{n} &= \begin{cases}
+ 	0  & \text{if } n = 0 ;\\
+ 	\vec{F}_{n - 1}  & \text{if } n \neq 0
+ \end{cases}
+\end{align}
+Vectors will always be indicated by the upper arrow. Sequences also distribute over addition of shift operators so $(AE^{a} + BE^{b})F(n) = AF(n + a) + BF(n+b)$. Importantly $EE^{-1} = E^{-1}E = I$, operator $I$ being the identity operation or zero shift. Under combinatorially reasonable indexing of sequences ($H_{r}(r - c), c > 0$ is clearly not meaningfull), the shift operators will not leave a sequence indexed outside of $\mathbb{N} \cup \{0\}$.
+
+\section{General rigged orderings  of $r \leq n$ elements}
+
+The following lemma is needed in the proof of the novel expression for the $r$-Fubini numbers $H_{r}(n)$. Let $F(n)$ be the number of orderings of some set which contains $n$ elements. The orderings counted may observe the restriction of no ties (relative strong ordering) between some subset of $m$ of those $n$ elements. For subsets cardinality $m$ of a finite set of $n$ elements, $n \geq m$.
+\begin{lemma}\label{lm:counting}
+	Permutations formed by including an additional element in an ordered set $\{x_{1}, x_{2}, \ldots x_{n}\}$ such that the new element $x'$ satisfies $x' \notin \{x_{1}, x_{2}, \ldots, x_{m}\}$  are counted by $F(n + 1) - mF(n) = (E - mI)F(n) $.
+
+	\begin{proof}
+		Consider adding the new element, with no restriction. The new number of orderings is $F(n + 1)$, since no new element was distinguished, the number of elements is simply increased.
+
+		To restrict counting to permutations with $x'$ such that $x' \notin \{x_{1}, x_{2}, \ldots, x_{m}\}$, note that for each ordering counted by $F(n)$, when $x'$ is introduced, it may be set equal to one of ${x_{1}, x_{2}, \ldots, x_{m}}$ to form a unique disallowed permutation. The multiplication principle determines that there are $mF(n)$ new disallowed permutations. The permutations are unique as each includes the new element $x'$ and any two elements in the strongly ordered subset constraining the counting of $F(n)$ will not be equal. Equality within the subset would cause degeneracy and under counting. Such degeneracy (if it was present) would cause under counting rather than over counting because the permutations are to be excluded. Using the multiplication principle to exclude cases where $x' \in \{x_{1}, x_{2}, \ldots, x_{m}\}$, the lemma follows.
+	\end{proof}
+\end{lemma}
+The counting above may be repeated for an increasingly large subset that follows a strong ordering. The application of the counting above yields a new counting that is compatible with the lemma. Adding the element $x'$ creates again a count of weakly ordered permutations such that a subset of elements follows a strong ordering, exactly what the lemma demands of $F(n)$.
+
+\subsection{Counting with shift operators}
+\begin{theorem}\label{thm:fubinir}
+
+	\begin{align}
+		H_{r}(n) = \frac{1}{r!} \sum_{j=0}^{r} s(r,r-j) H(n - j)
+	\end{align}
+
+	\begin{proof}
+		The proof first counts the case where the subset $\{x_{1}, x_{2}, x_{3}, \ldots, x_{r}\}$ is strongly ordered, then gives them a single ordering by dividing by $r!$.
+
+		To begin counting, first remove or ignore the counting of the $r$ relatively strongly ordered elements, leaving weak permutations of $n - r$ elements which is $E^{- r}H(n)$. Elements of the distinguished subset are added back to the counted set with no ties within the set $\{x_{1}, x_{2}, x_{3}, \ldots, x_{r}\}$. The result is subtraction of ascending integer multiples of the identity operation from $E$ in accordance with Lemma \ref{lm:counting}. The first subtraction is redundant (hence $\emptyset$), for the first step, since no elements in the strongly ordered subset exist in the remaining elements at first.
+
+		\begin{itemize}
+			\item{Add $x_{1}$, then do not count cases $x_{1} \in \emptyset$, the count is $EE^{-r}H(n)$}
+			\item{Add $x_{2}$, do not count $x_{2} \in\{x_{1}\}$, the count is $(E - 1I)EE^{- r}H(n)$ }
+			\item{Add $x_{3}$, do not count $x_{3} \in \{x_{1}, x_{2}\}$,  the count is $(E - 2I)(E - 1I)EE^{-r}H(n)$ }
+			\item{$\cdots$}
+			\item{Add $x_{r}$, do not count $x_{r} \in \{x_{1}, x_{2}, \ldots ,x_{r - 1}\}$, $(E - (r - 1)I)\cdots(E - 2I)(E - 1I)EE^{-r}H(n)$}
+		\end{itemize}
+		Now all elements are included with their respective ordering, with those from $x_{1}, x_{2}, \ldots, x_{r}$ without mutual equalities, such that all counted orderings have $x_{1}, x_{2}, \ldots, x_{r}$ relatively strongly ordered. The falling factorial appears with argument $E$ and $r$ terms.
+		\begin{align}
+			(E)_{\ubar{r}} E^{-r} H(n)
+		\end{align}
+		The count is now expressed as follows via the expansion previously introduced for falling factorials \eqref{eqn:fallfac}.
+		\begin{align}
+			 \left[ \sum_{j = 0}^{r} s(r,j)E^{j} \right] E^{-r} H(n)
+		\end{align}
+		The formula applies because repetition of $E$ may be treated as would multiplication of a polynomial variable. The effect of the shift operators is now trivial upon $H(n)$.
+
+		\begin{align}
+			\sum_{j = 0}^{r} s(r,j) H(n - r + j)
+		\end{align}
+		Then re-index the sequences.
+		\begin{align}
+			\sum_{j = 0}^{r} s(r,r - j) H(n - j)
+		\end{align}
+
+		The number of arrangements of $x_{1}, x_{2}, \ldots, x_{n}$ where $x_{1}, x_{2}, \ldots, x_{r}$ are relatively strongly ordered have been counted. Given the strongly ordered subset count, dividing by $r!$ allows a straightforward determination of $H_{r}(n)$.
+
+		\begin{align}
+			H_{r} (n) = \frac{1}{r!}\sum_{j = 0}^{r} s(r,r - j) H(n - j) \nonumber
+		\end{align}
+
+	\end{proof}
+
+\end{theorem}
+
+An interesting notation is apparent.
+\begin{align}
+	H_{r} (n)  &= \frac{E (E - 1) \cdots (E - r + 1)}{r!} H(n - r) \\
+	H_{r} (n)  &= \binom{E}{r} H(n - r) \label{eqn:binomform}
+\end{align}
+
+It appears that the fully removed operator $\binom{E}{r} E^{-r}$ could be used in repeated application to create counting for multiple disjoint strongly ordered subsets of different sizes. Additionally, different subsets could be counted relative to $E$ via subtraction such as using a binomial coefficient or other sequence instead of successive integers.
+
+\subsection{A useful alternating recurrence}
+\begin{corollary}
+
+	\begin{align}
+		H(n) = n!  - \sum_{j = 1}^{n} s(n,n - j) H(n - j)
+	\end{align}
+	\begin{proof}
+		$H_{n}(n) = 1$, if the set is $\{x_{1}, x_{2},\ldots, x_{n}\}$, and $x_{1} < x_{2} < \cdots < x_{n}$ the number of arrangements is $1$. The next equation then follows from Theorem \ref{thm:fubinir}:
+		\begin{align}
+			1  = \frac{1}{n!}\sum_{j = 0}^{n} s(n,n - j) H(n - j) \label{eqn:matrixpredec}
+		\end{align}
+		This expression may be rearranged after the substitution $s(n,n) = 1$ to the result.
+		\begin{align}
+			H(n)  = n! - \sum_{j = 1}^{n} s(n,n - j) H(n - j) \nonumber
+		\end{align}
+	\end{proof}
+\end{corollary}
+
+\section{Linear transformation between strong and weak orderings}
+
+\begin{corollary}\label{cor:lint}
+	The infinite vectors $\vec{f}$ and $\vec{H}$ with entries $n!$ and $H(n)$ respectively obey the following relation with matrices $\hat{s}$ and $\hat{S}$ as defined in the introduction \ref{sec:stirling}:
+	\begin{align}
+		\hat{S}\vec{f} &= \vec{H}\label{eqn:strongstirling} \\
+		\hat{s}\vec{H} &= \vec{f}
+	\end{align}
+
+	\begin{proof}
+		The above equation \eqref{eqn:matrixpredec} may be written as a matrix equation by multiplication by $n!$ and re-indexing the last indices of both sequences.
+
+		\begin{align}
+			\sum_{j = 0}^{n} s(n,j) H(j)  = n!
+		\end{align}
+		The infinite lower triangular matrix of $s(n,k)$ multiplied on a vector may be expressed as exactly the sum derived.
+		\begin{align}
+			\hat{s}\vec{H} = \vec{f} \nonumber
+		\end{align}
+		The first relation then immediately follows, given the previously stated inverse of $\hat{s}$ being $\hat{S}$ \eqref{eqn:stirlinginvs}.
+		\begin{align}
+			\hat{S}\hat{s}\vec{H} &= \hat{S} \vec{f} \\
+			\vec{H} &= \hat{S} \vec{f} \nonumber
+		\end{align}
+	\end{proof}
+\end{corollary}
+
+The signed Stirling numbers of the first kind  act naturally on $\vec{H}$ as a matrix. The Stirling numbers of the second kind act correspondingly on $\vec{f}$. It has been given that the infinite vectors  $\vec{f}$ and $\vec{H}$, indexed with $\mathbb{N} \cup \{0\}$, are related by lower triangular matrix multiplication. Recall that $\vec{f}$ and $\vec{H}$ contain the strongly and weakly (respectively) ordered permutation counts for successive (by cardinality) sets of distinguished elements. Since $\hat{S}$ and $\hat{s}$ are lower triangular, the relations may be truncated to hold for finite vectors containing the count of weak and strong permutations for $0,1,\ldots, N$ elements, where $N$ is finite. 
+\section{Modular periodicity}
+Asgari and Jahangiri \cite{cc:asgari} show eventual modular periodicity for $H_{r}(n)$ and an explicit calculation for the eventual period. Below we determine eventual modular periodicity for $H(n)$, $H_{r}(n)$ via the perspective of exponentially generated sequences and transformations of such sequences that preserve their structure. In addition, an upper bound for the period is proven to be the Carmichael function $\lambda(K)$ of the modulus. Two conditions for $\lambda(K)$ to be the exact modular period follow, with the case of odd $K$ proven directly by the results of Asgari and Jahangiri's periodicity calculation \cite{cc:asgari}.
+
+\subsection{Fubini numbers modulo $K$}
+\begin{theorem}\label{thm:fubinimodk}
+	The Fubini numbers $H(n)$ are eventually periodic modulo $K \in \mathbb{N}$, with maximum possible modular period $\lambda(K)$.
+
+	\begin{proof}
+		Consider the first relation of Corollary \ref{cor:lint} \eqref{eqn:strongstirling}.
+		\begin{align}
+			\vec{H} = \hat{S}\vec{f}\nonumber
+		\end{align}
+		The entries of $\vec{f}$, $\vec{f}_{n}$, are simply $n!$ and modulo $K$ the vector entries $\vec{f}_{n}$ are certainly zero for $n \geq K$.
+
+		The relation stands in a simplified form:
+
+		\begin{align}
+			H(n) \equiv \sum_{k = 0}^{K - 1} S(n,k) k! \pmod {K}\label{eqn:stirlingsecondmod}
+		\end{align}
+		$H(n)\pmod {K}$ is written as a finite sum of $S(n,k)$ with coefficients independent of $n$. Each $S(n,k) \pmod {K}$ for $0 \leq k \leq K - 1$ contributes sums of exponential dependence in $n$  for fixed $k$ by the explicit form for the Stirling numbers of the second kind \eqref{eqn:stirlingsecondmod}. The finite sum of such eventually modular periodic exponentially generated sequences scaled by constants is also eventually modular periodic, as summarized in the introduction \ref{subsec:evperioprop}. Due to Carmichael $\forall j \in \mathbb{Z}$, $0 \leq j \leq K$:
+
+		\begin{align}
+			j^{R + \lambda(K)} \equiv j^{R} \pmod {K}
+		\end{align}
+		The onset of eventual modular periodicity must occur after $H(R)$, $R = \max(R_{1}, R_{2}, \ldots)$ increments of the argument, where $K = p_{1}^{R_{1}} p_{2}^{R_{2}} \ldots$, with $p_{i}$ unique and prime. All the exponentials each with fixed coefficients will have entered periodicity after $R$ increments. The longest possible eventual period of $H(n) \pmod {K}$ is clearly $\lambda(K)$, since $H(n) \pmod {K}$ may be expressed as a weighted sum of integer powers $j^{n}$.
+		
+	\end{proof}
+\end{theorem}
+
+\subsection{A condition for exact Carmichael periodicity}
+Let $C_{i}$ be the unique cyclic groups in the decomposition by direct product of the group $(\mathbb{Z}/K\mathbb{Z})^{\times}$ into cycles. An element of $\{1, 2, \ldots, K - 1\}$ may be written as a tuple, via direct product decomposition,  $(b_{1}, b_{2}, b_{3}, \ldots)$ where $b_{i}$ are residues in each cycle. Let $a_{i}$ denote a generator which exists for each $C_{i}$ such that $\langle a_{i} \rangle = C_{i}$.
+\begin{theorem}\label{thm:exactcarm}
+	The Carmichael function $\lambda(K)$ is exactly the period of $H(n) \pmod{K}$ if  \   $\forall C_{i}$, the generator $a_{i}$ is part of the direct product decomposition of a base from $(\mathbb{Z}/K\mathbb{Z})^{\times}$ exponentiated to the $n$'th power in the sum for $H(n) \pmod{K}$.
+\end{theorem}
+\begin{proof}
+	The definition of the exponent as the least common multiple of finite orders of group elements is extended to the sum of exponentiations. The modular period of a sum of exponentially generated sequences is bounded from below by the least common multiple of each summand sequence's period, where each sequence considered is generated by a base in $(\mathbb{Z}/K\mathbb{Z})^{\times}$ (see Appendix \ref{app:expsum}). So if all $a_{i}$ are exponentiated as part of a cyclic decomposition of a group element in the sum, the period is bounded from below by $\lcm(|C_{1}|, |C_{2}|, \ldots) = \lambda(K)$ per Equation \ref{eqn:carmichaelrecur} (Note the order and exponent of a cyclic group are equal). Since the lower and upper bound for the period are $\lambda(K)$, the eventual modular period must be $\lambda(K)$.
+\end{proof}
+
+\subsection{Exact Carmichael periodicity for odd $K$}
+
+\begin{theorem}
+	For $H(n) \pmod {K}$ if $K$ is odd then the eventual period of the sequence is $\lambda(K)$.
+	\begin{proof}
+		This can be seen immediately in the last theorem in Asgari and Jahangiri's paper \cite{cc:asgari}, noting that Euler's totient $\varphi(n)$ is equal to the Carmichael function for odd prime power arguments.
+		
+		According to Asgari and Jahangiri \cite{cc:asgari}, the eventual period for this case is $\lcm(\varphi(p_{1}^{k_{1}}), \varphi(p_{2}^{k_{2}}), \ldots)$ where $p_{i}^{k_{i}}$ are the unique prime powers composing $K$. When the argument of $\lambda(n)$ is an odd prime power, it is equal to $\varphi(n)$. This allows the following expression for the eventual period $q$:
+		\begin{align}
+			q &= \lcm(\lambda(p_{1}^{k_{1}}), \lambda(p_{2}^{k_{2}}), \ldots) \\
+			q &= \lambda(K)
+		\end{align}
+		Where the recurrence for $\lambda(n)$ \eqref{eqn:carmichaelrecur} is used for the final result.
+		
+	\end{proof}
+	
+\end{theorem}
+
+\subsection{Extension to $r$-Fubini numbers}
+\begin{corollary}
+	$H_{r}(n)$ the $r$-Fubini numbers are eventually periodic in $n$ modulo $K$ for fixed $r$ with maximum period $\lambda(K)$ and periodicity onset after at latest $r - 1 + R$ for $r > 0$. Here $R$ is the maximum exponent in the unique prime power decomposition of $K$.
+
+	\begin{proof}
+
+		$H(n)$ is eventually modular periodic in accordance with Theorem \ref{thm:fubinimodk}. Next observe the operation $\binom{E}{r} E^{-r}$ on $H(n)$ to generate $H_{r}(n) = \binom{E}{r} E^{-r} H(n)$ per Theorem \ref{thm:fubinir} preserves the structure of $H(n)$ as a weighted sum of exponentials of $n$. Such a sum again has maximum period modulo $K$ of $\lambda(K)$. The periodic onset may be delayed by shift operations, hence the addition of $r - 1$ to the onset index.
+	\end{proof}
+\end{corollary}
+Such extension also applies easily to Theorem \ref{thm:exactcarm}.
+
+
+
+\section{Remarks}
+
+\subsection{Infinite matrices}
+\begin{remark}
+	The matrix entries $M_{s}$ form Sierpi\'nski triangles sometimes with defects when plotted modulo some natural number. The diagonals of the infinite matrix $M_{s}$ appear to be eventually periodic modulo an arbitrary natural number.
+\end{remark}
+\subsection{Shift operators}
+\begin{remark}
+	It is interesting to consider where else in combinatorics the shift operator may yield simplified understanding or proofs. Interpreting the binomial form used to find $H_{r}(n)$ \eqref{eqn:binomform} is expected to be useful to this end.
+
+\end{remark}
+
+\section{Acknowledgments}
+\begin{enumerate}
+	\item{William Gasarch, advice for generalizing from an inspired example to $H_{r}(n)$. Additionally providing extensive critique of proofs, writing, and format.}
+	\item{Alex Leonardi, great comment on form of proof and written clarity.}
+	\item{Kevin Flanary, critical feedback on writing.}
+	\item{Nathan Constantinides, for checking the case $H_{2}(n)$ numerically for small $n$.}
+	\item{Elan Fisher, for engaging discussion.}
+\end{enumerate}
+\begin{appendix}
+	\section{The period for addition of exponentially generated sequences}\label{app:expsum}
+	\begin{proposition}
+		A finite sum of weighted exponentiations of elements of $\{1, 2, 3, \ldots, K - 1\}, K\in \mathbb{N},$ has an eventual modular period that is bounded from below by the least common multiple of each summand sequence's period, where summand sequences are considered only if they are generated by exponentiation of a base in $(\mathbb{Z}/K\mathbb{Z})^{\times}$.
+		\begin{proof}
+				Consider such a finite sum, and let the period be $q$, and each weighted summand exponentially generated sequence, $x_{i}^{n}$,  has eventual modular period $T_{i}$, and coefficient $X_{i}$. The following must hold for all sufficiently large $n$. 
+			\begin{align}
+				\sum_{x_{i}} X_{i}x_{i}^{n}  \equiv \sum_{x_{i}} X_{i}x_{i}^{n + q} \pmod{K}
+			\end{align}
+		Rearrange, and take $R$ to be the greatest power in the prime power factorization of $K$.
+		\begin{align}
+					\sum_{x_{i}} X_{i}x_{i}^{n - R}(x_{i}^{R} - x_{i}^{R + q})  \equiv 0 \pmod{K}
+			\end{align}
+			For arbitrary bases, either $x_{i}^{R}X_{i} \equiv 0 \pmod{K}$ or ${x_{i}^{R} - x_{i}^{R + q}} \equiv 0 \pmod{K}$, such that the relation hold true for varying $n$. Consider only the nontrivial constraints, which are for all $x^{\prime}_{i} \in \{x_{i}|\gcd(x_{i}, K) = 1 \lor x_{i}^{R}X_{i} \not\equiv 0 \pmod{K} \}$.
+			\begin{align}
+				{x}_{i}^{\prime q + R} \equiv {x}_{i}^{\prime  R} \pmod{K}
+			\end{align}
+
+			Let $T = \{T_{i}|\gcd(x_{i},K) = 1\}$. It is clear then that $q$, the eventual modular period is bounded from below by $\lcm(T)$.
+		\end{proof}
+	\end{proposition}
+	
+	
+
+	
+	
+
+\end{appendix}
+\begin{thebibliography}{9}
+
+	\bibitem{cc:racz} G. R\'acz, The $r$-Fubini-Lah numbers and polynomials, {\em Australas. J. Comb.} \textbf{78} (2020), 145-153.
+
+	\bibitem{cc:asgari} A. A. Asgari and M. Jahangiri, On the Periodicity Problem for Residual $r$-Fubini Sequences, {\em J. Integer Seq.} \textbf{21} (2018), \href{https://cs.uwaterloo.ca/journals/JIS/VOL21/Asgari/asgari4.html}{Article 18.4.5}.
+
+	\bibitem{cc:matrix}L. Comtet, {\em Advanced Combinatorics}, D. Reidel Pub. Co, 1974, 144.
+
+	\bibitem{cc:cm}R. L. Graham, D. E. Knuth, and O. Patashnik, {\em Concrete Mathematics} (2nd Ed.),  Pearson Education, 1994, 259-264.
+
+	\bibitem{cc:relation} G. Cheon, J. Kim, Stirling matrix via Pascal matrix, {\em Linear Algebra Its Appl.} \textbf{329} (2001), 49-59.
+	
+	\bibitem{cc:carmichael} P. Erd\H{o}s, C. Pomerance, E. Schmutz, Carmichael's lambda function, {\em Acta Arith.} \textbf{58} (1991), 363-385.
+\end{thebibliography}
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent 2020 {\it Mathematics Subject Classification}: 06A05.
+
+\noindent \emph{Keywords:} Carmichael function, Fubini numbers, Stirling numbers of the second kind, constrained weak ordering, exponential sum, modular periodicity, ordered Bell numbers, r-Fubini numbers, shift operator, signed Stirling numbers of the first kind, weak ordering
+
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent (Concerned with sequence
+\seqnum{A000670}, \seqnum{A008277},
+\seqnum{A008275},
+\seqnum{A232473}, \seqnum{A232474},
+and \seqnum{A002322}.)
+
+\bigskip
+
+\bigskip
+
+
+\noindent
+
+
+\bigskip
+
+\bigskip
+
+\noindent
+
+\vskip .1in
+
+
+\end{document}
+
+
+
