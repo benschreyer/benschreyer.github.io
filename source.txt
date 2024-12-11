@@ -1,0 +1,64 @@
+Yea the book is “A Primer of Abstract Mathematics” by Robert B. Ash
+Page 38 deals with derangements
+But this chapter on counting starts at page 25
+The operator to construct the derangements is clearly (E - 1) on the factorial function
+Clearly we add the element back, but we might also have a -1 which is because there are f(n - 1) ways where the deranged
+element is fixed and the other elements are free to move around it which is just their possible number of permutations
+https://en.wikipedia.org/wiki/Rencontres_numbers
+
+The partial derangement I have here is different than the colloquial use of partial derangements
+
+
+Can this logic be used on F(n) = H(n) to derange the weak orderings?
+
+The operator multiplication principle for derangement and Bell countings
+
+A Combinatorial Interpretation of q-Derangement and q-Laguerre
+Numbers
+A. M. GARSIA AND J. REMME
+
+G.-C . Rota, D. Kahaner and A. Odlyzko, Finite operator calculus, J. Math. Analysis Appl. 42 (1973),
+685-760.
+
+A python program to check this is logical for small r,n
+
+import itertools
+import math
+
+
+import scipy.special
+
+def f(n):
+    return math.factorial(n)
+
+def count_auto(r,n):
+    s= 0
+    for i in range(r+1):
+        s += ((-1) ** i ) * scipy.special.binom(r,i) * f(n - i)
+    return s
+
+def count_manual(r,n):
+    it = itertools.permutations(range(n))
+    c = 0
+    for perm in it:
+        flag = False
+        for i in range(r):
+            if perm[i] == i:
+                flag = True
+        if not flag:
+            c += 1
+    return c
+
+N = 10
+R = 10
+for r in range (0,R):
+    for n in range(r, N):
+        print(count_auto(r,n), end = "")
+
+
+A001564
+2nd differences of factorial numbers.
+(Formerly M2972 N1202)
++30
+26
+1, 3, 14, 78, 504, 3720, 30960, 287280,
