@@ -4,490 +4,371 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Benjamin Schreyer's Portfolio">
+    <meta name="author" content="Benjamin Schreyer">
 
     <title>Benjamin Schreyer</title>
 
-    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-
-
-
-
-    <!-- Custom styles for this template -->
     <link href="grid.css" rel="stylesheet">
-
-
-
+    
+    <style>
+      /* Keeping your layout preferences and ensuring clean alignments */
+      .equal-height {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .chevron-button {
+        background: none;
+        border: none;
+        font-size: 1.2em;
+      }
+      #toggleAll, #toggleAll2, #toggleAll3 {
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: 15px;
+        color: #337ab7;
+        text-decoration: underline;
+      }
+      .list-group-item a {
+        word-wrap: break-word;
+      }
+    </style>
   </head>
 
   <body>
     <div class="container">
-      <div class="page-header" style="display: flex; align-items: center;">
-        <div class="col" style="flex: 1;">
+      <div class="page-header" style="display: flex; align-items: center; flex-wrap: wrap;">
+        <div class="col" style="flex: 1; min-width: 280px;">
           <h1>Benjamin Schreyer's website</h1>
           <p class="lead"><br><i>"complete disorder is impossible,"</i> T. Motzkin</p>
           
-
-          <a href="mailto:benontheplanet@gmail.com">benontheplanet@gmail.com</a>
-          <a href ="https://orcid.org/0009-0009-4368-9163">ORCiD</a>
-          <a href ="https://github.com/benschreyer/benschreyer.github.io/blob/master/schreyer-res.pdf">CV</a>
-          
+          <p>
+            <a href="mailto:benontheplanet@gmail.com" style="margin-right: 15px;">benontheplanet@gmail.com</a>
+            <a href="https://orcid.org/0009-0009-4368-9163" style="margin-right: 15px;" target="_blank">ORCiD</a>
+            <a href="https://github.com/benschreyer/benschreyer.github.io/blob/master/schreyer-res.pdf" target="_blank">CV</a>
+          </p>
         </div>
         <div class="col" style="flex: 0 0 auto;">
           <figure class="figure">
-            <img src="bars.gif" width="244" height="184" alt="Image" style="display:inline;">
+            <img src="bars.gif" width="244" height="184" alt="Time varying optical partial coherence" style="display:inline;">
             <figcaption class="figure-caption">Time varying optical partial coherence</figcaption>
           </figure>
-          
         </div>
       </div>
     </div>
-    <div class = "container">
-      <h3>Work Experience</h3>
-      <a id="toggleAll">Toggle all collapses</a>
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Research Assistant, DSP and Machine Learning for Photonic Networks</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">Fraunhofer Heinrich Hertz Institute HHI, Berlin</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Dec. 2025 - Present</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse1">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse1" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      <div class="content">
-        DSP for photonic communications networks in urban environments.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Optimization for torsion balance flexures used in gravitational coherence experiment</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">National Institute of Standards and Technology, Maryland</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Oct. 2024 - Dec. 2025</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse3">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse3" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      <div class="content">
-        Project on torsion balance optimization. I made semi-analytic bending calculations with large cross section variation feasible.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Experimental and computational nonlinear optics researcher, continuing work, summer intern 2x</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">Naval Research Laboratory, Washington D.C.</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Oct. 2022 - Jan. 2025</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse4">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse4" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      <div class="content">
-       Wrote a library for perceptually uniform graphical/color representation of nonlinear Schroedinger equation solutions
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Teaching assistant wave physics</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">University of Maryland, College Park</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Sept. 2022 - May 2023</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse5">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse5" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      <div class="content">
-        Grading, discussion proctoring for two semesters of wave physics.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Teaching assistant discrete mathematics</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">Montgomery College</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Jan. 2021 - May 2021</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse6">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse6" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      <div class="content">
-        Proctoring discussion groups in introductory discrete mathematics.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="row equal-height">
-  <div class="col-md-5 col-xs-5">
-    <div class="content">Tutoring</div>
-  </div>
-  <div class="col-md-4 col-xs-4">
-    <div class="content">University of Maryland</div>
-  </div>
-  <div class="col-md-2 col-xs-2">
-    <div class="content">Jan. 2021 - May 2022</div>
-  </div>
-  <div class="col-md-1 col-xs-1">
-    <button class="chevron-button" data-toggle="collapse" data-target="#collapse7">
-      <span class="glyphicon glyphicon-chevron-down"></span>
-    </button>
-  </div>
-</div>
-<div id="collapse7" class="collapse collapse-w">
-  <div class="row equal-height">
-    <div class="col-md-12 col-xs-12">
-      Tutoring in physics at the University of Maryland. Earlier tutoring in CS and elementary education.
-    </div>
-  </div>
 
     <div class="container">
+      <h3>Work Experience</h3>
+      <a id="toggleAll">Toggle all collapses</a>
 
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Research Assistant, DSP and Machine Learning for Photonic Networks</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">Fraunhofer Heinrich Hertz Institute HHI, Berlin</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Dec. 2025 - Present</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w1">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w1" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">DSP for photonic communications networks in urban environments.</div>
+          </div>
+        </div>
+      </div>
 
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Optimization for torsion balance flexures used in gravitational coherence experiment</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">National Institute of Standards and Technology, Maryland</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Oct. 2024 - Dec. 2025</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w2">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w2" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">Project on torsion balance optimization. I made semi-analytic bending calculations with large cross section variation feasible.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Experimental and computational nonlinear optics researcher, continuing work, summer intern 2x</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">Naval Research Laboratory, Washington D.C.</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Oct. 2022 - Jan. 2025</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w3">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w3" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">Wrote a library for perceptually uniform graphical/color representation of nonlinear Schroedinger equation solutions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Teaching assistant wave physics</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">University of Maryland, College Park</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Sept. 2022 - May 2023</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w4">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w4" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">Grading, discussion proctoring for two semesters of wave physics.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Teaching assistant discrete mathematics</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">Montgomery College</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Jan. 2021 - May 2021</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w5">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w5" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">Proctoring discussion groups in introductory discrete mathematics.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Tutoring</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">University of Maryland</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Jan. 2021 - May 2022</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-w6">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+      <div id="collapse-w6" class="collapse collapse-w">
+        <div class="row equal-height">
+          <div class="col-md-12 col-xs-12">
+            <div class="content">Tutoring in physics at the University of Maryland. Earlier tutoring in CS and elementary education.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
       <h3>Education</h3>
       <a id="toggleAll2">Toggle all collapses</a>
 
-
-
-        <div class="row equal-height">
-          <div class="col-md-5 col-xs-5">
-            <div class="content">Bachelors dual degrees in physics and computer science</div>
-          </div>
-          <div class="col-md-4 col-xs-4">
-            <div class="content">University of Maryland, College Park</div>
-          </div>
-          <div class="col-md-2 col-xs-2">
-            <div class="content">Sept. 2021 - May 2025</div>
-          </div>
-          <div class="col-md-1 col-xs-1">
-          <button class="chevron-button" data-toggle="collapse" data-target="#collapse4">
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">Bachelors dual degrees in physics and computer science</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">University of Maryland, College Park</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Sept. 2021 - May 2025</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-e1">
             <span class="glyphicon glyphicon-chevron-down"></span>
           </button>
         </div>
-        </div>
-        <div id="collapse4" class="collapse collapse-e">
+      </div>
+      <div id="collapse-e1" class="collapse collapse-e">
         <div class="row equal-height">
           <div class="col-md-12 col-xs-12">
-            <div class="content">
-              <!-- Collapse Button -->
-
-              <!-- Collapsible Content -->
-              
-                Additional completion of a minor in German language, and the astronomy introductory sequence.
-
-            </div>
+            <div class="content">Additional completion of a minor in German language, and the astronomy introductory sequence.</div>
           </div>
         </div>
-        </div>
+      </div>
 
-
-        <div class="row equal-height">
-          <div class="col-md-5 col-xs-5">
-            <div class="content">College coursework math and computer science</div>
-          </div>
-          <div class="col-md-4 col-xs-4">
-            <div class="content">Montgomery College</div>
-          </div>
-          <div class="col-md-2 col-xs-2">
-            <div class="content">Sept. 2020 - May 2021</div>
-          </div>
-          <div class="col-md-1 col-xs-1">
-          <button class="chevron-button" data-toggle="collapse" data-target="#collapse5">
+      <div class="row equal-height">
+        <div class="col-md-5 col-xs-5"><div class="content">College coursework math and computer science</div></div>
+        <div class="col-md-4 col-xs-4"><div class="content">Montgomery College</div></div>
+        <div class="col-md-2 col-xs-2"><div class="content">Sept. 2020 - May 2021</div></div>
+        <div class="col-md-1 col-xs-1">
+          <button class="chevron-button" data-toggle="collapse" data-target="#collapse-e2">
             <span class="glyphicon glyphicon-chevron-down"></span>
           </button>
         </div>
-        </div>
-        <div id="collapse5" class="collapse collapse-e">
+      </div>
+      <div id="collapse-e2" class="collapse collapse-e">
         <div class="row equal-height">
           <div class="col-md-12 col-xs-12">
-            <div class="content">
-              <!-- Collapse Button -->
-
-              <!-- Collapsible Content -->
-              Technical courses in mathematics and computer science.
-                
-
-            </div>
+            <div class="content">Technical courses in mathematics and computer science.</div>
           </div>
         </div>
-        </div>
+      </div>
+    </div>
 
-              <!-- Collapse Button -->
-
-              <!-- Collapsible Content -->
-              
-                
-
-            </div>
-          </div>
-
-
-
-        </div>
-
-<div class="container">
-  <h3>Research papers/posters</h3>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Realization of phase perturbations by deformable mirror towards testing statistical nonlinear optics
-      Proceedings Volume 12939, High-Power Laser Ablation VIII; 129390V (2024) <a href="https://doi.org/10.1117/12.3012409">https://doi.org/10.1117/12.3012409</a> 
-      B. Schreyer, D. Younis, D. Kaganovich, L. A. Johnson, B. Hafizi, T. M. Antonsen Jr. (Feb. 2024)
-      </li>
-      <li class="list-group-item">Rigged Horse Numbers and their Modular
-        Periodicity
-        <a href="https://cs.uwaterloo.ca/journals/JIS/VOL28/Schreyer/schreyer7.html">Journal of Integer Sequences</a> 
-        B. Schreyer (Aug. 2024)  <a href="http://hdl.handle.net/1903/33878">poster</a>
+    <div class="container">
+      <h3>Research papers/posters</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Realization of phase perturbations by deformable mirror towards testing statistical nonlinear optics, 
+          Proceedings Volume 12939, High-Power Laser Ablation VIII; 129390V (2024) 
+          <a href="https://doi.org/10.1117/12.3012409" target="_blank">https://doi.org/10.1117/12.3012409</a> 
+          B. Schreyer, D. Younis, D. Kaganovich, L. A. Johnson, B. Hafizi, T. M. Antonsen Jr. (Feb. 2024)
         </li>
-<li class="list-group-item">Schreyer, Benjamin; Younis, Daniel; Kaganovich, Dmitri; Johnson, Luke; Antonsen, Thomas; Hafizi, B. (2025). Realization of Nontrivial Partial Spatial Coherence by Deformable Mirror. Applied Optics <a href="https://doi.org/10.1364/AO.557755">DOI</a>
-      </li>
-    <li class="list-group-item">Benjamin Schreyer, Lorenz Keck, Jon R. Pratt, Stephan Schlamminger, Stable numerical technique to calculate the bending of flexures with extreme aspect ratios,  <a href="https://doi.org/10.1088/1361-6501/ae507d">doi.org/10.1088/1361-6501/ae507d</a>, Measurement Science and Technology(Jul. 2025)</li>
-     
-</ul>
-
-    </div> <!-- /container -->
+        <li class="list-group-item">
+          Rigged Horse Numbers and their Modular Periodicity 
+          <a href="https://cs.uwaterloo.ca/journals/JIS/VOL28/Schreyer/schreyer7.html" target="_blank">Journal of Integer Sequences</a> 
+          B. Schreyer (Aug. 2024) <a href="http://hdl.handle.net/1903/33878" target="_blank">poster</a>
+        </li>
+        <li class="list-group-item">
+          Schreyer, Benjamin; Younis, Daniel; Kaganovich, Dmitri; Johnson, Luke; Antonsen, Thomas; Hafizi, B. (2025). 
+          Realization of Nontrivial Partial Spatial Coherence by Deformable Mirror. Applied Optics 
+          <a href="https://doi.org/10.1364/AO.557755" target="_blank">DOI</a>
+        </li>
+        <li class="list-group-item">
+          Benjamin Schreyer, Lorenz Keck, Jon R. Pratt, Stephan Schlamminger, 
+          Stable numerical technique to calculate the bending of flexures with extreme aspect ratios, 
+          <a href="https://doi.org/10.1088/1361-6501/ae507d" target="_blank">doi.org/10.1088/1361-6501/ae507d</a>, 
+          Measurement Science and Technology (Jul. 2025)
+        </li>
+      </ul>
+    </div>
 
     <div class="container">
       <h3>Presentations</h3>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Weekly lecture: Intro Computational Fourier Optics (Fall semester 2024), <a href = "https://github.com/benschreyer/IntroCompFourierOptics">course page</a>
-          </li>
-          <li class="list-group-item">
-            Undergraduate colloquium <em>Shift Symmetry in Physics and Combinatorics</em> (Oct. 2024)
-
-            </li>
-            <li class="list-group-item">
-              Presented my work in <em>Progress Report on Statistical Nonlinear Optics Projects</em> at a Naval Research plasma physics meeting (Oct. 2023)
-
-          </li>
-          <li class="list-group-item">
+        <li class="list-group-item">
+          Weekly lecture: Intro Computational Fourier Optics (Fall semester 2024), 
+          <a href="https://github.com/benschreyer/IntroCompFourierOptics" target="_blank">course page</a>
+        </li>
+        <li class="list-group-item">
+          Undergraduate colloquium <em>Shift Symmetry in Physics and Combinatorics</em> (Oct. 2024)
+        </li>
+        <li class="list-group-item">
+          Presented my work in <em>Progress Report on Statistical Nonlinear Optics Projects</em> at a Naval Research plasma physics meeting (Oct. 2023)
+        </li>
+        <li class="list-group-item">
           Undergraduate colloquium <em>Perturbing Laser Initial Conditions with Deformable Mirror</em> (Mar. 2024)
         </li>
         <li class="list-group-item">
-   Undergraduate conference CU2MIP presentation of poster <em>Realization of phase perturbations by deformable mirror towards testing statistical nonlinear optics</em> (April 2024)
+          Undergraduate conference CU2MIP presentation of poster <em>Realization of phase perturbations by deformable mirror towards testing statistical nonlinear optics</em> (April 2024)
+        </li>
+      </ul>
+    </div>
 
+    <div class="container">
+      <h3>Selected awards</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          SPIE Optics and Photonics Scholarship, potential contributions in optics 
+          <a href="https://spie.org/documents/Membership/Scholarships/2024%20Scholarship%20PRs/Ben%20Schreyer%20PR24.pdf" target="_blank">here</a> (2024)
+        </li>
+        <li class="list-group-item">
+          Maryland Space Grant Scholarship, adaptive optics and partial coherence (2023, 2024)
+        </li>
+        <li class="list-group-item">
+          University of Maryland Bardasis Fellowship, on communication of physics (2022-2024)
+        </li>
+      </ul>
+    </div> 
 
-        </ul>
-    
-        </div>
+    <div class="container">
+      <h3>Selected course projects/fun</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          When you have a laser, everything looks like a diffraction pattern 
+          <a href="https://benschreyer.github.io/ProtonDispersion-2.pdf" target="_blank">here</a> B. Schreyer 
+        </li>
+        <li class="list-group-item">
+          Exploration of Fermion Representations and Hamiltonians on Quantum Computers 
+          <a href="https://github.com/benschreyer/benschreyer.github.io/blob/master/Fermion%20Representations.pdf" target="_blank">here</a> B. Schreyer (May 2024)
+        </li>
+      </ul>
+    </div>
 
-        <div class="container">
-          <h3>Selected awards</h3>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">SPIE Optics and Photonics Scholarship, potential contributions in optics <a href="https://spie.org/documents/Membership/Scholarships/2024%20Scholarship%20PRs/Ben%20Schreyer%20PR24.pdf">here</a> (2024)
-              </li>
-              <li class="list-group-item">Maryland Space Grant Scholarship, adaptive optics and partial coherence (2023, 2024)
-                </li>
-
-                <li class="list-group-item">University of Maryland Bardasis Fellowship, on communication of physics (2022-2024)
-                </li>
-
-
-        
-        </ul>
-        
-            </div> 
-
-        <div class="container">
-          <h3>Selected course projects/fun</h3>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item">When you have a laser, everything looks like a
-diffraction pattern <a href="https://benschreyer.github.io/ProtonDispersion-2.pdf">here</a> B. Schreyer 
-              </li>
-            <li class="list-group-item">Exploration of Fermion Representations and Hamiltonians on
-              Quantum Computers <a href="https://github.com/benschreyer/benschreyer.github.io/blob/master/Fermion%20Representations.pdf">here</a> B. Schreyer (May 2024)
-              </li>
-
-        
-        </ul>
-        
-            </div> <!-- /container -->
-
-        <div class="container">
-          <h3>Selected personal projects</h3>
-          <a id="toggleAll3">Toggle all images</a>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">ESP32 LED audio visualizer grid, parallelized microphone readout/processing and display control on embedded C platform to control LED spectrogram
-              <div id="collapse7" class="collapse collapse-p">
-
-                    <div class="content">
-                      <!-- Collapse Button -->
-        
-                      <!-- Collapsible Content -->
-                      
-                        <img src="image1.png" width="159" height="198"></img>
-                </div>
-                </div> 
-            
-            </li>
-              <li class="list-group-item">
-                C++, OpenGL rendering engine and parallelized newtonian physics simulation to resolve tens of thousands of sphere collisions using spatial hashing
-                <div id="collapse8" class="collapse collapse-p">
-
-                  <div class="content">
-                    <!-- Collapse Button -->
-      
-                    <!-- Collapsible Content -->
-                    
-                      <img src="image2.png" width="193" height="149"></img>
-              </div>
-              </li>
-                <li class="list-group-item">
-                  Radio controlled drone prototype structural, electronics, and control software
-                  <div id="collapse9" class="collapse collapse-p">
-
-                    <div class="content">
-                      <!-- Collapse Button -->
-        
-                      <!-- Collapsible Content -->
-                      
-                        <img src="image4.png" width="193" height="149"></img>
-                </div>
-                </li>
-            </ul>
-        
+    <div class="container">
+      <h3>Selected personal projects</h3>
+      <a id="toggleAll3">Toggle all images</a>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          ESP32 LED audio visualizer grid, parallelized microphone readout/processing and display control on embedded C platform to control LED spectrogram
+          <div id="collapse-p1" class="collapse collapse-p" style="margin-top: 10px;">
+            <div class="content">
+              <img src="image1.png" width="159" height="198" alt="Audio Visualizer Project">
             </div>
+          </div> 
+        </li>
+        <li class="list-group-item">
+          C++, OpenGL rendering engine and parallelized newtonian physics simulation to resolve tens of thousands of sphere collisions using spatial hashing
+          <div id="collapse-p2" class="collapse collapse-p" style="margin-top: 10px;">
+            <div class="content">
+              <img src="image2.png" width="193" height="149" alt="Physics Engine Project">
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          Radio controlled drone prototype structural, electronics, and control software
+          <div id="collapse-p3" class="collapse collapse-p" style="margin-top: 10px;">
+            <div class="content">
+              <img src="image4.png" width="193" height="149" alt="Drone Project">
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-  
-    
-            <div class="container">
-              <h3>Hobbies (to first order)</h3>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Triathlon (cycle, run, swim) with university team
-                  </li>
-                  <li class="list-group-item">
-                    Road cycling with university team
-                    </li>
-                    <li class="list-group-item">
-                      Through hiking on foot and bike
-                  </li>
-                  
-                </ul>
-                Picture: arriving after crossing Gotthard pass over the Alps by bike.
-
-                
-
-                
-                <img src="image3.png" height =1004 width = 530 class="mx-auto d-block"></img>
-                Pictures: TeenTreks New York to Montreal bike touring!
-              <img src="IMG_0831.jpeg" width =714 height =952></img>
-              <img src="IMG_1178.jpeg" width =672 height =504></img>
-              </div>
+    <div class="container" style="margin-bottom: 50px;">
+      <h3>Hobbies (to first order)</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Triathlon (cycle, run, swim) with university team</li>
+        <li class="list-group-item">Road cycling with university team</li>
+        <li class="list-group-item">Through hiking on foot and bike</li>
+      </ul>
+      
+      <p>Picture: arriving after crossing Gotthard pass over the Alps by bike.</p>
+      <img src="image3.png" height="1004" width="530" class="img-responsive center-block" alt="Gotthard Pass Crossing" style="margin-bottom: 20px;">
+      
+      <p>Pictures: TeenTreks New York to Montreal bike touring!</p>
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="IMG_0831.jpeg" class="img-responsive" width="714" height="952" alt="Bike Touring 1" style="margin-bottom: 10px;">
+        </div>
+        <div class="col-sm-6">
+          <img src="IMG_1178.jpeg" class="img-responsive" width="672" height="504" alt="Bike Touring 2">
+        </div>
+      </div>
+    </div>
               
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function() {
+        // Fix and clean structural group-toggles
         $('#toggleAll').click(function() {
-        // Check if any collapses are visible
-        var isCollapsed = $('.collapse-w').hasClass('in');
-        
-        if (isCollapsed) {
-          // If any are visible, collapse all
-          $('.collapse-w').collapse('hide');
-        } else {
-          // If none are visible, show all
-          $('.collapse-w').collapse('show');
-        }
-      });
+          var isCollapsed = $('.collapse-w').hasClass('in');
+          $('.collapse-w').collapse(isCollapsed ? 'hide' : 'show');
+        });
 
-      $('#toggleAll3').click(function() {
-        // Check if any collapses are visible
-        var isCollapsed = $('.collapse-p').hasClass('in');
-        
-        if (isCollapsed) {
-          // If any are visible, collapse all
-          $('.collapse-p').collapse('hide');
-        } else {
-          // If none are visible, show all
-          $('.collapse-p').collapse('show');
-        }
-      });
         $('#toggleAll2').click(function() {
-        // Check if any collapses are visible
-        var isCollapsed = $('.collapse-e').hasClass('in');
-        
-        if (isCollapsed) {
-          // If any are visible, collapse all
-          $('.collapse-e').collapse('hide');
-        } else {
-          // If none are visible, show all
-          $('.collapse-e').collapse('show');
-        }
-      });
+          var isCollapsed = $('.collapse-e').hasClass('in');
+          $('.collapse-e').collapse(isCollapsed ? 'hide' : 'show');
+        });
 
-        // Toggle chevron icon on collapse show/hide
+        $('#toggleAll3').click(function() {
+          var isCollapsed = $('.collapse-p').hasClass('in');
+          $('.collapse-p').collapse(isCollapsed ? 'hide' : 'show');
+        });
+
+        // Interactive chevron adjustments on structural events
         $('.collapse').on('show.bs.collapse', function () {
           $(this).parent().find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
         }).on('hide.bs.collapse', function () {
@@ -495,7 +376,5 @@ diffraction pattern <a href="https://benschreyer.github.io/ProtonDispersion-2.pd
         });
       });
     </script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
