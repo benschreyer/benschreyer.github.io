@@ -1,0 +1,40 @@
+Fiber Optic Sensing of Recovery Requiring a Chest Tube
+
+Benjamin Schreyer
+
+Introduction
+
+We propose development of a fiber optic sensing and analysis technique for continuous chest injury monitoring via chest tube devices used to drain fluid or gas from the pleural cavity already inserted as part of a treatment procedure. Teams have long listened externally by ear, stethoscope (auscultation) [2] to such injuries like pneumothorax, even being able to determine spatial features or determine if drainage was complete [8], ahead of penetrating scans [4] to image the chest. These media both indicate distinctly spatial or distinctly temporal signals about the injury in order to monitor recovery of the patient and are minimally invasive. It is possible to resolve vibrations by rapid multiple imaging but the use of radiation in for example CT scans limits their use in patients. Auscultation suffers from the fact that, ”the lung parenchyma and chest wall act as a low-pass filter” [9].  To overcome these limitations this end we propose a research program which combines device development and testing against existing methodology which may be feasible on the scale of a year. Further testing in patients is not unrealistic. 
+
+Figure 1. 24 French chest tube cross section drawing (millimeter units) with embedded fiber optic sensor.
+
+Device
+
+We plan to develop a chest tube which has an embedded fiber optic sensing element. The internal nature of the device is in contrast with sensors which are wearable [5]. Fiber optic Bragg sensing elements can be closely spaced and smaller than the walls of a typical chest tube device [1], such that the geometry of the chest tube may remain identical to those currently employed. With only internal structure changing, see Figure 1, to allow a fiber sensing element to run along the chest tube, and often parallel and against the affected cavity tissue, Figure 2. The augmented chest tube would also remain chemically and electromagnetically inert, desirable for use with traditional sensing for chest injuries. The external device for such a chest tube does become more complex, now not just requiring typical pressure related apparatus for drainage and sensing, but also an optical sensing interrogator to monitor space resolved vibrational signals generated within the patients chest.
+
+Figure 2. Imaging of a chest tube adjacent to the right lung for hydropneumothorax adopted from Chest Tube Placement and Management: A Practical Review. [4]
+Evaluation
+
+The prototype stage would be tested in animal cadavers. Chest tubes with an embedded fiber sensor would be used to collect data. Multiple fiber sensing could be explored towards triangulation of signal. Damage to chest tissue which shares qualities with human injury are first induced. Insertion of the tube may be made with active sensing. Breath-like pressures can be introduced by control of an external pump aimed at breath simulation. Sealing of the tube during some sensing will allow for comparison of signal clarity under this variation. At the same time traditional static imaging, pressure monitoring, and external stethoscopic measurement would produce data on the breath cycles. With fiber sensing and without fiber, datasets can be fed into machine learning models to compare their predictive power to assess the injury. Explainability is crucial in a medical setting so in parallel this data can be analyzed from a more traditional signal processing lens to extract views of chest tube fiber optic sensing which are repeatable and can be understood by doctors. Given that no human is trained to read chest-internal fiber optic signals, comparison by machine learning provides a less biased comparison to existing sensing. 
+
+References
+
+1. Coric, D., Lai, M., Botsis, J., Luo, A., & Limberger, H. G. (2010). Distributed strain measurements using fiber Bragg gratings in small-diameter optical fiber and low-coherence reflectometry. Optics Express, 18(25), 26484–26491.
+
+2. Krumpe, P., Finley, T., Wong, L., & Treasure, R. (1981). The bronchial leak squeak. Chest, 79(3), 336–339.
+
+3. Li, X., Li, Y., Wei, H., Wang, C., & Liu, B. (2024). A review of wearable optical fiber sensors for rehabilitation monitoring. Sensors, 24(11), Article 3602.
+
+4. Roebker, J. A., Kord, A., Chan, K., Rao, R., Ray, C. E., & Ristagno, R. (2023). Chest tube placement and management: A practical review. Seminars in Interventional Radiology, 40(2), 231–239.
+
+5. Shi, G., Wang, W., Guo, Y., Pan, J., Dandan, S., & Ma, J. (2024). Flexible wearable fiber optic sensor for real-time human breath monitoring based on Fabry-Perot interferometer with agar film. Optics Express, 32(19), 33208–33221.
+
+6. Sorino, C., Feller-Kopman, D., Mei, F., Mondoni, M., Agati, S., Marchetti, G., & Rahman, N. M. (2024). Chest tubes and pleural drainage: History and current status in pleural disease management. Journal of Clinical Medicine, 13(21), Article 6331.
+
+7. Zhang, X., Wang, C., Zheng, T., Wu, H., Wu, Q., & Wang, Y. (2023). Wearable optical fiber sensors in medical monitoring applications: A review. Sensors, 23(15), Article 6671.
+
+8. Arora, N., Klement, W., Japkowicz, N., Jones, D. G., Maziak, D. E., Seely, A. J. E., Sundaresan, S. R., Villeneuve, P. J., & Gilbert, S. (2026). Chest Tube Learning Synthesis and Evaluation Assistant (CheLSEA): A prospective observational trial of an intelligent decision support system. Innovations: Technology and Techniques in Cardiothoracic and Vascular Surgery, 21(2), 166–172.
+
+9. Sarkar, M., Madabhavi, I., Niranjan, N., & Dogra, M. (2015). Auscultation of the respiratory system. Annals of Thoracic Medicine, 10(3), 158–168. 
+
+
